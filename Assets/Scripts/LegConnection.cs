@@ -27,6 +27,7 @@ public class LegConnection : MonoBehaviour
         isGrounded = IsGrounded();
         if (isGrounded && legRb.velocity.y <= 0) legRb.velocity = Vector3.zero;
 
+
         //Get the velocity where player is aiming their controller
         Vector3 velocity = GetDirection();
         //Get distance from body to leg
@@ -38,7 +39,7 @@ public class LegConnection : MonoBehaviour
         {
             print(backDir);
             //TO DO: add body move in the direction
-            body.velocity += (-backDir * .1f + Vector3.up * .9f) * Time.deltaTime * verticalAcceleration;
+            body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .2f + Vector3.up * .8f);
         }
         //Check if leg is too far from body
         if (dist < maxDist)
@@ -69,13 +70,12 @@ public class LegConnection : MonoBehaviour
 
     private Vector3 GetDirection()
     {
-
         //DO NOT DELETE THIS ----
         //float inputX = Input.GetAxis("Horizontal");
         //float inputY = Input.GetAxis("Vertical");
         //Vector3 dir = Vector3.up * inputY + Vector3.right * inputX;
         Vector3 dir = DebugInput();
-        
+
 
         return dir * Time.deltaTime * speed;
     }
@@ -126,7 +126,9 @@ public class LegConnection : MonoBehaviour
 
     private bool IsGrounded()
     {
-        return Physics.Raycast(transform.position, Vector3.down, rayCastDist);
+        //int layerMask
+        int layerMask = ~LayerMask.GetMask("Body");
+        return Physics.Raycast(transform.position, Vector3.down, rayCastDist, layerMask);
     }
 
     private void OnDrawGizmosSelected()
