@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 //[RequireComponent(typeof(Rigidbody))]
 public class LegConnection : MonoBehaviour
@@ -11,21 +12,29 @@ public class LegConnection : MonoBehaviour
     [SerializeField, Tooltip("How strong is leg")] private float verticalAcceleration;
     [SerializeField] private float rayCastDist = 0.1f;
     [SerializeField] private bool isGrounded;
+    private bool jumped;
     private Rigidbody legRb;
+    private BodyController bodyController;
     //private Vector3 currentVelocity;
-
+    //private Vector3 prevBodyVel;
+    private Gamepad currentGamepad;
     //DEBUG VARIABLES
     [SerializeField] private bool wasd;
 
     private void Start()
     {
         legRb = GetComponent<Rigidbody>();
+        bodyController = body.GetComponent<BodyController>();
+        if (bodyController == null) Debug.LogError("No body controller was found!");
+
+        currentGamepad = Gamepad.current;
     }
 
     private void Update()
     {
         isGrounded = IsGrounded();
         if (isGrounded && legRb.velocity.y <= 0) legRb.velocity = Vector3.zero;
+        //if (isGrounded && jumped) jumped = true;
 
 
         //Get the velocity where player is aiming their controller
@@ -37,35 +46,77 @@ public class LegConnection : MonoBehaviour
         //When on the ground on pushing down
         if (isGrounded && velocity.y < 0)
         {
-            print(backDir);
             //TO DO: add body move in the direction
             body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .2f + Vector3.up * .8f);
         }
-        //Check if leg is too far from body
-        if (dist < maxDist)
+        if (bodyController.GetFlying())
         {
-            //currentVelocity += velocity;
-            legRb.velocity += velocity;
+            if (!jumped)
+            {
+                legRb.velocity += body.velocity;
+                jumped = true;
+            }
+            //Check if leg is too far from body
+            if (dist < maxDist)
+            {
+                legRb.velocity += velocity;
+
+            }
+            else
+            {
+                float diff = maxDist - dist;
+                transform.position += new Vector3(backDir.x,backDir.y,0) * diff * 1.01f;
+            }
         }
         else
         {
-            Vector3 prevVel = legRb.velocity; //Save previous velocity
-            legRb.velocity = Vector3.zero; //Make current velocity zero
-            float diff = maxDist - dist; //how much leg is too far away
-
-            //If leg is higher then the body
-            if (backDir.y < 0)
+            jumped = false;
+            if (dist < maxDist)
             {
-                // Get direction in circle where to move
-                Vector3 crossDir = backDir.x > 0 ? Vector3.Cross(backDir, transform.forward) : Vector3.Cross(backDir, -transform.forward);
-                // Applying velocity to the direction where leg should move
-                if (prevVel.y < 0)
-                    legRb.velocity = prevVel.magnitude * crossDir;//Vector3.Cross(backDir, transform.forward);
+
+                legRb.velocity += velocity;
+                /*
+                if (!jumped && !isGrounded)
+                {
+                    jumped = true;
+                    legRb.velocity += body.velocity;
+                }
+                 */
             }
-            backDir.z = 0;
-            //getting leg back to the circle
-            transform.position += backDir * diff * 1.01f;
+            else
+            {
+                HandleOutOfRange(dist, backDir);
+            }
         }
+        //legRb.velocity = Vector3.zero;
+        //transform.position = Vector3.zero;
+    }
+
+    /// <summary>
+    /// Will be executed when distance from body to leg is bigger then maxDist
+    /// </summary>
+    /// <param name="dist"></param>
+    /// <param name="backDir"></param>
+    private void HandleOutOfRange(float dist, Vector3 backDir)
+    {
+        Vector3 prevVel = legRb.velocity; //Save previous velocity
+        legRb.velocity = Vector3.zero; //Make current velocity zero
+        float diff = maxDist - dist; //how much leg is too far away
+
+        //If leg is higher then the body
+        if (backDir.y < 0)
+        {
+            // Get direction in circle where to move
+            Vector3 crossDir = backDir.x > 0 ? Vector3.Cross(backDir, transform.forward) : Vector3.Cross(backDir, -transform.forward);
+            // Applying velocity to the direction where leg should move
+            if (prevVel.y < 0)
+            {
+                legRb.velocity = prevVel.magnitude * crossDir;//Vector3.Cross(backDir, transform.forward);
+            }
+        }
+        backDir.z = 0;
+        //getting leg back to the circle
+        transform.position += backDir * diff * 1.01f;
     }
 
     private Vector3 GetDirection()
@@ -74,12 +125,14 @@ public class LegConnection : MonoBehaviour
         //float inputX = Input.GetAxis("Horizontal");
         //float inputY = Input.GetAxis("Vertical");
         //Vector3 dir = Vector3.up * inputY + Vector3.right * inputX;
-        Vector3 dir = DebugInput();
+        //Vector3 dir = DebugInput();
+        Vector3 dir = Vector3.zero;
+        Vector2 stickValue = wasd ? currentGamepad.leftStick.ReadValue() : currentGamepad.rightStick.ReadValue();
 
+        dir += new Vector3(stickValue.x, stickValue.y, 0);
 
         return dir * Time.deltaTime * speed;
     }
-
     private Vector3 DebugInput()
     {
         Vector3 res = Vector3.zero;
@@ -123,7 +176,6 @@ public class LegConnection : MonoBehaviour
         }
         return res;
     }
-
     private bool IsGrounded()
     {
         //int layerMask
@@ -131,6 +183,13 @@ public class LegConnection : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, rayCastDist, layerMask);
     }
 
+    //Get functions
+    public bool GetGrounded() => isGrounded;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(body.transform.position, transform.position);
+    }
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * rayCastDist);
