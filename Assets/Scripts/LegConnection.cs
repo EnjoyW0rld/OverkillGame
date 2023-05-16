@@ -47,7 +47,7 @@ public class LegConnection : MonoBehaviour
         if (isGrounded && velocity.y < 0)
         {
             //TO DO: add body move in the direction
-            body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .2f + Vector3.up * .8f);
+            body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f);
         }
         if (bodyController.GetFlying())
         {
@@ -65,7 +65,7 @@ public class LegConnection : MonoBehaviour
             else
             {
                 float diff = maxDist - dist;
-                transform.position += new Vector3(backDir.x,backDir.y,0) * diff * 1.01f;
+                transform.position += new Vector3(backDir.x, backDir.y, 0) * diff * 1.01f;
             }
         }
         else
@@ -102,7 +102,7 @@ public class LegConnection : MonoBehaviour
         Vector3 prevVel = legRb.velocity; //Save previous velocity
         legRb.velocity = Vector3.zero; //Make current velocity zero
         float diff = maxDist - dist; //how much leg is too far away
-
+        
         //If leg is higher then the body
         if (backDir.y < 0)
         {
@@ -115,8 +115,9 @@ public class LegConnection : MonoBehaviour
             }
         }
         backDir.z = 0;
+        //if(body.velocity.y)
         //getting leg back to the circle
-        transform.position += backDir * diff * 1.01f;
+        transform.position += backDir * diff * 1.1f;
     }
 
     private Vector3 GetDirection()
@@ -193,5 +194,18 @@ public class LegConnection : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * rayCastDist);
+    }
+    private void OnValidate()
+    {
+        foreach (var obj in FindObjectsOfType<LegConnection>())
+        {
+            if (obj != this)
+            {
+                obj.speed = speed;
+                obj.maxDist = maxDist;
+                obj.verticalAcceleration = verticalAcceleration;
+                obj.rayCastDist = rayCastDist;
+            }
+        }
     }
 }
