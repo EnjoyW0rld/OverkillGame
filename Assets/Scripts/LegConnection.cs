@@ -10,12 +10,13 @@ public class LegConnection : MonoBehaviour
     [SerializeField] private float maxDist;
     [SerializeField] private float speed = 100;
     [SerializeField, Tooltip("How strong is leg")] private float verticalAcceleration;
+    [SerializeField] private float gravity;
     [SerializeField] private float rayCastDist = 0.1f;
     [SerializeField] private bool isGrounded;
-    private bool jumped;
+    //private bool jumped;
     private Rigidbody legRb;
     private BodyController bodyController;
-    //private Vector3 currentVelocity;
+    [SerializeField] private Vector3 currentVelocity;
     //private Vector3 prevBodyVel;
     private Gamepad currentGamepad;
     //DEBUG VARIABLES
@@ -33,22 +34,23 @@ public class LegConnection : MonoBehaviour
     private void Update()
     {
         isGrounded = IsGrounded();
-        if (isGrounded && legRb.velocity.y <= 0) legRb.velocity = Vector3.zero;
+        //if (isGrounded && legRb.velocity.y <= 0) legRb.velocity = Vector3.zero;
         //if (isGrounded && jumped) jumped = true;
-
 
         //Get the velocity where player is aiming their controller
         Vector3 velocity = GetDirection();
         //Get distance from body to leg
-        float dist = Vector3.Distance(body.transform.position, transform.position);
-
-        Vector3 backDir = (transform.position - body.transform.position).normalized; //Direction back to the body
+        //float dist = Vector3.Distance(body.transform.position, transform.position);
+        if (isGrounded) velocity.x = 0;
+        //Vector3 backDir = (transform.position - body.transform.position).normalized; //Direction back to the body
         //When on the ground on pushing down
         if (isGrounded && velocity.y < 0)
         {
             //TO DO: add body move in the direction
-            body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f);
+            //body.velocity += Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f);
+            //bodyController.ModifyVelocity(Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f));
         }
+        /**
         if (bodyController.GetFlying())
         {
             if (!jumped)
@@ -75,21 +77,55 @@ public class LegConnection : MonoBehaviour
             {
 
                 legRb.velocity += velocity;
-                /*
+                /**
                 if (!jumped && !isGrounded)
                 {
                     jumped = true;
                     legRb.velocity += body.velocity;
                 }
-                 */
+                 /**
             }
             else
             {
                 HandleOutOfRange(dist, backDir);
             }
         }
+        /**/
+
+        currentVelocity += velocity;
         //legRb.velocity = Vector3.zero;
         //transform.position = Vector3.zero;
+    }
+
+    private void FixedUpdate()
+    {
+        legRb.position += currentVelocity;
+
+
+        float dist = Vector3.Distance(body.transform.position, transform.position);
+        Vector3 backDir = (transform.position - body.transform.position).normalized; //Direction back to the body
+
+        if (isGrounded && currentVelocity.y < 0)
+        {
+            //bodyController.ModifyVelocity(Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f));
+            bodyController.ModifyVelocity((Vector3.up * .5f + -backDir * .5f) * verticalAcceleration);
+        }
+
+        if (dist > maxDist)
+        {
+            float diff = maxDist - dist; //how much leg is too far away
+            legRb.position += backDir * diff;
+        }
+        currentVelocity *= .9f;
+        //currentVelocity.x *= .9f;
+        if (!isGrounded) currentVelocity.y += gravity;
+        else
+        {
+            if (currentVelocity.y < 0)
+            {
+                currentVelocity.y = 0;
+            }
+        }
     }
 
     /// <summary>
@@ -102,7 +138,7 @@ public class LegConnection : MonoBehaviour
         Vector3 prevVel = legRb.velocity; //Save previous velocity
         legRb.velocity = Vector3.zero; //Make current velocity zero
         float diff = maxDist - dist; //how much leg is too far away
-        
+
         //If leg is higher then the body
         if (backDir.y < 0)
         {
@@ -122,15 +158,22 @@ public class LegConnection : MonoBehaviour
 
     private Vector3 GetDirection()
     {
-        //DO NOT DELETE THIS ----
-        //float inputX = Input.GetAxis("Horizontal");
-        //float inputY = Input.GetAxis("Vertical");
-        //Vector3 dir = Vector3.up * inputY + Vector3.right * inputX;
-        //Vector3 dir = DebugInput();
         Vector3 dir = Vector3.zero;
-        Vector2 stickValue = wasd ? currentGamepad.leftStick.ReadValue() : currentGamepad.rightStick.ReadValue();
+        //DO NOT DELETE THIS ----
+        if (currentGamepad != null)
+        {
+            Vector2 stickValue = wasd ? currentGamepad.leftStick.ReadValue() : currentGamepad.rightStick.ReadValue();
+            dir += new Vector3(stickValue.x, stickValue.y, 0);
+        }
+        else
+        {
+            //float inputX = Input.GetAxis("Horizontal");
+            //float inputY = Input.GetAxis("Vertical");
+            //Vector3 dir = Vector3.up * inputY + Vector3.right * inputX;
+            dir = DebugInput();
 
-        dir += new Vector3(stickValue.x, stickValue.y, 0);
+        }
+
 
         return dir * Time.deltaTime * speed;
     }
@@ -205,6 +248,7 @@ public class LegConnection : MonoBehaviour
                 obj.maxDist = maxDist;
                 obj.verticalAcceleration = verticalAcceleration;
                 obj.rayCastDist = rayCastDist;
+                obj.gravity = gravity;
             }
         }
     }
