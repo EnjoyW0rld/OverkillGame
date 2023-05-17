@@ -16,7 +16,7 @@ public class LegConnection : MonoBehaviour
     //private bool jumped;
     private Rigidbody legRb;
     private BodyController bodyController;
-    [SerializeField] private Vector3 currentVelocity;
+    private Vector3 currentVelocity;
     //private Vector3 prevBodyVel;
     private Gamepad currentGamepad;
     //DEBUG VARIABLES
@@ -108,7 +108,7 @@ public class LegConnection : MonoBehaviour
         if (isGrounded && currentVelocity.y < 0)
         {
             //bodyController.ModifyVelocity(Time.deltaTime * verticalAcceleration * (-backDir * .3f + Vector3.up * .7f));
-            bodyController.ModifyVelocity((Vector3.up * .5f + -backDir * .5f) * verticalAcceleration);
+            bodyController.ModifyVelocity((Vector3.up * .1f + -backDir * .9f) * verticalAcceleration);
         }
 
         if (dist > maxDist)
