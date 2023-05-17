@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 71c1514a6bd24e1e882cebbe1904ce04, type: 3}
-  m_Name: Voltaire-Regular SDF - Variant
+  m_Name: Voltaire-Glow
   m_EditorClassIdentifier: 
   hashCode: 1781784600
   material: {fileID: 369087112249405467, guid: d4c164ef280c44a469527ca61b29e52e, type: 2}
