@@ -92,8 +92,8 @@ public class Drone : MonoBehaviour
 
         if ((leftCor || rightCor) && vector.magnitude < range)
         {
-            sanity.ReduceSanity(5);
-            Debug.Log("Test");
+        //    sanity.ReduceSanity(5);
+            Debug.Log("InArea");
         }
 
 
