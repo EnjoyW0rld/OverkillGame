@@ -22,6 +22,8 @@ public class Drone : MonoBehaviour
 
     [Range(0, 10)]
     [SerializeField] float speed = 1.0f;
+
+    [SerializeField] Sanity sanity;
     // Start is called before the first frame update
     void Start()
     {
@@ -78,7 +80,7 @@ public class Drone : MonoBehaviour
     {
         Vector3 vector = player.position - transform.position;
 
-        Debug.Log(vector);
+
 
         float angleDiference = Mathf.Atan(vector.y / vector.x);
 
@@ -88,8 +90,12 @@ public class Drone : MonoBehaviour
         bool rightCor = (angleDeg >= angle && angleDeg <= 90);
 
 
-        if ((leftCor || rightCor) && vector.magnitude < range) Debug.LogError("IN RANGE");
+        if ((leftCor || rightCor) && vector.magnitude < range)
+        {
+            sanity.ReduceSanity(5);
+            Debug.Log("Test");
+        }
 
-        Debug.Log(angleDeg);
+
     }
 }
