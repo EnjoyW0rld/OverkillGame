@@ -4,15 +4,16 @@ using UnityEngine;
 
 public class Grass : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
+
+    public void OnTriggerStay(Collider other)
     {
-        
+        Debug.LogError(other.gameObject.name);
+
+        if (other.gameObject.TryGetComponent<Sanity>(out Sanity sanity))
+        {
+            sanity.AddSanity(10);
+            Debug.Log("WORKJS");
+        }
     }
 }

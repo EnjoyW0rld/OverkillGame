@@ -32,6 +32,9 @@ public class Sanity : MonoBehaviour
 
     public void AddSanity(float amount)
     {
+        
         sanity += amount * Time.deltaTime;
+
+        sanity = Mathf.Min(100.0f, sanity);
     }
 }
