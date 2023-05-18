@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 public class Drone : MonoBehaviour
 {
@@ -24,6 +25,10 @@ public class Drone : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        pointPatrolLeft += transform.position;
+        pointPatrolRight += transform.position;
+
+
         transform.position = pointPatrolLeft;
         pointToPatrolTo = pointPatrolRight;
     }
@@ -37,11 +42,12 @@ public class Drone : MonoBehaviour
 
 
     
-        Gizmos.DrawLine(pointPatrolLeft, pointPatrolRight);
+        Gizmos.DrawLine(pointPatrolLeft + transform.position, pointPatrolRight + transform.position);
 
         Gizmos.DrawLine(transform.position, left);
         Gizmos.DrawLine(transform.position, right);
         Gizmos.DrawWireSphere(transform.position, range);
+        //Handles.DrawBezier(left, right, new Vector3(left.y, -left.x), new Vector3(-right.y, right.x), Color.red, Texture2D.whiteTexture, 1f);
     }
 
     // Update is called once per frame
@@ -57,7 +63,7 @@ public class Drone : MonoBehaviour
         else
         {
             Vector3 distance = (pointToPatrolTo - transform.position).normalized;
-            transform.position += distance * Time.deltaTime * speed;
+          //  transform.position += distance * Time.deltaTime * speed;
         }
 
 
@@ -72,6 +78,18 @@ public class Drone : MonoBehaviour
     {
         Vector3 vector = player.position - transform.position;
 
-        angle = Mathf.Atan(vector.y / vector.x);
+        Debug.Log(vector);
+
+        float angleDiference = Mathf.Atan(vector.y / vector.x);
+
+        float angleDeg = angleDiference * Mathf.Rad2Deg;
+
+        bool leftCor = (angleDeg >= -90 && angleDeg <= -angle);
+        bool rightCor = (angleDeg >= angle && angleDeg <= 90);
+
+
+        if ((leftCor || rightCor) && vector.magnitude < range) Debug.LogError("IN RANGE");
+
+        Debug.Log(angleDeg);
     }
 }
