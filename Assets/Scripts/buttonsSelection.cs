@@ -3,14 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
+using UnityEngine.UI;
 
 public class buttonsSelection : MonoBehaviour
 {
     [SerializeField] private GameObject[] standardButtons;
     [SerializeField] private GameObject[] selectedButtons;
-    [SerializeField] private GameObject creditsScene;
+    [SerializeField] private Button backButton;
 
     private int buttonIndex = 0;
+    private Button targetButton;
 
     public ButtonControl aButton { get; }
     public ButtonControl bButton { get; }
@@ -37,7 +39,7 @@ public class buttonsSelection : MonoBehaviour
 
         if (Gamepad.current.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
         {
-            if (GameObject.Find("playSelected"))
+            /*if (GameObject.Find("playSelected"))
             {
                 //start game
                 Debug.Log("game start");
@@ -57,13 +59,23 @@ public class buttonsSelection : MonoBehaviour
                 //credits
                 Debug.Log("credits");
                 creditsScene.SetActive(true);
+            }*/
+            for (int i = 0; i < selectedButtons.Length; i++)
+            {
+                if (selectedButtons[i].activeSelf)
+                {
+                    targetButton = selectedButtons[i].GetComponent<Button>();
+                    targetButton.onClick.Invoke();
+                }
             }
         }
         if (Gamepad.current.bButton.wasPressedThisFrame)
         {
-            if (GameObject.Find("creditsPage"))
+            if (backButton)
             {
-                creditsScene.SetActive(false);
+                targetButton = backButton.GetComponent<Button>();
+                targetButton.onClick.Invoke();
+                Debug.Log("go back");
             }
         }
     }
