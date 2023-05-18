@@ -30,10 +30,8 @@ public class Fly : MonoBehaviour
     void Update()
     {
 
-        Debug.LogWarning(Vector3.Distance(player.position, this.transform.position));
         if (Vector3.Distance(player.position, this.transform.position) <= range)
         {
-            Debug.Log("feafa");
             Vector3 difNormal = (player.position - this.transform.position).normalized;
 
             transform.position += difNormal * speed * Time.deltaTime;

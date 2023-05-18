@@ -21,7 +21,6 @@ public class Sanity : MonoBehaviour
 
         ReduceSanity(reduceSpeed);
 
-        Debug.Log(sanity);
     }
 
 

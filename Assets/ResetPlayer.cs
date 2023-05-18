@@ -2,18 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Grass : MonoBehaviour
+public class ResetPlayer : MonoBehaviour
 {
-
-
     public void OnTriggerStay(Collider other)
     {
 
 
-        if (other.gameObject.TryGetComponent<Sanity>(out Sanity sanity))
+        if (other.gameObject.TryGetComponent<BodyController>(out BodyController bc))
         {
-            sanity.AddSanity(10);
-
+            Debug.Log("DIED");
         }
     }
 }
