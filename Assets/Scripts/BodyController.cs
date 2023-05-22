@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class BodyController : MonoBehaviour
     [SerializeField] private float groundDist = 0.1f;
     [SerializeField] private float standingGroundDist = 0.1f;
     [SerializeField] private float gravity = -0.001f;
+    [Header("Jump variables")]
+    [SerializeField] private float jumpModifier = 5;
+    [SerializeField] private float jumpThreshold;
+
     [Header("Postion")]
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool isStanding;
@@ -15,6 +20,9 @@ public class BodyController : MonoBehaviour
     private Rigidbody body;
     private LegConnection[] legs;
     private Vector3 currentVelocity;
+
+    //DEBUG OPTION
+    [SerializeField] private bool debug;
 
     private void Start()
     {
@@ -44,30 +52,78 @@ public class BodyController : MonoBehaviour
             if (currentVelocity.y < 0)
                 currentVelocity.y = 0;
         }
-        body.position += currentVelocity;
+        if (isStanding || isFlying)
+        {
+            body.position += currentVelocity;
+        }
+        else
+        {
+            body.position += new Vector3(0, currentVelocity.y, 0);
+        }
         currentVelocity *= .9f;
 
     }
-    private bool IsGrounded()
-    {
-        return Physics.Raycast(transform.position, Vector3.down, groundDist);
-    }
+
+    /// <summary>
+    /// Fucntion to check body position in the world
+    /// Modyfies 3 bool - isGrounded, isStanding and isFlying
+    /// Applies jump modifier to the body here
+    /// </summary>
     private void CheckGround()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-        Physics.Raycast(ray, out RaycastHit hit, groundDist);
+        Physics.Raycast(ray, out RaycastHit hit);
+        //If spotted something
         if (hit.collider != null)
         {
+            //If player body is on the ground
             if (hit.distance <= groundDist)
             {
                 jumped = false;
                 isGrounded = true;
                 isStanding = false;
             }
-            isFlying = false;
+            //If body is higher then standing distance
+            else if (hit.distance > standingGroundDist)
+            {
+                //Check to see if body is flying
+                if (LegsInTheAir())
+                {
+                    //To implement some code to be executed exectly at the moment player jumped, do it here
+                    if (!jumped && currentVelocity.magnitude > jumpThreshold)
+                    {
+                        currentVelocity *= jumpModifier;
+                        jumped = true;
+                    }
+                    isFlying = true;
+                    isGrounded = false;
+                    isStanding = false;
+                    if (debug) print("Jumped, current magnitude is " + currentVelocity.magnitude);
+                }
+                else
+                {
+                    isStanding = true;
+                    isGrounded = false;
+                    isFlying = false;
+                }
+            }
+            else
+            {
+                isFlying = false;
+                isStanding = false;
+                isGrounded = false;
+            }
         }
+        //Code for else, decided to leave it here for now
+        /**
         else
         {
+            //isFlying = true;
+            //isGrounded = true;
+            //isStanding = true;
+
+            return;
+
             bool legsOnGround = false;
             for (int i = 0; i < legs.Length; i++)
             {
@@ -88,8 +144,7 @@ public class BodyController : MonoBehaviour
             {
                 if (!jumped && currentVelocity.magnitude > 0.1f)
                 {
-                    //print(currentVelocity.magnitude);
-                    currentVelocity *= 10;
+                    currentVelocity *= jumpModifier;
                     jumped = true;
                 }
                 isFlying = true;
@@ -97,19 +152,29 @@ public class BodyController : MonoBehaviour
                 isGrounded = false;
             }
         }
-        //return Physics.Raycast(transform.position, Vector3.down, standingGroundDist);
+         */
     }
-    private bool IsFlying()
+    /// <summary>
+    /// Checks if both legs are in the air
+    /// </summary>
+    /// <returns></returns>
+    private bool LegsInTheAir()
     {
-        if (isGrounded) return false;
         for (int i = 0; i < legs.Length; i++)
         {
-            if (legs[i].GetGrounded()) return false;
+            if (legs[i].GetGrounded())
+            {
+                return false;
+            }
         }
         return true;
     }
-
+    /// <summary>
+    /// Call this function to modify body velocity from the other script
+    /// </summary>
+    /// <param name="vel">velocity to add</param>
     public void ModifyVelocity(Vector3 vel) => currentVelocity += vel;
+
     //Get functions
     public bool GetFlying() => isFlying;
 
