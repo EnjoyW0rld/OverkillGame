@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering.HighDefinition;
 
 /// <summary>
 /// This class is for leg, there should be exectly two instances in the scene
@@ -19,6 +20,7 @@ public class LegConnection : MonoBehaviour
     private Rigidbody legRb;
     private BodyController bodyController;
     private Vector3 currentVelocity;
+    private Vector3 inputVelocity;
     private Gamepad currentGamepad;
     //DEBUG VARIABLES
     [SerializeField] private bool wasd;
@@ -35,10 +37,10 @@ public class LegConnection : MonoBehaviour
     private void Update()
     {
         isGrounded = IsGrounded();
-
+        inputVelocity = Vector3.zero;
         //Get the velocity where player is aiming their controller
         Vector3 velocity = GetDirection();
-
+        inputVelocity = velocity;
         if (isGrounded) velocity.x = 0; //If player on the ground, do not move to the side
         //When on the ground on pushing down
         
@@ -54,8 +56,9 @@ public class LegConnection : MonoBehaviour
         Vector3 backDir = (transform.position - body.transform.position).normalized; //Direction back to the body
 
         //If on the ground and pushing down
-        if (isGrounded && currentVelocity.y < 0)
+        if (isGrounded && inputVelocity.y < 0)
         {
+            Debug.LogError("eeee");
             bodyController.ModifyVelocity((Vector3.up * .1f + -backDir * .9f) * verticalAcceleration);
         }
 
@@ -181,7 +184,13 @@ public class LegConnection : MonoBehaviour
     {
         //int layerMask
         int layerMask = ~LayerMask.GetMask("Body");
-        return Physics.Raycast(transform.position, Vector3.down, rayCastDist, layerMask);
+        if (Physics.Raycast(transform.position, Vector3.down, out RaycastHit hit, rayCastDist, layerMask))
+        {
+            if (hit.collider.isTrigger) return false;
+
+            return true;
+        }
+        return false;
     }
 
     /// <summary>

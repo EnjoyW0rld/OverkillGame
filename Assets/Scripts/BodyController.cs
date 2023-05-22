@@ -43,6 +43,8 @@ public class BodyController : MonoBehaviour
             body.velocity = Vector3.zero;
         }
     }
+
+    
     private void FixedUpdate()
     {
         if (!isGrounded) currentVelocity.y += gravity;
@@ -60,7 +62,7 @@ public class BodyController : MonoBehaviour
         {
             body.position += new Vector3(0, currentVelocity.y, 0);
         }
-        currentVelocity *= .9f;
+        currentVelocity *= .95f;
 
     }
 
@@ -76,6 +78,15 @@ public class BodyController : MonoBehaviour
         //If spotted something
         if (hit.collider != null)
         {
+            if (hit.collider.isTrigger)
+            {
+                isFlying = true;
+                isGrounded = false;
+                isStanding = false;
+
+                return;
+            }
+
             //If player body is on the ground
             if (hit.distance <= groundDist)
             {
@@ -92,8 +103,9 @@ public class BodyController : MonoBehaviour
                     //To implement some code to be executed exectly at the moment player jumped, do it here
                     if (!jumped && currentVelocity.magnitude > jumpThreshold)
                     {
-                        currentVelocity *= jumpModifier;
+                       // currentVelocity = currentVelocity.normalized * jumpModifier;
                         jumped = true;
+                        Debug.LogError("LE JUMP");
                     }
                     isFlying = true;
                     isGrounded = false;
@@ -113,6 +125,12 @@ public class BodyController : MonoBehaviour
                 isStanding = false;
                 isGrounded = false;
             }
+        }
+        else
+        {
+            isFlying = false;
+            isStanding = false;
+            isGrounded = false;
         }
         //Code for else, decided to leave it here for now
         /**
