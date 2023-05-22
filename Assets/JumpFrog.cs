@@ -1,52 +1,87 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class JumpFrog : MonoBehaviour
 {
-
-
-
-    [SerializeField] Transform leftLeg;
-    [SerializeField] Transform rightLeg;
+    [SerializeField] LegPositioning leftLeg;
+    [SerializeField] LegPositioning rightLeg;
 
     [SerializeField] float strenght = 1.0f;
+    [SerializeField] private float maxDist = 1;
 
-    Rigidbody rb;
+    private Rigidbody rb;
 
-    bool jupmedLeft = false;
+    bool jumpedLeft = false;
     bool jumpedRight = false;
 
     Vector3 differenceLeft;
     Vector3 differenceRight;
+    private Gamepad _gamepad;
+    private bool pressedLeft;
+    private bool pressedRight;
+
     // Start is called before the first frame update
     void Start()
     {
-        rb= GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>();
+        _gamepad = Gamepad.current;
     }
 
     // Update is called once per frame
     void Update()
     {
+        differenceLeft = (this.transform.position + new Vector3(0, 0.5f, 0)) - leftLeg.transform.position;
 
-        differenceLeft = (this.transform.position + new Vector3(0, 0.5f, 0)) - leftLeg.position;
+        differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.transform.position;
 
-        differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.position;
+        _gamepad.dpad.left.ReadValue();
 
-        if (Input.GetKeyDown(KeyCode.RightShift))
+        if (_gamepad != null)
         {
+            if (_gamepad.buttonEast.ReadValue() == 1 && leftLeg.GetGrounded())
+            {
+                if (!pressedRight)
+                {
+                    pressedRight = true;
+                    jumpedRight = true;
+                }
+            }
+            else
+            {
+                pressedRight = false;
+            }
 
+            if (_gamepad.dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
+            {
+                if (!pressedLeft)
+                {
+                    pressedLeft = true;
+                    jumpedLeft = true;
+                }
+            }
+            else
+            {
+                pressedLeft = false;
+            }
+        }
+        else
+        {
+            if (Input.GetKeyDown(KeyCode.RightShift) && rightLeg.GetGrounded())
+            {
+                jumpedRight = true;
+            }
+            if (_gamepad.dpad.left.ReadDefaultValue() == 1 && leftLeg.GetGrounded())
+            {
+                jumpedLeft = true;
+            }
 
-
-            jumpedRight = true;
         }
 
-        if (Input.GetKeyDown(KeyCode.LeftShift))
-        {
-            jupmedLeft = true;
-        }
     }
 
+    public float GetMaxDist() => maxDist;
     public void OnDrawGizmos()
     {
         Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
@@ -58,9 +93,10 @@ public class JumpFrog : MonoBehaviour
     public void FixedUpdate()
     {
 
-        if (jupmedLeft) {
+        if (jumpedLeft)
+        {
             rb.AddForce(differenceLeft.normalized * strenght, ForceMode.Impulse);
-            jupmedLeft = false;
+            jumpedLeft = false;
         }
 
         if (jumpedRight)
