@@ -95,6 +95,7 @@ public class LegPositioning : MonoBehaviour
     }
     private Vector3 GetInput()
     {
+        
         Vector3 res = Vector3.zero;
         if (_gamepad == null)
         {

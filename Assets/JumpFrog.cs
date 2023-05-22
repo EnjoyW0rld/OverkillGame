@@ -10,6 +10,7 @@ public class JumpFrog : MonoBehaviour
 
     [SerializeField] float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
+    [SerializeField] private float jumpThreshold = .5f;
 
     private Rigidbody rb;
 
@@ -35,8 +36,6 @@ public class JumpFrog : MonoBehaviour
         differenceLeft = (this.transform.position + new Vector3(0, 0.5f, 0)) - leftLeg.transform.position;
 
         differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.transform.position;
-
-        _gamepad.dpad.left.ReadValue();
 
         if (_gamepad != null)
         {
@@ -72,13 +71,12 @@ public class JumpFrog : MonoBehaviour
             {
                 jumpedRight = true;
             }
-            if (_gamepad.dpad.left.ReadDefaultValue() == 1 && leftLeg.GetGrounded())
+            if (Input.GetKeyDown(KeyCode.LeftShift) && leftLeg.GetGrounded())
             {
                 jumpedLeft = true;
             }
 
         }
-
     }
 
     public float GetMaxDist() => maxDist;
@@ -95,13 +93,19 @@ public class JumpFrog : MonoBehaviour
 
         if (jumpedLeft)
         {
-            rb.AddForce(differenceLeft.normalized * strenght, ForceMode.Impulse);
+            if (Vector3.Dot(differenceLeft.normalized, Vector3.up) > jumpThreshold)
+            {
+                rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
+            }
             jumpedLeft = false;
         }
 
         if (jumpedRight)
         {
-            rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
+            if (Vector3.Dot(differenceRight.normalized, Vector3.up) > jumpThreshold)
+            {
+                rb.AddForce(differenceLeft.normalized * strenght, ForceMode.Impulse);
+            }
             jumpedRight = false;
         }
 
