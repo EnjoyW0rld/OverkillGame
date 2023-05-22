@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,6 +8,10 @@ public class BodyController : MonoBehaviour
     [SerializeField] private float groundDist = 0.1f;
     [SerializeField] private float standingGroundDist = 0.1f;
     [SerializeField] private float gravity = -0.001f;
+    [Header("Jump variables")]
+    [SerializeField] private float jumpModifier = 5;
+    [SerializeField] private float jumpThreshold;
+
     [Header("Postion")]
     [SerializeField] private bool isGrounded;
     [SerializeField] private bool isStanding;
@@ -15,6 +20,9 @@ public class BodyController : MonoBehaviour
     private Rigidbody body;
     private LegConnection[] legs;
     private Vector3 currentVelocity;
+
+    //DEBUG OPTION
+    [SerializeField] private bool debug;
 
     private void Start()
     {
@@ -44,10 +52,18 @@ public class BodyController : MonoBehaviour
             if (currentVelocity.y < 0)
                 currentVelocity.y = 0;
         }
-        body.position += currentVelocity;
+        if (isStanding || isFlying)
+        {
+            body.position += currentVelocity;
+        }
+        else
+        {
+            body.position += new Vector3(0, currentVelocity.y, 0);
+        }
         currentVelocity *= .9f;
 
     }
+    [Obsolete("Old ground check function")]
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, groundDist);
@@ -55,7 +71,7 @@ public class BodyController : MonoBehaviour
     private void CheckGround()
     {
         Ray ray = new Ray(transform.position, Vector3.down);
-        Physics.Raycast(ray, out RaycastHit hit, groundDist);
+        Physics.Raycast(ray, out RaycastHit hit);
         if (hit.collider != null)
         {
             if (hit.distance <= groundDist)
@@ -64,10 +80,43 @@ public class BodyController : MonoBehaviour
                 isGrounded = true;
                 isStanding = false;
             }
-            isFlying = false;
+            else if (hit.distance > standingGroundDist)
+            {
+                if (LegsInTheAir())
+                {
+                    if (!jumped && currentVelocity.magnitude > jumpThreshold)
+                    {
+                        currentVelocity *= jumpModifier;
+                        jumped = true;
+                    }
+                    isFlying = true;
+                    isGrounded = false;
+                    isStanding = false;
+                    if (debug) print("Jumped, current magnitude is " + currentVelocity.magnitude);
+                }
+                else
+                {
+                    isStanding = true;
+                    isGrounded = false;
+                    isFlying = false;
+                }
+            }
+            else
+            {
+                isFlying = false;
+                isStanding = false;
+                isGrounded = false;
+            }
+            //isFlying = false;
         }
         else
         {
+            //isFlying = true;
+            //isGrounded = true;
+            //isStanding = true;
+
+            return;
+
             bool legsOnGround = false;
             for (int i = 0; i < legs.Length; i++)
             {
@@ -88,8 +137,7 @@ public class BodyController : MonoBehaviour
             {
                 if (!jumped && currentVelocity.magnitude > 0.1f)
                 {
-                    //print(currentVelocity.magnitude);
-                    currentVelocity *= 10;
+                    currentVelocity *= jumpModifier;
                     jumped = true;
                 }
                 isFlying = true;
@@ -105,6 +153,17 @@ public class BodyController : MonoBehaviour
         for (int i = 0; i < legs.Length; i++)
         {
             if (legs[i].GetGrounded()) return false;
+        }
+        return true;
+    }
+    private bool LegsInTheAir()
+    {
+        for (int i = 0; i < legs.Length; i++)
+        {
+            if (legs[i].GetGrounded())
+            {
+                return false;
+            }
         }
         return true;
     }
