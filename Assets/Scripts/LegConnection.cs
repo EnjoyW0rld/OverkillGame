@@ -227,6 +227,13 @@ public class LegConnection : MonoBehaviour
         return Physics.Raycast(transform.position, Vector3.down, rayCastDist, layerMask);
     }
 
+    [ContextMenu("Set max distance")]
+    private void SetMaxDist()
+    {
+        maxDist = Vector3.Distance(transform.position, body.position);
+        OnValidate();
+    }
+
     //Get functions
     public bool GetGrounded() => isGrounded;
 
@@ -251,5 +258,10 @@ public class LegConnection : MonoBehaviour
                 obj.gravity = gravity;
             }
         }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        print(collision.transform.name);
     }
 }

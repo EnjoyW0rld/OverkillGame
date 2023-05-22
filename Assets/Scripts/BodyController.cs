@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,7 +8,9 @@ public class BodyController : MonoBehaviour
     [SerializeField] private float groundDist = 0.1f;
     [SerializeField] private float standingGroundDist = 0.1f;
     [SerializeField] private float gravity = -0.001f;
+    [Header("Jump variables")]
     [SerializeField] private float jumpModifier = 5;
+    [SerializeField] private float jumpThreshold;
 
     [Header("Postion")]
     [SerializeField] private bool isGrounded;
@@ -17,6 +20,9 @@ public class BodyController : MonoBehaviour
     private Rigidbody body;
     private LegConnection[] legs;
     private Vector3 currentVelocity;
+
+    //DEBUG OPTION
+    [SerializeField] private bool debug;
 
     private void Start()
     {
@@ -57,6 +63,7 @@ public class BodyController : MonoBehaviour
         currentVelocity *= .9f;
 
     }
+    [Obsolete("Old ground check function")]
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, groundDist);
@@ -77,7 +84,7 @@ public class BodyController : MonoBehaviour
             {
                 if (LegsInTheAir())
                 {
-                    if (!jumped && currentVelocity.magnitude > 0.1f)
+                    if (!jumped && currentVelocity.magnitude > jumpThreshold)
                     {
                         currentVelocity *= jumpModifier;
                         jumped = true;
@@ -85,6 +92,7 @@ public class BodyController : MonoBehaviour
                     isFlying = true;
                     isGrounded = false;
                     isStanding = false;
+                    if (debug) print("Jumped, current magnitude is " + currentVelocity.magnitude);
                 }
                 else
                 {
