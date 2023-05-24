@@ -503,7 +503,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 2
 --- !u!114 &1840040249146378922
 MonoBehaviour:
@@ -634,7 +634,7 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 8
+  m_Constraints: 120
   m_CollisionDetection: 2
 --- !u!114 &1840040249409754075
 MonoBehaviour:
@@ -891,7 +891,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 2, y: 0.58, z: -0.06999999}
   m_RotationAtRest: {x: 0, y: 90, z: 77.087814}
   m_TranslationOffsets:
-  - {x: -0.07294464, y: -0.18931007, z: 0}
+  - {x: -0.07294083, y: -0.18931198, z: 0}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -1679,6 +1679,7 @@ MonoBehaviour:
   rightLeg: {fileID: 1840040249146378922}
   strenght: 50
   maxDist: 1.789634
+  jumpThreshold: 0.5
 --- !u!1 &6784820271638688552
 GameObject:
   m_ObjectHideFlags: 0
