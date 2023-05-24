@@ -27,7 +27,7 @@ public class LegPositioning : MonoBehaviour
     {
         _isGrounded = IsGrounded();
         Vector3 input = GetInput();
-        if (input.magnitude != 0)
+        if (input.magnitude != 0 && !_isGrounded)
         {
             _rb.velocity += new Vector3(0, -_rb.velocity.y, 0);
         }
