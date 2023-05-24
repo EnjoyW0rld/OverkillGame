@@ -5,14 +5,21 @@ using System;
 
 public class Damagable : MonoBehaviour
 {
-    [SerializeField, Tooltip("If true will remove some sanity instantly, false will make draining speed faster")]
-    public bool _instant;
+    //Enums to choose damage type
+    private enum DecreaseType { Instant = 0, Gradual = 1};
+    [SerializeField] private DecreaseType _decreaseType;
+    
+    //[SerializeField, Tooltip("If true will remove some sanity instantly, false will make draining speed faster")]
+    //private bool _instant;
     [SerializeField] private string _playerTag = "Body";
 
+    //[SerializeField,ReadOnly] private string aa = "sss";
+    
+    
     //Gradual decrease
-    [SerializeField] private float _decreaseTime;
-
+    [SerializeField] private GradualDecrease _gradualDecrease;
     //Instant decrease
+    [SerializeField] private InstantDecrease _instantDecrease;
 
     private Sanity _sanity;
 
@@ -35,6 +42,12 @@ public class Damagable : MonoBehaviour
 [Serializable]
 public class GradualDecrease
 {
-    public float _decreaseTime;
-    [Min(0)] public float _reductionSpeed;
+    [SerializeField] public float _decreaseTime;
+    [SerializeField, Min(0)] public float _reductionSpeed;
+}
+
+[Serializable]
+public class InstantDecrease
+{
+    [SerializeField] public float _valueToDecrease;
 }
