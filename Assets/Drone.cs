@@ -17,7 +17,7 @@ public class Drone : MonoBehaviour
     [Range(0, 90)]
     [SerializeField] int angle = 45;
 
-    [Range(0, 10)]
+    [Range(0, 50)]
     [SerializeField] float range = 1.0f;
 
     [Range(0, 10)]
