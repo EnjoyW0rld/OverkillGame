@@ -82,8 +82,12 @@ public class JumpFrog : MonoBehaviour
     public float GetMaxDist() => maxDist;
     public void OnDrawGizmos()
     {
+
+        Gizmos.color = Color.magenta;
         Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
 
+
+        Gizmos.color= Color.yellow;
         Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
     }
 
