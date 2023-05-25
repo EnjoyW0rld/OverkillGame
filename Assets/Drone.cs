@@ -65,7 +65,7 @@ public class Drone : MonoBehaviour
         else
         {
             Vector3 distance = (pointToPatrolTo - transform.position).normalized;
-          //  transform.position += distance * Time.deltaTime * speed;
+            transform.position += distance * Time.deltaTime * speed;
         }
 
 
