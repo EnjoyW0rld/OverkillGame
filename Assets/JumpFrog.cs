@@ -110,4 +110,10 @@ public class JumpFrog : MonoBehaviour
         }
 
     }
+
+    public Vector3 GetPredictedVelocity()
+    {
+        // velocity = Force/Mass
+        return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+    }
 }
