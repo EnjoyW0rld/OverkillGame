@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
 public class Sanity : MonoBehaviour
 {
+    //[SerializeField,ReadMe] private string aaaa = "property.stringValueproperty.stringValueproperty.stringValueproperty.stringValueproperty.stringValue";
     [SerializeField] float sanity = 100.0f;
     [SerializeField] float reduceSpeed = 1.0f;
     private float _initialReduceSpeed;
@@ -50,13 +52,22 @@ public class Sanity : MonoBehaviour
 
     //Public functions
     /// <summary>
+    /// Decreasy sanity by some value
+    /// </summary>
+    /// <param name="val">Value by which sanity will be decreased</param>
+    public void DecreaseSanity(float val)
+    {
+        sanity -= val < 0 ? 0 : val;
+    }
+
+    /// <summary>
     /// Change sanity decrease speed from outside the class
     /// </summary>
     /// <param name="reduceValue">New value by what sanity will be reduced</param>
     /// <param name="time">Time for how long effect will last in seconds</param>
-    public void ChangeSanitySpeed(float reduceValue,float time)
+    public void ChangeSanitySpeed(float reduceValue, float time)
     {
-        if (!_coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue,time));
+        if (!_coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue, time));
     }
 
     public void ReduceSanity(float amount)

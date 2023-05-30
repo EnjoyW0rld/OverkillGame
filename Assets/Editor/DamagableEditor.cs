@@ -19,6 +19,8 @@ public class DamagableEditor : Editor
 
         serializedObject.Update();
 
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("_playerTag"));
+
         var enums = serializedObject.FindProperty("_decreaseType");
         EditorGUILayout.PropertyField(enums);
 
