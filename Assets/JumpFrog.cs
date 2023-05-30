@@ -36,10 +36,14 @@ public class JumpFrog : MonoBehaviour
         differenceLeft = (this.transform.position + new Vector3(0, 0.5f, 0)) - leftLeg.transform.position;
 
         differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.transform.position;
+        HandleInput();
+    }
 
+    private void HandleInput()
+    {
         if (_gamepad != null)
         {
-            if (_gamepad.buttonEast.ReadValue() == 1 && leftLeg.GetGrounded())
+            if (_gamepad.buttonEast.ReadValue() == 1 && rightLeg.GetGrounded())
             {
                 if (!pressedRight)
                 {
@@ -77,8 +81,8 @@ public class JumpFrog : MonoBehaviour
             }
 
         }
-    }
 
+    }
     public float GetMaxDist() => maxDist;
     public void OnDrawGizmos()
     {
