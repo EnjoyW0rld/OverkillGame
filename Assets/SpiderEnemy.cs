@@ -5,7 +5,7 @@ using UnityEngine;
 public class SpiderEnemy : MonoBehaviour
 {
 
-    public void EffectPlayer()
+    public void AffectPlayer()
     {
 
     }
