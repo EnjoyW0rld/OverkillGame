@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,41 +6,76 @@ using UnityEngine.InputSystem;
 
 public class JumpFrog : MonoBehaviour
 {
-    [SerializeField] LegPositioning leftLeg;
-    [SerializeField] LegPositioning rightLeg;
+    [SerializeField] private LegPositioning leftLeg;
+    [SerializeField] private LegPositioning rightLeg;
 
-    [SerializeField] float strenght = 1.0f;
+    [SerializeField] private float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
 
     private Rigidbody rb;
 
-    bool jumpedLeft = false;
-    bool jumpedRight = false;
+    private Func<float, float> jumpModifier;
 
-    Vector3 differenceLeft;
-    Vector3 differenceRight;
+    private Vector3 differenceLeft;
+    private Vector3 differenceRight;
     private Gamepad _gamepad;
+
+    #region jumpSwitcheVariables
+    private bool jumpedLeft = false;
+    private bool jumpedRight = false;
+
     private bool pressedLeft;
     private bool pressedRight;
+    #endregion
 
-    // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         _gamepad = Gamepad.current;
     }
 
-    // Update is called once per frame
     void Update()
     {
         differenceLeft = (this.transform.position + new Vector3(0, 0.5f, 0)) - leftLeg.transform.position;
 
         differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.transform.position;
+        HandleInput();
+    }
 
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = affector.GetExpression();
+            affector.OnCollisionAction(this);
+        }
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = null;
+        }
+    }
+    //Private functions
+    private void ApplyJumpForce(Vector3 normalDirection)
+    {
+        if (jumpModifier == null)
+        {
+            rb.AddForce(normalDirection * strenght, ForceMode.Impulse);
+        }
+        else
+        {
+            rb.AddForce(normalDirection * jumpModifier(strenght), ForceMode.Impulse);
+        }
+    }
+    private void HandleInput()
+    {
         if (_gamepad != null)
         {
-            if (_gamepad.buttonEast.ReadValue() == 1 && leftLeg.GetGrounded())
+            if (_gamepad.buttonEast.ReadValue() == 1 && rightLeg.GetGrounded())
             {
                 if (!pressedRight)
                 {
@@ -77,25 +113,17 @@ public class JumpFrog : MonoBehaviour
             }
 
         }
+
     }
-
-    public float GetMaxDist() => maxDist;
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
-
-        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
-    }
-
-
-    public void FixedUpdate()
+    private void FixedUpdate()
     {
 
         if (jumpedLeft)
         {
             if (Vector3.Dot(differenceLeft.normalized, Vector3.up) > jumpThreshold)
             {
-                rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
+                //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
+                ApplyJumpForce(differenceRight.normalized);
             }
             jumpedLeft = false;
         }
@@ -104,10 +132,31 @@ public class JumpFrog : MonoBehaviour
         {
             if (Vector3.Dot(differenceRight.normalized, Vector3.up) > jumpThreshold)
             {
-                rb.AddForce(differenceLeft.normalized * strenght, ForceMode.Impulse);
+                ApplyJumpForce(differenceLeft.normalized);
             }
             jumpedRight = false;
         }
 
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
+
+        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
+    }
+
+    //public functions
+    public float GetMaxDist() => maxDist;
+    public Vector3 GetVelocity() => rb.velocity;
+    public void ApplyForce(Vector3 force)
+    {
+        print("added force " + force);
+        rb.AddForce(force, ForceMode.Impulse);
+    }
+
+    public Vector3 GetPredictedVelocity()
+    {
+        // velocity = Force/Mass
+        return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
     }
 }

@@ -8,10 +8,6 @@ public class Drone : MonoBehaviour
 
     [SerializeField] Transform player;
    
-    [SerializeField] Vector3 pointPatrolRight;
-    [SerializeField] Vector3 pointPatrolLeft;
-
-    private Vector3 pointToPatrolTo;
 
 
     [Range(0, 90)]
@@ -20,20 +16,7 @@ public class Drone : MonoBehaviour
     [Range(0, 50)]
     [SerializeField] float range = 1.0f;
 
-    [Range(0, 10)]
-    [SerializeField] float speed = 1.0f;
 
-    [SerializeField] Sanity sanity;
-    // Start is called before the first frame update
-    void Start()
-    {
-        pointPatrolLeft += transform.position;
-        pointPatrolRight += transform.position;
-
-
-        transform.position = pointPatrolLeft;
-        pointToPatrolTo = pointPatrolRight;
-    }
 
     public void OnDrawGizmos()
     {
@@ -43,30 +26,14 @@ public class Drone : MonoBehaviour
         Vector3 right = transform.position + new Vector3(Mathf.Cos((-angle - 90) * Mathf.Deg2Rad), Mathf.Sin((-angle - 90) * Mathf.Deg2Rad)) * range;
 
 
-    
-        Gizmos.DrawLine(pointPatrolLeft + transform.position, pointPatrolRight + transform.position);
-
         Gizmos.DrawLine(transform.position, left);
         Gizmos.DrawLine(transform.position, right);
-        Gizmos.DrawWireSphere(transform.position, range);
-        //Handles.DrawBezier(left, right, new Vector3(left.y, -left.x), new Vector3(-right.y, right.x), Color.red, Texture2D.whiteTexture, 1f);
+      //  Gizmos.DrawWireSphere(transform.position, range);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Vector3.Distance(transform.position, pointToPatrolTo) <= 0.1f)
-        {
-            if (Vector3.Distance(transform.position, pointPatrolLeft) <= 0.1f) pointToPatrolTo = pointPatrolRight;
-            else pointToPatrolTo = pointPatrolLeft;
-        }
-        else
-        {
-            Vector3 distance = (pointToPatrolTo - transform.position).normalized;
-          //  transform.position += distance * Time.deltaTime * speed;
-        }
 
 
         CheckIfPlayerInside();

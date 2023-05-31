@@ -2,14 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SpiderEnemy : MonoBehaviour
+public class SilverFishEnemy : MonoBehaviour
 {
 
-    public void EffectPlayer()
+    public void AffectEnemy()
     {
 
     }
-
-
-
 }
