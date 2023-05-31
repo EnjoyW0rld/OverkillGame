@@ -153,4 +153,10 @@ public class JumpFrog : MonoBehaviour
         print("added force " + force);
         rb.AddForce(force, ForceMode.Impulse);
     }
+
+    public Vector3 GetPredictedVelocity()
+    {
+        // velocity = Force/Mass
+        return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+    }
 }
