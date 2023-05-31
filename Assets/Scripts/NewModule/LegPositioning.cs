@@ -3,24 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class LegPositioning : MonoBehaviour
 {
     [SerializeField] private float _speed;
     [SerializeField] private bool wasd;
     [SerializeField] private float _groundDist = 0.1f;
 
-    private JumpFrog _bodyJump;
-    private Rigidbody _rb;
+    private JumpFrog bodyJump;
+    private Rigidbody rb;
     [SerializeField] private bool _isGrounded;
     private float maxDist;
-    private Gamepad _gamepad;
+    private Gamepad gamepad;
+    private bool twoGamepads;
 
     private void Start()
     {
-        _bodyJump = FindObjectOfType<JumpFrog>();
-        _rb = GetComponent<Rigidbody>();
-        maxDist = _bodyJump.GetMaxDist();
-        _gamepad = Gamepad.current;
+        bodyJump = FindObjectOfType<JumpFrog>();
+        if (bodyJump == null) Debug.LogError("No body found!");
+        rb = GetComponent<Rigidbody>();
+        maxDist = bodyJump.GetMaxDist();
+        //gamepad = Gamepad.current;
     }
 
     void Update()
@@ -29,23 +32,22 @@ public class LegPositioning : MonoBehaviour
         Vector3 input = GetInput();
         if (input.magnitude != 0 && !_isGrounded)
         {
-            _rb.velocity += new Vector3(0, -_rb.velocity.y, 0);
+            rb.velocity += new Vector3(0, -rb.velocity.y, 0);
         }
-        _rb.position += input * Time.deltaTime * _speed;
+        rb.position += input * Time.deltaTime * _speed;
     }
     private void FixedUpdate()
     {
 
-        float currentDist = Vector3.Distance(_bodyJump.transform.position, transform.position);
-        Vector3 backVector = (_bodyJump.transform.position - transform.position).normalized;
+        float currentDist = Vector3.Distance(bodyJump.transform.position, transform.position);
+        Vector3 backVector = (bodyJump.transform.position - transform.position).normalized;
 
         if (currentDist > maxDist)
         {
-            _rb.position += -backVector * (maxDist - currentDist) * 1.1f;
+            rb.position += -backVector * (maxDist - currentDist) * 1.1f;
         }
     }
 
-    public bool GetGrounded() => _isGrounded;
     private bool IsGrounded()
     {
         return Physics.Raycast(transform.position, Vector3.down, _groundDist);
@@ -95,22 +97,39 @@ public class LegPositioning : MonoBehaviour
     }
     private Vector3 GetInput()
     {
-        
+
         Vector3 res = Vector3.zero;
-        if (_gamepad == null)
+        if (gamepad == null)
         {
             res = DebugInput();
         }
         else
         {
-            Vector2 stickValue = wasd ? _gamepad.leftStick.ReadValue() : _gamepad.rightStick.ReadValue();
-            res += new Vector3(stickValue.x, stickValue.y, 0);
+            if (twoGamepads)
+            {
+                Vector2 stickValue = gamepad.leftStick.ReadValue();
+                res += new Vector3(stickValue.x, stickValue.y, 0);
+
+            }
+            else
+            {
+                Vector2 stickValue = wasd ? gamepad.leftStick.ReadValue() : gamepad.rightStick.ReadValue();
+                res += new Vector3(stickValue.x, stickValue.y, 0);
+            }
         }
         return res;
     }
     [ContextMenu("Print distance")]
     private void PrintDist()
     {
-        print(Vector3.Distance(FindObjectOfType<JumpFrog>().transform.position,transform.position));
+        print(Vector3.Distance(FindObjectOfType<JumpFrog>().transform.position, transform.position));
+    }
+
+    //Public functions
+    public bool GetGrounded() => _isGrounded;
+    public void SetGamepad(Gamepad gamepad, bool twoGamepads)
+    {
+        this.gamepad = gamepad;
+        this.twoGamepads = twoGamepads;
     }
 }

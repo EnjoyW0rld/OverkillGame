@@ -59,7 +59,6 @@ public class GradualDecrease
     [SerializeField, Min(0)] public float _reductionSpeed;
     public void ApplyDamage(Sanity sanity)
     {
-        Debug.Log(sanity);
         sanity.ChangeSanitySpeed(_reductionSpeed, _decreaseTime);
     }
 }
