@@ -18,4 +18,8 @@ public abstract class BodyAffecter : MonoBehaviour
     /// </summary>
     abstract protected void SetExpression();
     public Func<float, float> GetExpression() => expression;
+    public virtual void OnCollisionAction(JumpFrog frog)
+    {
+
+    }
 }

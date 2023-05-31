@@ -49,6 +49,7 @@ public class JumpFrog : MonoBehaviour
         if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
             jumpModifier = affector.GetExpression();
+            affector.OnCollisionAction(this);
         }
     }
     private void OnCollisionExit(Collision collision)
@@ -146,4 +147,10 @@ public class JumpFrog : MonoBehaviour
 
     //public functions
     public float GetMaxDist() => maxDist;
+    public Vector3 GetVelocity() => rb.velocity;
+    public void ApplyForce(Vector3 force)
+    {
+        print("added force " + force);
+        rb.AddForce(force, ForceMode.Impulse);
+    }
 }
