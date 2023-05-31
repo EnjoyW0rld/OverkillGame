@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[Obsolete("Replaced with ObjectMoveOnLine, as it's more generic")]
 public class PlatformUpDown : MonoBehaviour
 {
     [SerializeField] float YMax = 5;

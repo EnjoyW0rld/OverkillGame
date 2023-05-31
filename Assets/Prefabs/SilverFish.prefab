@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8417913558277124004}
   - component: {fileID: 897928033224721301}
   - component: {fileID: 716747175091391255}
+  - component: {fileID: 8108283308785045022}
   m_Layer: 0
   m_Name: SilverFish
   m_TagString: Untagged
@@ -110,4 +111,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25a7f02047c27184abf526c401d7c41e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.001
+--- !u!114 &8108283308785045022
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4633405506368593434}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48e6475429060134b9d55c4b104d41bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentPositionPercentage: 0
+  speed: 0.1
+  goLeft: 0

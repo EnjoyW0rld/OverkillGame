@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+[Obsolete("SilverFishLine has been replaced with a generic LineForObjects")]
 public class SilverFishLine : MonoBehaviour
 {
 
@@ -43,7 +44,7 @@ public class SilverFishLine : MonoBehaviour
 
             SilverFishEnemy spiderScript = spiderGameObject.GetComponent<SilverFishEnemy>();
 
-            spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
+           // spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
 
         }
 

@@ -31,6 +31,8 @@ public class ObjectMoveOnLine : MonoBehaviour
 
         topPoint = lineToFollow.GetLeftGlobalPosition();
         bottomPoint = lineToFollow.GetRightGlobalPosition();
+
+        if (goLeft) speed *= -1f;
     }
 
 
@@ -50,9 +52,51 @@ public class ObjectMoveOnLine : MonoBehaviour
     }
 
 
+    public void SetObjectAtPercentageLine()
+    {
+        this.transform.position = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
+    }
+
+    public void EditorSetObjectAtPercentageLine()
+    {
+        if (lineToFollow == null) lineToFollow = GetComponentInParent<LineForObjects>(); 
+
+
+        topPoint = lineToFollow.GetLeftGlobalPosition();
+        bottomPoint = lineToFollow.GetRightGlobalPosition();
+        this.transform.position = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
+    }
+
+    public float getCurrentPositionPercentage()
+    {
+        return currentPositionPercentage;
+    }
+
+
     public void OnDrawGizmos()
     {
-        
+
+        Vector3 startPoint = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
+
+
+        Vector3 direction = Vector3.up * speed;
+        Vector3 lineRight = (Vector3.down + Vector3.right).normalized * 0.5f;
+        Vector3 lineLeft = (Vector3.down + Vector3.left).normalized * 0.5f;
+
+        if (!goLeft)
+        {
+            direction *= -1f;
+
+            lineRight.y *= -1f;
+            lineLeft.y *= -1f;
+
+        }
+
+        Vector3 point = startPoint + direction;
+
+        Gizmos.DrawLine(startPoint, point);
+        Gizmos.DrawLine(point, lineRight + point);
+        Gizmos.DrawLine(point, lineLeft + point);
     }
 
 

@@ -3,6 +3,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+
+[Obsolete("SpiderString has been replaced with a generic LineForObjects")]
 public class SpiderString : MonoBehaviour
 {
     [SerializeField] GameObject SpiderPrefab;
@@ -42,7 +44,7 @@ public class SpiderString : MonoBehaviour
 
             SpiderEnemy spiderScript = spiderGameObject.GetComponent<SpiderEnemy>();
 
-            spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
+          //  spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
 
         }
     
