@@ -17,6 +17,21 @@ public class Drone : MonoBehaviour
     [SerializeField] float range = 1.0f;
 
 
+    [SerializeField] float reduceSanitySpeed = 2.0f;
+
+
+    Sanity sanity;
+
+
+    bool playerInRange = false;
+
+    private void Start()
+    {
+
+        player = GameObject.FindGameObjectWithTag("Body").transform;
+        sanity = GameObject.FindObjectOfType<Sanity>();
+    }
+
 
     public void OnDrawGizmos()
     {
@@ -57,10 +72,18 @@ public class Drone : MonoBehaviour
         bool rightCor = (angleDeg >= angle && angleDeg <= 90);
 
 
-        if ((leftCor || rightCor) && vector.magnitude < range)
+        if ((leftCor || rightCor) && vector.magnitude < range )
         {
-        //    sanity.ReduceSanity(5);
+            if (!playerInRange)
+            {
+                sanity.ReduceSanity(reduceSanitySpeed);
+                playerInRange = true;
+            }
             Debug.Log("InArea");
+        } else if (playerInRange)
+        {
+            sanity.ResetSanity();
+            playerInRange = false;
         }
 
 

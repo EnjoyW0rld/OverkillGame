@@ -25,10 +25,14 @@ public class Respawning_Player : MonoBehaviour
 
     public void FixedUpdate()
     {
-        if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.right).normalized, 3f, mask))
+        if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.right).normalized, out RaycastHit hit ,3f, mask))
         {
-            if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.left).normalized, 3f, mask))
+            
+            Transform firstHit = hit.transform;
+            if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.left).normalized, out RaycastHit hit2, 3f, mask))
             {
+
+                if (firstHit != hit2.transform) return;
                 lastPosition = transform.position + Vector3.up;
             }
         }

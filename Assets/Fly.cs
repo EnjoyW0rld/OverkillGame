@@ -5,14 +5,21 @@ using UnityEngine;
 
 public class Fly : MonoBehaviour
 {
-    [Range(0,5)]
+    [Range(0, 5)]
     [SerializeField] float range = 1.0f;
 
     [Range(0, 10)]
     [SerializeField] float speed = 1.0f;
 
+
+    [SerializeField] float reduceSanitySpeed = 2.0f;
+
     Vector3 startPos;
-    [SerializeField] Transform player;
+    Transform player;
+
+    Sanity sanity;
+
+
 
 
     public void OnDrawGizmos()
@@ -25,7 +32,9 @@ public class Fly : MonoBehaviour
     {
         player = GameObject.FindGameObjectWithTag("Body").transform;
 
-        startPos= transform.position;
+        startPos = transform.position;
+
+        sanity = GameObject.FindObjectOfType<Sanity>();
     }
 
     // Update is called once per frame
@@ -41,10 +50,22 @@ public class Fly : MonoBehaviour
         else if (Vector3.Distance(startPos, this.transform.position) > .1f)
         {
             transform.position = Vector3.Lerp(this.transform.position, startPos, Time.deltaTime * 4f);
-           // transform.position = Vector3.Lerp(this.transform.position, startPos, .05f);
+            // transform.position = Vector3.Lerp(this.transform.position, startPos, .05f);
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        sanity.ReduceSanity(reduceSanitySpeed);
+    }
 
-  
+    public void OnTriggerExit(Collider other)
+    {
+        sanity.ResetSanity();
+    }
+
+
+
+
+
 }
