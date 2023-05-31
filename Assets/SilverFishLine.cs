@@ -1,19 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
-
-[Obsolete("SpiderString has been replaced with a generic LineForObjects")]
-public class SpiderString : MonoBehaviour
+[Obsolete("SilverFishLine has been replaced with a generic LineForObjects")]
+public class SilverFishLine : MonoBehaviour
 {
+
     [SerializeField] GameObject SpiderPrefab;
 
     [Serializable]
-    public struct SpiderSetup
+    public struct SilverFishSetup
     {
         public int spiderSize;
-        [Range(0,1)]
+        [Range(0, 1)]
         public float startPoint;
         public float speed;
         public bool goUp;
@@ -22,10 +22,10 @@ public class SpiderString : MonoBehaviour
     }
 
 
-    public List<SpiderSetup> enemyList;
+    public List<SilverFishSetup> enemyList;
 
-    [SerializeField] float YMax = 5;
-    [SerializeField] float YMin = 5;
+    [SerializeField] float xMin;
+    [SerializeField] float xMax;
 
 
     Vector3 topPoint;
@@ -35,50 +35,50 @@ public class SpiderString : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        topPoint = this.transform.position + new Vector3(0, YMax);
-        bottomPoint = this.transform.position - new Vector3(0, YMin);
+        topPoint = this.transform.position + new Vector3(xMax, 0);
+        bottomPoint = this.transform.position - new Vector3(xMin, 0);
 
-        foreach(SpiderSetup setup in enemyList)
+        foreach (SilverFishSetup setup in enemyList)
         {
             GameObject spiderGameObject = Instantiate(SpiderPrefab);
 
-            SpiderEnemy spiderScript = spiderGameObject.GetComponent<SpiderEnemy>();
+            SilverFishEnemy spiderScript = spiderGameObject.GetComponent<SilverFishEnemy>();
 
-          //  spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
+           // spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
 
         }
-    
+
 
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
-    
+
     public void OnDrawGizmos()
     {
 
-        Vector3 topPoint = this.transform.position + new Vector3(0, YMax);
-        Vector3 bottomPoint = this.transform.position - new Vector3(0, YMin);
+        Vector3 topPoint = this.transform.position + new Vector3(xMax, 0);
+        Vector3 bottomPoint = this.transform.position - new Vector3(xMin, 0);
         Gizmos.color = Color.white;
         Gizmos.DrawLine(topPoint, bottomPoint);
 
-       // Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.up);
+        // Gizmos.DrawLine(this.transform.position, this.transform.position + Vector3.up);
 
         Gizmos.color = Color.yellow;
 
         if (enemyList == null) return;
 
-        foreach(SpiderSetup spider in enemyList)
+        foreach (SilverFishSetup spider in enemyList)
         {
 
 
             Vector3 startPoint = Vector3.Lerp(topPoint, bottomPoint, spider.startPoint);
 
-            Gizmos.DrawWireSphere(startPoint, spider.spiderSize / 2.0f);
+            Gizmos.DrawWireCube(startPoint, new Vector3(spider.spiderSize / 2.0f, spider.spiderSize / 2.0f, spider.spiderSize / 2.0f));
 
 
             Vector3 direction = Vector3.up * spider.speed;
@@ -93,7 +93,7 @@ public class SpiderString : MonoBehaviour
                 lineLeft.y *= -1f;
 
             }
-            
+
             Vector3 point = startPoint + direction;
 
             Gizmos.DrawLine(startPoint, point);
@@ -106,5 +106,4 @@ public class SpiderString : MonoBehaviour
 
 
     }
-    
 }
