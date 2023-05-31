@@ -23,6 +23,8 @@ public class Fly : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Body").transform;
+
         startPos= transform.position;
     }
 
