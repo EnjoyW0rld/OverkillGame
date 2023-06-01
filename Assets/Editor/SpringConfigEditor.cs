@@ -28,7 +28,7 @@ public class SpringConfigEditor : Editor
         SpringJoint[] springs = script.GetComponentsInChildren<SpringJoint>();
 
         if (!script.HideSpringsInInspector) foreach (SpringJoint spring in springs) { spring.hideFlags = HideFlags.None; }
-        else foreach (SpringJoint spring in springs) { spring.hideFlags = HideFlags.HideInInspector; }
+        else foreach (SpringJoint spring in springs) { spring.hideFlags = HideFlags.NotEditable; }
 
     }
 

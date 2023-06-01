@@ -9,7 +9,7 @@ public class SameZAxis : EditorWindow
     public static void OpenTheThing() => GetWindow<SameZAxis>("Allign Z Axis");
 
 
-    public float zAxisAmount;
+    private float zAxisAmount;
 
 
     private void OnEnable()
