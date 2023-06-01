@@ -68,18 +68,22 @@ public class Drone : MonoBehaviour
 
         float angleDeg = angleDiference * Mathf.Rad2Deg;
 
-        bool leftCor = (angleDeg >= -90 && angleDeg <= -angle);
-        bool rightCor = (angleDeg >= angle && angleDeg <= 90);
+        Debug.Log("______");
+        Debug.Log(angleDeg);
+        Debug.Log(vector.magnitude);
+
+        bool leftCor = (angleDeg >= -90 && angleDeg <= -(90  - angle));
+        bool rightCor = (angleDeg >= (90 - angle) && angleDeg <= 90);
 
 
         if ((leftCor || rightCor) && vector.magnitude < range )
         {
             if (!playerInRange)
             {
-                sanity.ReduceSanity(reduceSanitySpeed);
+                sanity.ChangeSanitySpeed(reduceSanitySpeed);
                 playerInRange = true;
             }
-            Debug.Log("InArea");
+        //    Debug.Log("InArea");
         } else if (playerInRange)
         {
             sanity.ResetSanity();
