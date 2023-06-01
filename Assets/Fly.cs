@@ -57,13 +57,13 @@ public class Fly : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         sanity.ChangeSanitySpeed(reduceSanitySpeed);
-        Debug.Log("enteredsanity");
+       // Debug.Log("enteredsanity");
     }
 
     public void OnTriggerExit(Collider other)
     {
         sanity.ResetSanity();
-        Debug.Log("exitsanity");
+       // Debug.Log("exitsanity");
     }
 
 

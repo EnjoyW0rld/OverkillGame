@@ -68,9 +68,9 @@ public class Drone : MonoBehaviour
 
         float angleDeg = angleDiference * Mathf.Rad2Deg;
 
-        Debug.Log("______");
-        Debug.Log(angleDeg);
-        Debug.Log(vector.magnitude);
+   //     Debug.Log("______");
+   //     Debug.Log(angleDeg);
+   //     Debug.Log(vector.magnitude);
 
         bool leftCor = (angleDeg >= -90 && angleDeg <= -(90  - angle));
         bool rightCor = (angleDeg >= (90 - angle) && angleDeg <= 90);
