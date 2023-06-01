@@ -16,7 +16,6 @@ public class DamagableEditor : Editor
 
         serializedObject.ApplyModifiedProperties();
          **/
-
         serializedObject.Update();
 
         EditorGUILayout.PropertyField(serializedObject.FindProperty("_playerTag"));

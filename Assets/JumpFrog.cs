@@ -7,12 +7,15 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(Rigidbody))]
 public class JumpFrog : MonoBehaviour
 {
+    [Header("Leg instances")]
     [SerializeField] private LegPositioning leftLeg;
     [SerializeField] private LegPositioning rightLeg;
-
+    [SerializeField] private float cooldownTime = 10;
+    [Header("Move variables")]
     [SerializeField] private float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
+
 
 
     private Vector3 previousVelocity;
@@ -23,12 +26,12 @@ public class JumpFrog : MonoBehaviour
     private Vector3 differenceRight;
     private Gamepad[] gamepads;
 
-    #region jumpSwitcheVariables
+    #region jumpSwitchVariables
     private bool jumpedLeft = false;
     private bool jumpedRight = false;
 
-    private bool pressedLeft;
-    private bool pressedRight;
+    [SerializeField] private bool pressedLeft;
+    [SerializeField] private bool pressedRight;
     #endregion
 
     void Start()
@@ -39,13 +42,13 @@ public class JumpFrog : MonoBehaviour
 
         if (gamepads.Length == 2)
         {
-            leftLeg.SetGamepad(gamepads[1],true);
-            rightLeg.SetGamepad(gamepads[0],true);
+            leftLeg.SetGamepad(gamepads[1], true);
+            rightLeg.SetGamepad(gamepads[0], true);
         }
         if (gamepads.Length == 1)
         {
-            leftLeg.SetGamepad(gamepads[0],false);
-            rightLeg.SetGamepad(gamepads[0],false);
+            leftLeg.SetGamepad(gamepads[0], false);
+            rightLeg.SetGamepad(gamepads[0], false);
         }
         //print(Gamepad.all.Count);
     }
@@ -93,6 +96,11 @@ public class JumpFrog : MonoBehaviour
     }
     private void HandleInput()
     {
+        if (gamepads.Length > 2)
+        {
+            Debug.LogError("More then two gamepads found!");
+            return;
+        }
         if (gamepads.Length == 2)
         {
             if (gamepads[0].buttonSouth.ReadValue() == 1 && rightLeg.GetGrounded())
@@ -101,11 +109,12 @@ public class JumpFrog : MonoBehaviour
                 {
                     pressedRight = true;
                     jumpedRight = true;
+                    StartCoroutine(StartCooldown(false));
                 }
             }
             else
             {
-                pressedRight = false;
+                //pressedRight = false;
             }
 
             if (gamepads[1].buttonSouth.ReadValue() == 1 && leftLeg.GetGrounded())
@@ -114,11 +123,12 @@ public class JumpFrog : MonoBehaviour
                 {
                     pressedLeft = true;
                     jumpedLeft = true;
+                    StartCoroutine(StartCooldown(true));
                 }
             }
             else
             {
-                pressedLeft = false;
+                //pressedLeft = false;
             }
         }
         if (gamepads.Length == 1)
@@ -129,11 +139,12 @@ public class JumpFrog : MonoBehaviour
                 {
                     pressedRight = true;
                     jumpedRight = true;
+                StartCoroutine(StartCooldown(false));
                 }
             }
             else
             {
-                pressedRight = false;
+                //pressedRight = false;
             }
 
             if (gamepads[0].dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
@@ -142,11 +153,13 @@ public class JumpFrog : MonoBehaviour
                 {
                     pressedLeft = true;
                     jumpedLeft = true;
+                    StartCoroutine(StartCooldown(true));
+
                 }
             }
             else
             {
-                pressedLeft = false;
+                //pressedLeft = false;
             }
         }
         else
@@ -161,7 +174,13 @@ public class JumpFrog : MonoBehaviour
             }
 
         }
+    }
 
+    private IEnumerator StartCooldown(bool left)
+    {
+        yield return new WaitForSeconds(cooldownTime);
+        if (left) pressedLeft = false;
+        else pressedRight = false;
     }
 
     private void FixedUpdate()
@@ -172,8 +191,9 @@ public class JumpFrog : MonoBehaviour
             if (Vector3.Dot(differenceLeft.normalized, Vector3.up) > jumpThreshold)
             {
                 //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
-                ApplyJumpForce(differenceRight.normalized);
+                ApplyJumpForce(differenceLeft.normalized);
             }
+            //StartCoroutine(StartCooldown(true));
             jumpedLeft = false;
         }
 
@@ -181,8 +201,9 @@ public class JumpFrog : MonoBehaviour
         {
             if (Vector3.Dot(differenceRight.normalized, Vector3.up) > jumpThreshold)
             {
-                ApplyJumpForce(differenceLeft.normalized);
+                ApplyJumpForce(differenceRight.normalized);
             }
+            //StartCoroutine(StartCooldown(false));
             jumpedRight = false;
         }
 
@@ -199,7 +220,6 @@ public class JumpFrog : MonoBehaviour
     public Vector3 GetVelocity() => previousVelocity;
     public void ApplyForce(Vector3 force)
     {
-        print("added force " + force);
         rb.AddForce(force, ForceMode.Impulse);
     }
 

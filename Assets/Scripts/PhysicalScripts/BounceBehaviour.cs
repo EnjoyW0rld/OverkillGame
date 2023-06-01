@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class BounceBehaviour : BodyAffecter
 {
-    [ReadMe("Some jjfkisjfksdhfjdkhjfdshfjshfjkdshfjksdhfjds")]
+    [ReadMe("Apply this is script to the platform you want to be bouncy")]
     [SerializeField] private float jumpMultiplier = 1.5f;
     [SerializeField] private float reloadTime = 2;
     [SerializeField] private float bounceModifier = 4;
@@ -23,9 +23,7 @@ public class BounceBehaviour : BodyAffecter
         if (reloaded)
         {
             reloaded = false;
-            print(frog);
             Vector3 velocity = frog.GetVelocity();
-            print(velocity);
             Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up) * bounceModifier;
             frog.ApplyForce(mirroredVel);
             StartCoroutine(SetCooldown());
