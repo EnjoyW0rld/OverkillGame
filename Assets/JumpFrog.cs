@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+[RequireComponent(typeof(Rigidbody))]
 public class JumpFrog : MonoBehaviour
 {
     [SerializeField] private LegPositioning leftLeg;
@@ -13,13 +14,14 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
 
-    private Rigidbody rb;
 
+    private Vector3 previousVelocity;
+    private Rigidbody rb;
     private Func<float, float> jumpModifier;
 
     private Vector3 differenceLeft;
     private Vector3 differenceRight;
-    private Gamepad _gamepad;
+    private Gamepad[] gamepads;
 
     #region jumpSwitcheVariables
     private bool jumpedLeft = false;
@@ -32,7 +34,20 @@ public class JumpFrog : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        _gamepad = Gamepad.current;
+        //gamepad = Gamepad.current;
+        gamepads = Gamepad.all.ToArray();
+
+        if (gamepads.Length == 2)
+        {
+            leftLeg.SetGamepad(gamepads[1],true);
+            rightLeg.SetGamepad(gamepads[0],true);
+        }
+        if (gamepads.Length == 1)
+        {
+            leftLeg.SetGamepad(gamepads[0],false);
+            rightLeg.SetGamepad(gamepads[0],false);
+        }
+        //print(Gamepad.all.Count);
     }
 
     void Update()
@@ -42,7 +57,10 @@ public class JumpFrog : MonoBehaviour
         differenceRight = (this.transform.position + new Vector3(0, 0.5f, 0)) - rightLeg.transform.position;
         HandleInput();
     }
-
+    private void LateUpdate()
+    {
+        previousVelocity = rb.velocity;
+    }
 
     private void OnCollisionEnter(Collision collision)
     {
@@ -59,6 +77,8 @@ public class JumpFrog : MonoBehaviour
             jumpModifier = null;
         }
     }
+
+
     //Private functions
     private void ApplyJumpForce(Vector3 normalDirection)
     {
@@ -73,9 +93,9 @@ public class JumpFrog : MonoBehaviour
     }
     private void HandleInput()
     {
-        if (_gamepad != null)
+        if (gamepads.Length == 2)
         {
-            if (_gamepad.buttonEast.ReadValue() == 1 && rightLeg.GetGrounded())
+            if (gamepads[0].buttonSouth.ReadValue() == 1 && rightLeg.GetGrounded())
             {
                 if (!pressedRight)
                 {
@@ -88,7 +108,35 @@ public class JumpFrog : MonoBehaviour
                 pressedRight = false;
             }
 
-            if (_gamepad.dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
+            if (gamepads[1].buttonSouth.ReadValue() == 1 && leftLeg.GetGrounded())
+            {
+                if (!pressedLeft)
+                {
+                    pressedLeft = true;
+                    jumpedLeft = true;
+                }
+            }
+            else
+            {
+                pressedLeft = false;
+            }
+        }
+        if (gamepads.Length == 1)
+        {
+            if (gamepads[0].buttonEast.ReadValue() == 1 && rightLeg.GetGrounded())
+            {
+                if (!pressedRight)
+                {
+                    pressedRight = true;
+                    jumpedRight = true;
+                }
+            }
+            else
+            {
+                pressedRight = false;
+            }
+
+            if (gamepads[0].dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
             {
                 if (!pressedLeft)
                 {
@@ -115,6 +163,7 @@ public class JumpFrog : MonoBehaviour
         }
 
     }
+
     private void FixedUpdate()
     {
 
@@ -147,7 +196,7 @@ public class JumpFrog : MonoBehaviour
 
     //public functions
     public float GetMaxDist() => maxDist;
-    public Vector3 GetVelocity() => rb.velocity;
+    public Vector3 GetVelocity() => previousVelocity;
     public void ApplyForce(Vector3 force)
     {
         print("added force " + force);

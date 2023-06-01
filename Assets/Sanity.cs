@@ -70,6 +70,19 @@ public class Sanity : MonoBehaviour
         if (!_coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue, time));
     }
 
+    public void ChangeSanitySpeed(float reduceValue)
+    {
+        reduceSpeed = reduceValue;
+        Debug.Log(reduceSpeed);
+    }
+
+    public void ResetSanity()
+    {
+
+        reduceSpeed = _initialReduceSpeed;
+
+    }
+
     public void ReduceSanity(float amount)
     {
         sanity -= amount * Time.deltaTime;

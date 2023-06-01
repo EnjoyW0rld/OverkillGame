@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class BounceBehaviour : BodyAffecter
 {
-    [ReadMe("Some important info")]
+    [ReadMe("Some jjfkisjfksdhfjdkhjfdshfjshfjkdshfjksdhfjds")]
     [SerializeField] private float jumpMultiplier = 1.5f;
     [SerializeField] private float reloadTime = 2;
+    [SerializeField] private float bounceModifier = 4;
     private bool reloaded = true;
-
     protected override void SetExpression()
     {
         expression = x => x * jumpMultiplier;
@@ -26,7 +26,7 @@ public class BounceBehaviour : BodyAffecter
             print(frog);
             Vector3 velocity = frog.GetVelocity();
             print(velocity);
-            Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up);
+            Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up) * bounceModifier;
             frog.ApplyForce(mirroredVel);
             StartCoroutine(SetCooldown());
         }
