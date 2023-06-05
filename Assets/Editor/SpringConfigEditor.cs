@@ -29,6 +29,7 @@ public class SpringConfigEditor : Editor
 
         if (!script.HideSpringsInInspector) foreach (SpringJoint spring in springs) { spring.hideFlags = HideFlags.None; }
         else foreach (SpringJoint spring in springs) { spring.hideFlags = HideFlags.NotEditable; }
+        Debug.Log(spring.hide)
 
     }
 
