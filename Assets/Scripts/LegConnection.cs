@@ -34,7 +34,7 @@ public class LegConnection : MonoBehaviour
 
     private void Update()
     {
-        isGrounded = IsGrounded();
+        //isGrounded = IsGrounded();
 
         //Get the velocity where player is aiming their controller
         Vector3 velocity = GetDirection();
@@ -192,6 +192,15 @@ public class LegConnection : MonoBehaviour
     {
         maxDist = Vector3.Distance(transform.position, body.position);
         OnValidate();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        isGrounded = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
     }
 
     //Get functions
