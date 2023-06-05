@@ -62,7 +62,7 @@ public class Fly : MonoBehaviour
 
     public void OnTriggerExit(Collider other)
     {
-        sanity.ResetSanity();
+        sanity.ResetSanitySpeed();
        // Debug.Log("exitsanity");
     }
 

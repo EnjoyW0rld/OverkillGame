@@ -5,30 +5,26 @@ using UnityEngine;
 
 public class Sanity : MonoBehaviour
 {
-    //[SerializeField,ReadMe] private string aaaa = "property.stringValueproperty.stringValueproperty.stringValueproperty.stringValueproperty.stringValue";
     [SerializeField] float sanity = 100.0f;
     [SerializeField] float reduceSpeed = 1.0f;
-    private float _initialReduceSpeed;
-    private float _maxSanity;
-    private bool _coroutinePlaying;
+    private float initialReduceSpeed;
+    private float maxSanity;
+    private bool coroutinePlaying;
 
     private void Awake()
     {
-        _initialReduceSpeed = reduceSpeed;
+        initialReduceSpeed = reduceSpeed;
         InitializeDamagables();
     }
 
     void Start()
     {
-        //_fader = FindObjectOfType<VignetteFader>();
-        //if (_fader == null) Debug.LogWarning("No VignetteFader found, ignore this message if don`t want to use one");
-        _maxSanity = sanity;
+        maxSanity = sanity;
     }
     // Update is called once per frame
     void Update()
     {
         ReduceSanity(reduceSpeed);
-        //if (_fader != null) _fader.SetIntensity(1 - (sanity / _maxSanity));
     }
 
 
@@ -41,14 +37,16 @@ public class Sanity : MonoBehaviour
             damagables[i].Initialize(this);
         }
     }
+    /*
     private IEnumerator ChangeReductionSpeed(float reduceValue, float time)
     {
-        _coroutinePlaying = true;
+        coroutinePlaying = true;
         reduceSpeed = reduceValue;
         yield return new WaitForSeconds(time);
-        reduceSpeed = _initialReduceSpeed;
-        _coroutinePlaying = false;
+        reduceSpeed = initialReduceSpeed;
+        coroutinePlaying = false;
     }
+     */
 
     //Public functions
     /// <summary>
@@ -60,6 +58,7 @@ public class Sanity : MonoBehaviour
         sanity -= val < 0 ? 0 : val;
     }
 
+    /*
     /// <summary>
     /// Change sanity decrease speed from outside the class
     /// </summary>
@@ -67,20 +66,20 @@ public class Sanity : MonoBehaviour
     /// <param name="time">Time for how long effect will last in seconds</param>
     public void ChangeSanitySpeed(float reduceValue, float time)
     {
-        if (!_coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue, time));
+        if (!coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue, time));
     }
+     */
 
     public void ChangeSanitySpeed(float reduceValue)
     {
         reduceSpeed = reduceValue;
-        Debug.Log(reduceSpeed);
+        Debug.Log(reduceSpeed + " new reduce speed");
     }
 
-    public void ResetSanity()
+
+    public void ResetSanitySpeed()
     {
-
-        reduceSpeed = _initialReduceSpeed;
-
+        reduceSpeed = initialReduceSpeed;
     }
 
     public void ReduceSanity(float amount)
@@ -90,13 +89,11 @@ public class Sanity : MonoBehaviour
     }
     public void AddSanity(float amount)
     {
-
         sanity += amount * Time.deltaTime;
-
         sanity = Mathf.Min(100.0f, sanity);
     }
     public float GetNormalizedSanity()
     {
-        return 1 - (sanity / _maxSanity);
+        return 1 - (sanity / maxSanity);
     }
 }

@@ -86,7 +86,7 @@ public class Drone : MonoBehaviour
         //    Debug.Log("InArea");
         } else if (playerInRange)
         {
-            sanity.ResetSanity();
+            sanity.ResetSanitySpeed();
             playerInRange = false;
         }
 

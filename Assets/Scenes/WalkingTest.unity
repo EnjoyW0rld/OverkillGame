@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12811697, g: 0.15874434, b: 0.2101121, a: 1}
+  m_IndirectSpecularColor: {r: 262.38354, g: 325.1084, b: 430.30957, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -159,7 +159,7 @@ MonoBehaviour:
   _speed: 1
   wasd: 1
   _groundDist: 0.1
-  _isGrounded: 0
+  isGrounded: 0
 --- !u!135 &160536511
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -331,6 +331,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: AmphibianJumping
       objectReference: {fileID: 0}
+    - target: {fileID: 6784820271432421614, guid: b9d641ac9435ae9459dfb25838a57606,
+        type: 3}
+      propertyPath: jumpThreshold
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
 --- !u!1 &577395735
@@ -344,7 +349,6 @@ GameObject:
   - component: {fileID: 577395739}
   - component: {fileID: 577395738}
   - component: {fileID: 577395737}
-  - component: {fileID: 577395736}
   m_Layer: 0
   m_Name: VignetteVolume
   m_TagString: Untagged
@@ -352,20 +356,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &577395736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 577395735}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8977e7f6077974e49ac988b082113a58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sanity: 100
-  reduceSpeed: 1
 --- !u!114 &577395737
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +513,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   jumpMultiplier: 1.5
+  reloadTime: 2
+  bounceModifier: 4
 --- !u!114 &735186386
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -535,12 +527,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752b992074b77f6418673d84f0d30322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _decreaseType: 0
-  _playerTag: Body
-  _gradualDecrease:
-    _decreaseTime: 0
-    _reductionSpeed: 0
-  _instantDecrease:
+  decreaseType: 1
+  playerTag: Body
+  executeAutomatically: 1
+  gradualDecrease:
+    _reductionSpeed: 3
+  instantDecrease:
     _valueToDecrease: 0
 --- !u!1 &988596336
 GameObject:
@@ -555,6 +547,7 @@ GameObject:
   - component: {fileID: 988596338}
   - component: {fileID: 988596337}
   - component: {fileID: 988596341}
+  - component: {fileID: 988596342}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -654,6 +647,25 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 10, y: 0.71991044, z: 10}
   m_Center: {x: 0, y: -0.35995522, z: 0}
+--- !u!114 &988596342
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988596336}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752b992074b77f6418673d84f0d30322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decreaseType: 1
+  playerTag: Body
+  executeAutomatically: 1
+  gradualDecrease:
+    _reductionSpeed: 3
+  instantDecrease:
+    _valueToDecrease: 0
 --- !u!1 &1388927593
 GameObject:
   m_ObjectHideFlags: 0
@@ -1262,7 +1274,7 @@ MonoBehaviour:
   _speed: 1
   wasd: 0
   _groundDist: 0.1
-  _isGrounded: 0
+  isGrounded: 0
 --- !u!135 &2107255540
 SphereCollider:
   m_ObjectHideFlags: 0
