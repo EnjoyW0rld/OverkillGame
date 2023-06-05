@@ -20,8 +20,8 @@ public class HideIfEditor : PropertyDrawer
     {
         //base.OnGUI(position, property, label);
         HideIfAttribute hideIf = attribute as HideIfAttribute;
-        Type type = hideIf.value.GetType();
         show = Compare(property.serializedObject.FindProperty(hideIf.targetName), hideIf.value, hideIf.comparison);
+
         if (show)
         {
             EditorGUI.PropertyField(position, property, label);
@@ -36,14 +36,39 @@ public class HideIfEditor : PropertyDrawer
             switch (propType)
             {
                 case SerializedPropertyType.Boolean:
-                    return target.boolValue == (bool)comparer;
+                    return CompareBool(target.boolValue, (bool)comparer, compareType);
+                case SerializedPropertyType.Enum:
+                    return CompareEnum(target.enumValueFlag, (int)comparer, compareType);
             }
         }
         catch (Exception e)
         {
             Debug.LogError("Types of two variables are not the same");
         }
-
+        return false;
+    }
+    private bool CompareBool(bool first, bool second, HideIfAttribute.Comparison compareType)
+    {
+        switch (compareType)
+        {
+            case HideIfAttribute.Comparison.Equals:
+                return first == second;
+            case HideIfAttribute.Comparison.NotEquals:
+                return first != second;
+        }
+        Debug.LogError("Wrong comparer for bool!");
+        return false;
+    }
+    private bool CompareEnum(int first, int second,HideIfAttribute.Comparison compareType)
+    {
+        switch (compareType)
+        {
+            case HideIfAttribute.Comparison.Equals:
+                return first != second;
+            case HideIfAttribute.Comparison.NotEquals:
+                return first == second;
+        }
+        Debug.LogError("Wrong comparison type for enums!");
         return false;
     }
 }

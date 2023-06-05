@@ -5,7 +5,7 @@ using UnityEngine;
 [System.AttributeUsage(System.AttributeTargets.Field)]
 public class HideIfAttribute : PropertyAttribute
 {
-    public enum Comparison { Bigger, Smaller, Equals }
+    public enum Comparison { Bigger, Smaller, Equals, NotEquals }
     public Comparison comparison;
     public object value;
     public string targetName;

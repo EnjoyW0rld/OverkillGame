@@ -667,7 +667,7 @@ MonoBehaviour:
   _speed: 4
   wasd: 1
   _groundDist: 0.3
-  _isGrounded: 0
+  isGrounded: 0
 --- !u!1 &1840040249409754079
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,7 +798,7 @@ MonoBehaviour:
   _speed: 4
   wasd: 0
   _groundDist: 0.3
-  _isGrounded: 0
+  isGrounded: 0
 --- !u!1 &2190110573191386224
 GameObject:
   m_ObjectHideFlags: 0
@@ -1827,7 +1827,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leftLeg: {fileID: 1840040249409754075}
   rightLeg: {fileID: 1840040249146378922}
-  cooldownTime: 10
+  cooldownTime: 0.5
   strenght: 50
   maxDist: 1.789634
   jumpThreshold: 0.5
