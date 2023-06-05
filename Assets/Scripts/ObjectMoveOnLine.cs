@@ -4,14 +4,10 @@ using UnityEngine;
 
 public class ObjectMoveOnLine : MonoBehaviour
 {
-
-
-
     LineForObjects lineToFollow;
 
-
     //Add editor to put the object at the right position
-    [SerializeField, Range(0,1)] protected float currentPositionPercentage;
+    [SerializeField, Range(0, 1)] protected float currentPositionPercentage;
 
     private Vector3 topPoint;
     private Vector3 bottomPoint;
@@ -59,7 +55,7 @@ public class ObjectMoveOnLine : MonoBehaviour
 
     public void EditorSetObjectAtPercentageLine()
     {
-        if (lineToFollow == null) lineToFollow = GetComponentInParent<LineForObjects>(); 
+        if (lineToFollow == null) lineToFollow = GetComponentInParent<LineForObjects>();
 
 
         topPoint = lineToFollow.GetLeftGlobalPosition();
@@ -71,8 +67,11 @@ public class ObjectMoveOnLine : MonoBehaviour
     {
         return currentPositionPercentage;
     }
-
-
+    /// <summary>
+    /// Return true if moving right
+    /// </summary>
+    /// <returns></returns>
+    public bool GetDirection() => speed > 0;
     public void OnDrawGizmos()
     {
 
