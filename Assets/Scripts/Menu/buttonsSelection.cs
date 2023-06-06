@@ -21,11 +21,6 @@ public class buttonsSelection : MonoBehaviour
     private bool isInputAllowed = true;
     [SerializeField] private float joystickThreshold = 0.5f;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     void Update()
     {

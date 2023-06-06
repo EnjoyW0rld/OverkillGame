@@ -7,11 +7,6 @@ public class TurnOnMove : MonoBehaviour
     [SerializeField] private enum FaceDirection { Right};
 
     private Direction[] directions;
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
 
 [System.Serializable]
