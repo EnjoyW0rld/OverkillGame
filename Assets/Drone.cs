@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using UnityEngine.Events;
 
 [RequireComponent(typeof(Damagable))]
 public class Drone : MonoBehaviour
@@ -15,8 +16,11 @@ public class Drone : MonoBehaviour
     [Range(0, 50)]
     [SerializeField] float range = 1.0f;
 
-
     [SerializeField] float reduceSanitySpeed = 2.0f;
+
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnPlayerSpotted;
+    [SerializeField] private UnityEvent OnPlayerLeftRange;
 
     //private Sanity sanity;
     private Damagable damagable;
@@ -30,7 +34,6 @@ public class Drone : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Body").transform;
         //sanity = GameObject.FindObjectOfType<Sanity>();
     }
-
 
     public void OnDrawGizmos()
     {
@@ -51,11 +54,13 @@ public class Drone : MonoBehaviour
         CheckIfPlayerInside();
         if (playerInRange)
         {
+            OnPlayerSpotted?.Invoke();
             damagable.OnEnterDamageArea();
             appliedModifier = true;
         }
         else if(appliedModifier && !playerInRange)
         {
+            OnPlayerLeftRange?.Invoke();
             damagable.OnExitDamageArea();
             appliedModifier = false;
         }

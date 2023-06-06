@@ -11,13 +11,16 @@ public class Damagable : MonoBehaviour
     [SerializeField] private DecreaseType decreaseType;
 
     [SerializeField] private string playerTag = "Body";
-    //[ReadMe("If it is true, object will aplly damage when touches the body, otherwise you need to call functions manually")]
+    [ReadMe("If it is true, object will aplly damage when touches the body, otherwise you need to call functions manually")]
     [SerializeField] private bool executeAutomatically;
 
     //Gradual decrease
-    [SerializeField] private GradualDecrease gradualDecrease;
+    [SerializeField, HideIf("decreaseType", DecreaseType.Gradual, HideIfAttribute.Comparison.NotEquals)]
+    private GradualDecrease gradualDecrease;
     //Instant decrease
-    [SerializeField] private InstantDecrease instantDecrease;
+    [SerializeField, HideIf("decreaseType", DecreaseType.Instant, HideIfAttribute.Comparison.NotEquals)]
+    private InstantDecrease instantDecrease;
+
 
     private Sanity sanity;
 
@@ -33,7 +36,7 @@ public class Damagable : MonoBehaviour
     {
         if (executeAutomatically && collision.transform.tag == playerTag)
         {
-            if(decreaseType == DecreaseType.Gradual)
+            if (decreaseType == DecreaseType.Gradual)
             {
                 sanity.ResetSanitySpeed();
             }

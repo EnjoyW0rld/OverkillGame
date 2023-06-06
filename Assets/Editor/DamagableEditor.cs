@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
-[CustomEditor(typeof(Damagable))]
+//[CustomEditor(typeof(Damagable))]
+[System.Obsolete("Not viable anymore due to HideIf attribute")]
 public class DamagableEditor : Editor
 {
     public override void OnInspectorGUI()

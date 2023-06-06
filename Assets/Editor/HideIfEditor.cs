@@ -12,8 +12,10 @@ public class HideIfEditor : PropertyDrawer
     {
         if (show)
         {
-            return base.GetPropertyHeight(property, label);
+            return EditorGUI.GetPropertyHeight(property, label, true);
+            //return base.GetPropertyHeight(property, label);
         }
+
         else return 0;
     }
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
@@ -24,7 +26,8 @@ public class HideIfEditor : PropertyDrawer
 
         if (show)
         {
-            EditorGUI.PropertyField(position, property, label);
+            EditorGUI.PropertyField(position, property, label,true);
+            //Debug.Log(property.depth);
         }
     }
 
