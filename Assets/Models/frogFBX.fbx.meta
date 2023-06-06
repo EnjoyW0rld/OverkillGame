@@ -1,14 +1,9 @@
 fileFormatVersion: 2
-guid: 26dac65b8d183534d99df8cafdffb8b3
+guid: ce3393a7b3400424eb90fbe209147a31
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects:
-  - first:
-      type: UnityEngine:Material
-      assembly: UnityEngine.CoreModule
-      name: polySurface16Mat
-    second: {fileID: 2100000, guid: e4704f7bbb7083d41acbce37094539e7, type: 2}
+  externalObjects: {}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -71,7 +66,7 @@ ModelImporter:
     secondaryUVMinLightmapResolution: 40
     secondaryUVMinObjectScale: 1
     secondaryUVPackMargin: 4
-    useFileScale: 1
+    useFileScale: 0
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
