@@ -3,12 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[RequireComponent(typeof(Damagable))]
 public class Drone : MonoBehaviour
 {
 
-    [SerializeField] Transform player;
-   
-
+    private Transform player;
 
     [Range(0, 90)]
     [SerializeField] int angle = 45;
@@ -19,17 +18,17 @@ public class Drone : MonoBehaviour
 
     [SerializeField] float reduceSanitySpeed = 2.0f;
 
-
-    Sanity sanity;
-
-
+    //private Sanity sanity;
+    private Damagable damagable;
     bool playerInRange = false;
+
+    bool appliedModifier;
 
     private void Start()
     {
-
+        damagable = GetComponent<Damagable>();
         player = GameObject.FindGameObjectWithTag("Body").transform;
-        sanity = GameObject.FindObjectOfType<Sanity>();
+        //sanity = GameObject.FindObjectOfType<Sanity>();
     }
 
 
@@ -49,20 +48,23 @@ public class Drone : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
         CheckIfPlayerInside();
-        
+        if (playerInRange)
+        {
+            damagable.OnEnterDamageArea();
+            appliedModifier = true;
+        }
+        else if(appliedModifier && !playerInRange)
+        {
+            damagable.OnExitDamageArea();
+            appliedModifier = false;
+        }
     }
-
-
 
     //Check IF ANGLE IS VIALBE
     public void CheckIfPlayerInside()
     {
         Vector3 vector = player.position - transform.position;
-
-
 
         float angleDiference = Mathf.Atan(vector.y / vector.x);
 
@@ -80,13 +82,13 @@ public class Drone : MonoBehaviour
         {
             if (!playerInRange)
             {
-                sanity.ChangeSanitySpeed(reduceSanitySpeed);
+                //sanity.ChangeSanitySpeed(reduceSanitySpeed);
                 playerInRange = true;
             }
         //    Debug.Log("InArea");
         } else if (playerInRange)
         {
-            sanity.ResetSanity();
+            //sanity.ResetSanitySpeed();
             playerInRange = false;
         }
 

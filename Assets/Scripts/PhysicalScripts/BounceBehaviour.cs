@@ -9,6 +9,7 @@ public class BounceBehaviour : BodyAffecter
     [SerializeField] private float reloadTime = 2;
     [SerializeField] private float bounceModifier = 4;
     private bool reloaded = true;
+
     protected override void SetExpression()
     {
         expression = x => x * jumpMultiplier;

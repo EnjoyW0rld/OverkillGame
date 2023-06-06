@@ -18,21 +18,21 @@ public class DamagableEditor : Editor
          **/
         serializedObject.Update();
 
-        EditorGUILayout.PropertyField(serializedObject.FindProperty("_playerTag"));
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("playerTag"));
 
-        var enums = serializedObject.FindProperty("_decreaseType");
+        var enums = serializedObject.FindProperty("decreaseType");
         EditorGUILayout.PropertyField(enums);
-
+        EditorGUILayout.PropertyField(serializedObject.FindProperty("executeAutomatically"));
         //EditorGUILayout.PropertyField(serializedObject.FindProperty("aa"));
 
         switch (enums.enumValueFlag)
         {
             case 0:
-                var instDecrease = serializedObject.FindProperty("_instantDecrease");
+                var instDecrease = serializedObject.FindProperty("instantDecrease");
                 EditorGUILayout.PropertyField(instDecrease);
                 break;
             case 1:
-                var gradDecrease = serializedObject.FindProperty("_gradualDecrease");
+                var gradDecrease = serializedObject.FindProperty("gradualDecrease");
                 EditorGUILayout.PropertyField(gradDecrease);
                 break;
         }

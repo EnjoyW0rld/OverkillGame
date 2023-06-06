@@ -12,7 +12,7 @@ public class LegPositioning : MonoBehaviour
 
     private JumpFrog bodyJump;
     private Rigidbody rb;
-    [SerializeField] private bool _isGrounded;
+    [SerializeField] private bool isGrounded;
     private float maxDist;
     private Gamepad gamepad;
     private bool twoGamepads;
@@ -23,14 +23,12 @@ public class LegPositioning : MonoBehaviour
         if (bodyJump == null) Debug.LogError("No body found!");
         rb = GetComponent<Rigidbody>();
         maxDist = bodyJump.GetMaxDist();
-        //gamepad = Gamepad.current;
     }
 
     void Update()
     {
-        _isGrounded = IsGrounded();
         Vector3 input = GetInput();
-        if (input.magnitude != 0 && !_isGrounded)
+        if (input.magnitude != 0 && !isGrounded)
         {
             rb.velocity += new Vector3(0, -rb.velocity.y, 0);
         }
@@ -38,7 +36,6 @@ public class LegPositioning : MonoBehaviour
     }
     private void FixedUpdate()
     {
-
         float currentDist = Vector3.Distance(bodyJump.transform.position, transform.position);
         Vector3 backVector = (bodyJump.transform.position - transform.position).normalized;
 
@@ -125,8 +122,17 @@ public class LegPositioning : MonoBehaviour
         print(Vector3.Distance(FindObjectOfType<JumpFrog>().transform.position, transform.position));
     }
 
+    private void OnCollisionEnter(Collision collision)
+    {
+        isGrounded = true;
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        isGrounded = false;
+    }
+
     //Public functions
-    public bool GetGrounded() => _isGrounded;
+    public bool GetGrounded() => isGrounded;
     public void SetGamepad(Gamepad gamepad, bool twoGamepads)
     {
         this.gamepad = gamepad;

@@ -7,59 +7,87 @@ public class Damagable : MonoBehaviour
 {
 
     //Enums to choose damage type
-    private enum DecreaseType { Instant = 0, Gradual = 1 };
-    [SerializeField] private DecreaseType _decreaseType;
+    public enum DecreaseType { Instant = 0, Gradual = 1 };
+    [SerializeField] private DecreaseType decreaseType;
 
-    //[SerializeField, ReadMe] private string _readMe = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum";
-    //[SerializeField, Tooltip("If true will remove some sanity instantly, false will make draining speed faster")]
-    //private bool _instant;
-    [SerializeField] private string _playerTag = "Body";
-
-    //[SerializeField,ReadOnly] private string aa = "sss";
-
+    [SerializeField] private string playerTag = "Body";
+    //[ReadMe("If it is true, object will aplly damage when touches the body, otherwise you need to call functions manually")]
+    [SerializeField] private bool executeAutomatically;
 
     //Gradual decrease
-    [SerializeField] private GradualDecrease _gradualDecrease;
+    [SerializeField] private GradualDecrease gradualDecrease;
     //Instant decrease
-    [SerializeField] private InstantDecrease _instantDecrease;
+    [SerializeField] private InstantDecrease instantDecrease;
 
-    private Sanity _sanity;
+    private Sanity sanity;
 
     //Private functions
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.transform.tag == _playerTag)
+        if (executeAutomatically && collision.transform.tag == playerTag)
         {
             DecreaseSanity();
         }
     }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (executeAutomatically && collision.transform.tag == playerTag)
+        {
+            if(decreaseType == DecreaseType.Gradual)
+            {
+                sanity.ResetSanitySpeed();
+            }
+        }
+    }
+
 
     private void DecreaseSanity()
     {
         print("Decrease sanity invoked");
-        switch (_decreaseType)
+        switch (decreaseType)
         {
             case DecreaseType.Instant:
-                _instantDecrease.ApplyDamage(_sanity);
+                instantDecrease.ApplyDamage(sanity);
                 break;
             case DecreaseType.Gradual:
-                _gradualDecrease.ApplyDamage(_sanity);
+                gradualDecrease.ApplyDamage(sanity);
                 break;
         }
     }
 
     //Public functions
-    public void Initialize(Sanity sanity) => _sanity = sanity;
+    public void Initialize(Sanity sanity) => this.sanity = sanity;
+    public DecreaseType GetDecreaseType() => decreaseType;
+
+    public void OnEnterDamageArea()
+    {
+        switch (decreaseType)
+        {
+            case DecreaseType.Instant:
+                instantDecrease.ApplyDamage(sanity);
+                break;
+            case DecreaseType.Gradual:
+                gradualDecrease.ApplyDamage(sanity);
+                break;
+        }
+    }
+    public void OnExitDamageArea()
+    {
+        if (decreaseType == DecreaseType.Gradual)
+        {
+            sanity.ResetSanitySpeed();
+        }
+    }
 }
 
 [Serializable]
 public class GradualDecrease
 {
-    [SerializeField] public float _decreaseTime;
+    //[SerializeField] public float _decreaseTime;
     [SerializeField, Min(0)] public float _reductionSpeed;
     public void ApplyDamage(Sanity sanity)
     {
-        sanity.ChangeSanitySpeed(_reductionSpeed, _decreaseTime);
+        sanity.ChangeSanitySpeed(_reductionSpeed);
     }
 }
 
