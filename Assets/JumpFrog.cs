@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(Rigidbody))]
@@ -15,8 +16,9 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
-
-
+    [Header("Events")]
+    [SerializeField] private UnityEvent OnJumped;
+    [SerializeField] private UnityEvent OnLanded;
 
     private Vector3 previousVelocity;
     private Rigidbody rb;
@@ -36,8 +38,8 @@ public class JumpFrog : MonoBehaviour
 
     void Start()
     {
+        OnJumped.AddListener(DebugPrint);
         rb = GetComponent<Rigidbody>();
-        //gamepad = Gamepad.current;
         gamepads = Gamepad.all.ToArray();
 
         if (gamepads.Length == 2)
@@ -50,7 +52,6 @@ public class JumpFrog : MonoBehaviour
             leftLeg.SetGamepad(gamepads[0], false);
             rightLeg.SetGamepad(gamepads[0], false);
         }
-        //print(Gamepad.all.Count);
     }
 
     void Update()
@@ -72,6 +73,7 @@ public class JumpFrog : MonoBehaviour
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
         }
+        OnLanded?.Invoke();
     }
     private void OnCollisionExit(Collision collision)
     {
@@ -93,6 +95,11 @@ public class JumpFrog : MonoBehaviour
         {
             rb.AddForce(normalDirection * jumpModifier(strenght), ForceMode.Impulse);
         }
+    }
+
+    private void DebugPrint()
+    {
+        print("OnJumped");
     }
     private void HandleInput()
     {
@@ -139,7 +146,7 @@ public class JumpFrog : MonoBehaviour
                 {
                     pressedRight = true;
                     jumpedRight = true;
-                StartCoroutine(StartCooldown(false));
+                    StartCoroutine(StartCooldown(false));
                 }
             }
             else
@@ -175,14 +182,12 @@ public class JumpFrog : MonoBehaviour
 
         }
     }
-
     private IEnumerator StartCooldown(bool left)
     {
         yield return new WaitForSeconds(cooldownTime);
         if (left) pressedLeft = false;
         else pressedRight = false;
     }
-
     private void FixedUpdate()
     {
 
@@ -192,6 +197,7 @@ public class JumpFrog : MonoBehaviour
             {
                 //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
                 ApplyJumpForce(differenceLeft.normalized);
+                OnJumped?.Invoke();
             }
             //StartCoroutine(StartCooldown(true));
             jumpedLeft = false;
@@ -222,10 +228,10 @@ public class JumpFrog : MonoBehaviour
     {
         rb.AddForce(force, ForceMode.Impulse);
     }
-
     public Vector3 GetPredictedVelocity()
     {
         // velocity = Force/Mass
         return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
     }
+
 }

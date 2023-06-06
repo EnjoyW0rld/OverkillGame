@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[Obsolete("Old body controller script, current is JumpFrog.cs")]
 public class BodyController : MonoBehaviour
 {
     [SerializeField] private float groundDist = 0.1f;

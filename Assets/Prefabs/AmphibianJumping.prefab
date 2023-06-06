@@ -418,7 +418,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 5561349426305759274, guid: cee34008bd034a946aa3fde685972f1e, type: 3}
+  - {fileID: 8748892135801146194, guid: 27b94b86d217112469a6ba9d3347141a, type: 3}
+  - {fileID: 2100000, guid: c01b0598f53435a4195a6931940ccd14, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -443,7 +444,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5523277661179574252, guid: cee34008bd034a946aa3fde685972f1e, type: 3}
+  m_Mesh: {fileID: -5523277661179574252, guid: ce3393a7b3400424eb90fbe209147a31, type: 3}
   m_Bones:
   - {fileID: 5253409536740623857}
   - {fileID: 7127733252733681953}
@@ -1038,7 +1039,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 2, y: 0.58, z: -0.06999999}
   m_RotationAtRest: {x: 0, y: 90, z: 77.087814}
   m_TranslationOffsets:
-  - {x: -0.07294178, y: -0.18931198, z: 0}
+  - {x: -0.06753901, y: -0.17528544, z: 0}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -1235,9 +1236,9 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3225109350457827636}
-  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: -33.56, y: 41.09, z: -5.15}
-  m_LocalScale: {x: 0.27, y: 0.27, z: 0.27}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.25, y: 0.25, z: 0.25}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1442369565935623345}
@@ -1249,7 +1250,7 @@ Transform:
   - {fileID: 1840040249146378918}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &2849146276591975308
 Animator:
   serializedVersion: 4
@@ -1831,6 +1832,12 @@ MonoBehaviour:
   strenght: 50
   maxDist: 1.789634
   jumpThreshold: 0.5
+  OnJumped:
+    m_PersistentCalls:
+      m_Calls: []
+  OnLanded:
+    m_PersistentCalls:
+      m_Calls: []
   pressedLeft: 0
   pressedRight: 0
 --- !u!114 &2032261459
