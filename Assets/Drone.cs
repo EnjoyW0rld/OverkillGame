@@ -3,37 +3,34 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
 
+[RequireComponent(typeof(Damagable))]
 public class Drone : MonoBehaviour
 {
 
-    [SerializeField] Transform player;
-   
-    [SerializeField] Vector3 pointPatrolRight;
-    [SerializeField] Vector3 pointPatrolLeft;
-
-    private Vector3 pointToPatrolTo;
-
+    private Transform player;
 
     [Range(0, 90)]
     [SerializeField] int angle = 45;
 
-    [Range(0, 10)]
+    [Range(0, 50)]
     [SerializeField] float range = 1.0f;
 
-    [Range(0, 10)]
-    [SerializeField] float speed = 1.0f;
 
-    [SerializeField] Sanity sanity;
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] float reduceSanitySpeed = 2.0f;
+
+    //private Sanity sanity;
+    private Damagable damagable;
+    bool playerInRange = false;
+
+    bool appliedModifier;
+
+    private void Start()
     {
-        pointPatrolLeft += transform.position;
-        pointPatrolRight += transform.position;
-
-
-        transform.position = pointPatrolLeft;
-        pointToPatrolTo = pointPatrolRight;
+        damagable = GetComponent<Damagable>();
+        player = GameObject.FindGameObjectWithTag("Body").transform;
+        //sanity = GameObject.FindObjectOfType<Sanity>();
     }
+
 
     public void OnDrawGizmos()
     {
@@ -43,57 +40,56 @@ public class Drone : MonoBehaviour
         Vector3 right = transform.position + new Vector3(Mathf.Cos((-angle - 90) * Mathf.Deg2Rad), Mathf.Sin((-angle - 90) * Mathf.Deg2Rad)) * range;
 
 
-    
-        Gizmos.DrawLine(pointPatrolLeft + transform.position, pointPatrolRight + transform.position);
-
         Gizmos.DrawLine(transform.position, left);
         Gizmos.DrawLine(transform.position, right);
-        Gizmos.DrawWireSphere(transform.position, range);
-        //Handles.DrawBezier(left, right, new Vector3(left.y, -left.x), new Vector3(-right.y, right.x), Color.red, Texture2D.whiteTexture, 1f);
+      //  Gizmos.DrawWireSphere(transform.position, range);
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-        if (Vector3.Distance(transform.position, pointToPatrolTo) <= 0.1f)
-        {
-            if (Vector3.Distance(transform.position, pointPatrolLeft) <= 0.1f) pointToPatrolTo = pointPatrolRight;
-            else pointToPatrolTo = pointPatrolLeft;
-        }
-        else
-        {
-            Vector3 distance = (pointToPatrolTo - transform.position).normalized;
-          //  transform.position += distance * Time.deltaTime * speed;
-        }
-
-
         CheckIfPlayerInside();
-        
+        if (playerInRange)
+        {
+            damagable.OnEnterDamageArea();
+            appliedModifier = true;
+        }
+        else if(appliedModifier && !playerInRange)
+        {
+            damagable.OnExitDamageArea();
+            appliedModifier = false;
+        }
     }
-
-
 
     //Check IF ANGLE IS VIALBE
     public void CheckIfPlayerInside()
     {
         Vector3 vector = player.position - transform.position;
 
-
-
         float angleDiference = Mathf.Atan(vector.y / vector.x);
 
         float angleDeg = angleDiference * Mathf.Rad2Deg;
 
-        bool leftCor = (angleDeg >= -90 && angleDeg <= -angle);
-        bool rightCor = (angleDeg >= angle && angleDeg <= 90);
+   //     Debug.Log("______");
+   //     Debug.Log(angleDeg);
+   //     Debug.Log(vector.magnitude);
+
+        bool leftCor = (angleDeg >= -90 && angleDeg <= -(90  - angle));
+        bool rightCor = (angleDeg >= (90 - angle) && angleDeg <= 90);
 
 
-        if ((leftCor || rightCor) && vector.magnitude < range)
+        if ((leftCor || rightCor) && vector.magnitude < range )
         {
-        //    sanity.ReduceSanity(5);
-            Debug.Log("InArea");
+            if (!playerInRange)
+            {
+                //sanity.ChangeSanitySpeed(reduceSanitySpeed);
+                playerInRange = true;
+            }
+        //    Debug.Log("InArea");
+        } else if (playerInRange)
+        {
+            //sanity.ResetSanitySpeed();
+            playerInRange = false;
         }
 
 

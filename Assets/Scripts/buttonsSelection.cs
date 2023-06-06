@@ -10,6 +10,7 @@ public class buttonsSelection : MonoBehaviour
     [SerializeField] private GameObject[] standardButtons;
     [SerializeField] private GameObject[] selectedButtons;
     [SerializeField] private Button backButton;
+    [SerializeField] private AudioSource selectSound;
 
     private int buttonIndex = 0;
     private Button targetButton;
@@ -31,10 +32,17 @@ public class buttonsSelection : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > joystickThreshold)
         {
             SelectButton(buttonIndex - 1);
+            if (selectSound!=null) {
+                selectSound.Play();
+            } 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < -joystickThreshold)
         {
             SelectButton(buttonIndex + 1);
+            if (selectSound != null)
+            {
+                selectSound.Play();
+            }
         }
 
         if (Gamepad.current.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
@@ -76,6 +84,7 @@ public class buttonsSelection : MonoBehaviour
                 targetButton = backButton.GetComponent<Button>();
                 targetButton.onClick.Invoke();
                 Debug.Log("go back");
+                
             }
         }
     }
