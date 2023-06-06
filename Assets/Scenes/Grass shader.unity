@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 4
+  m_AmbientMode: 0
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -1039,7 +1039,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: -5523277661179574252, guid: 27b94b86d217112469a6ba9d3347141a,
+      objectReference: {fileID: -5523277661179574252, guid: 744fc1dcf6d4bb94aabbb96aec78ac89,
         type: 3}
     - target: {fileID: 5167465830442695953, guid: b9d641ac9435ae9459dfb25838a57606,
         type: 3}
