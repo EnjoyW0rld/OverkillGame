@@ -17,7 +17,7 @@ public class BuildNumber : MonoBehaviour
         string buildNumberString = buildNumber.ToString();
         buildNumberString = buildNumberString.Replace(',', '.');
         Debug.Log(buildNumberString);
-        buildTest.text = $"Version: {versionName} {buildNumberString}";
+        buildTest.text = $" Version: {versionName} {buildNumberString}   ";
     }
 
 }

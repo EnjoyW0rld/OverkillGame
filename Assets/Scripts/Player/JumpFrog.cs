@@ -196,9 +196,14 @@ public class JumpFrog : MonoBehaviour
     }
     private void OnDrawGizmos()
     {
+        Gizmos.color = Color.green;
         Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
 
+
+        Gizmos.color = Color.magenta;
         Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
+
+        Gizmos.color = Color.white;
     }
 
     //public functions
