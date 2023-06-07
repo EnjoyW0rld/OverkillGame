@@ -15,20 +15,27 @@ public class buttonsSelection : MonoBehaviour
     private int buttonIndex = 0;
     private Button targetButton;
 
-    public ButtonControl aButton { get; }
-    public ButtonControl bButton { get; }
+
+    public ButtonControl aButton { get; private set; }
+    public ButtonControl bButton { get; private set; }
 
     private bool isInputAllowed = true;
     [SerializeField] private float joystickThreshold = 0.5f;
 
-    // Start is called before the first frame update
-    void Start()
+    private Gamepad game;
+    private void Start()
     {
-        
+        game = Gamepad.current;
+        aButton = game.aButton;
+        bButton = game.bButton;
+        print(Gamepad.current);
+        //aButton.
+        //ButtonControl a = 
     }
 
     void Update()
     {
+        //if (game.aButton.wasPressedThisFrame) print("aaaa");
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > joystickThreshold)
         {
             SelectButton(buttonIndex - 1);
@@ -45,29 +52,9 @@ public class buttonsSelection : MonoBehaviour
             }
         }
 
-        if (Gamepad.current.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
+        if (game.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
         {
-            /*if (GameObject.Find("playSelected"))
-            {
-                //start game
-                Debug.Log("game start");
-            }
-            else if (GameObject.Find("OptionsSelected"))
-            {
-                //open options
-                Debug.Log("options");
-            }
-            else if (GameObject.Find("exitSelected"))
-            {
-                //exit game
-                Debug.Log("exit game");
-            }
-            else if (GameObject.Find("creditsSelected"))
-            {
-                //credits
-                Debug.Log("credits");
-                creditsScene.SetActive(true);
-            }*/
+            print("pressed");
             for (int i = 0; i < selectedButtons.Length; i++)
             {
                 if (selectedButtons[i].activeSelf)
