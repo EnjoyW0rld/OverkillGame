@@ -5,29 +5,29 @@ using UnityEngine;
 public class Respawning_Player : MonoBehaviour
 {
 
-    [SerializeField] Vector3 lastPosition;
-
+    [SerializeField] private Vector3 lastPosition;
+    [SerializeField] private Vector3 lastGrassPoint;
     [SerializeField] LayerMask mask;
-    // Start is called before the first frame update
-    void Start()
+
+
+    private void Start()
     {
-        
+        FindObjectOfType<Sanity>().OnZeroSanity.AddListener(RespawnAtGrassPoint);
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyUp(KeyCode.R))
         {
-            Respawn();
+            RespawnAtLastPosition();
         }
     }
 
     public void FixedUpdate()
     {
-        if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.right).normalized, out RaycastHit hit ,3f, mask))
+        if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.right).normalized, out RaycastHit hit, 3f, mask))
         {
-            
+
             Transform firstHit = hit.transform;
             if (Physics.Raycast(this.transform.position, (Vector3.down + Vector3.left).normalized, out RaycastHit hit2, 3f, mask))
             {
@@ -40,14 +40,16 @@ public class Respawning_Player : MonoBehaviour
 
     public void OnDrawGizmos()
     {
-
-       
         Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.right).normalized * 3f);
         Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.left).normalized * 3f);
     }
 
-
-    public void Respawn()
+    public void SetGrassPoint(Vector3 point) => lastGrassPoint = point;
+    public void RespawnAtGrassPoint()
+    {
+        transform.position = lastGrassPoint;
+    }
+    public void RespawnAtLastPosition()
     {
         transform.position = lastPosition;
     }

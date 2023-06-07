@@ -46,7 +46,6 @@ public class Damagable : MonoBehaviour
 
     private void DecreaseSanity()
     {
-        print("Decrease sanity invoked");
         switch (decreaseType)
         {
             case DecreaseType.Instant:
