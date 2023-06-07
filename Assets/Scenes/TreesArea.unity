@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0, g: 0, b: 0, a: 1}
+  m_IndirectSpecularColor: {r: 262.38354, g: 325.1084, b: 430.30957, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -5047,12 +5047,12 @@ PrefabInstance:
     - target: {fileID: 2234106398505317294, guid: b9d641ac9435ae9459dfb25838a57606,
         type: 3}
       propertyPath: m_TranslationOffsets.Array.data[0].x
-      value: -0.07294178
+      value: -0.06754017
       objectReference: {fileID: 0}
     - target: {fileID: 2234106398505317294, guid: b9d641ac9435ae9459dfb25838a57606,
         type: 3}
       propertyPath: m_TranslationOffsets.Array.data[0].y
-      value: -0.18931198
+      value: -0.17528534
       objectReference: {fileID: 0}
     - target: {fileID: 2849146276591975310, guid: b9d641ac9435ae9459dfb25838a57606,
         type: 3}
@@ -5514,7 +5514,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599587078}
   m_LocalRotation: {x: 0.070854425, y: 0, z: 0, w: 0.9974867}
-  m_LocalPosition: {x: -61.579998, y: -6.8964734, z: 9.100405}
+  m_LocalPosition: {x: -61.579998, y: -7.0364738, z: 9.100405}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -8261,11 +8261,21 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -7635826562936255635, guid: ae7c8485d76c7c148903eab5b03e560d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 116b4623ea92378438b4cb2518d6b1b9, type: 2}
     - target: {fileID: 919132149155446097, guid: ae7c8485d76c7c148903eab5b03e560d,
         type: 3}
       propertyPath: m_Name
       value: benderHead
       objectReference: {fileID: 0}
+    - target: {fileID: 5597831471926848873, guid: ae7c8485d76c7c148903eab5b03e560d,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 116b4623ea92378438b4cb2518d6b1b9, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ae7c8485d76c7c148903eab5b03e560d, type: 3}
 --- !u!1 &833816858
@@ -11160,6 +11170,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 45150431977047859, guid: 9f972b4346f8ae144889a7c202815d45,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c36e99ca1f6493479465785fcc54f20, type: 2}
     - target: {fileID: 919132149155446097, guid: 9f972b4346f8ae144889a7c202815d45,
         type: 3}
       propertyPath: m_Name
@@ -11983,6 +11998,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8296501855837295048, guid: edac3b86962172a44879bcd26395ee4b,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7c36e99ca1f6493479465785fcc54f20, type: 2}
     - target: {fileID: 919132149155446097, guid: edac3b86962172a44879bcd26395ee4b,
         type: 3}
       propertyPath: m_Name
@@ -14103,8 +14123,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1.9594635, z: 1}
+  m_Center: {x: -1.1344775e-10, y: 0.479732, z: 0}
 --- !u!23 &1425092976
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -14162,14 +14182,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1425092974}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -45.925865, y: -14.693, z: 31}
+  m_LocalRotation: {x: -0, y: -0, z: -0.0120087415, w: 0.99992794}
+  m_LocalPosition: {x: -45.925865, y: -14.8, z: 31}
   m_LocalScale: {x: 13.628826, y: 0.98402035, z: 4.8048}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 359897856}
   m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -1.376}
 --- !u!1 &1432272751
 GameObject:
   m_ObjectHideFlags: 0
@@ -16647,6 +16667,11 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: -4801375028698469793, guid: 904d701d9be12b64791b18387551bdd2,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 704a125434746e64bbe9fb311c077e7f, type: 2}
     - target: {fileID: 919132149155446097, guid: 904d701d9be12b64791b18387551bdd2,
         type: 3}
       propertyPath: m_Name
@@ -19537,6 +19562,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: keyboard
       objectReference: {fileID: 0}
+    - target: {fileID: 5235238926596794568, guid: c34acf749a4f7234da0059c4f0817e37,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 6bc885bd251431f4dad31b7706efa490, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c34acf749a4f7234da0059c4f0817e37, type: 3}
 --- !u!4 &1915529059 stripped
@@ -19640,6 +19670,25 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1920045553}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1920045555 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1762ac4e91d3a7c4db8d6f1e360ebf8a,
+    type: 3}
+  m_PrefabInstance: {fileID: 1920045553}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1920045556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1920045555}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acb1200cb829a304c8b4ab267727bc35, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  stengthDecreaseValue: 1.5
 --- !u!1 &1924702893
 GameObject:
   m_ObjectHideFlags: 0

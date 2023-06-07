@@ -17,7 +17,7 @@ public class DeathCube : MonoBehaviour
                 playerRespawn = other.gameObject.GetComponent<Respawning_Player>();
             }
 
-            playerRespawn.Respawn();
+            playerRespawn.RespawnAtLastPosition();
         }
     }
 }

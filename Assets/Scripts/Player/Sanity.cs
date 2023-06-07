@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.Events;
 
 public class Sanity : MonoBehaviour
 {
-    [SerializeField] float sanity = 100.0f;
-    [SerializeField] float reduceSpeed = 1.0f;
+    [SerializeField] private float sanity = 100.0f;
+    [SerializeField] private float reduceSpeed = 1.0f;
+    private float initialSanityAmount;
     private float initialReduceSpeed;
     private float maxSanity;
     private bool coroutinePlaying;
 
+    public UnityEvent OnZeroSanity;
+
     private void Awake()
     {
+        initialSanityAmount = sanity;
         initialReduceSpeed = reduceSpeed;
         InitializeDamagables();
     }
@@ -73,7 +77,6 @@ public class Sanity : MonoBehaviour
     public void ChangeSanitySpeed(float reduceValue)
     {
         reduceSpeed = reduceValue;
-        Debug.Log(reduceSpeed + " new reduce speed");
     }
 
 
@@ -81,10 +84,16 @@ public class Sanity : MonoBehaviour
     {
         reduceSpeed = initialReduceSpeed;
     }
+    public void ResetSanityAmount() => sanity = initialSanityAmount;
 
     public void ReduceSanity(float amount)
     {
         sanity -= amount * Time.deltaTime;
+        if (sanity <= 0)
+        {
+            Debug.Log("Sanity zero invoked");
+            OnZeroSanity?.Invoke();
+        }
         sanity = sanity < 0 ? 0 : sanity;
     }
     public void AddSanity(float amount)

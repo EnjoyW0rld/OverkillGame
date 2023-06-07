@@ -38,7 +38,6 @@ public class JumpFrog : MonoBehaviour
 
     void Start()
     {
-        OnJumped.AddListener(DebugPrint);
         rb = GetComponent<Rigidbody>();
         gamepads = Gamepad.all.ToArray();
 
@@ -72,6 +71,7 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
+            print("Added new function");
         }
         OnLanded?.Invoke();
     }
@@ -97,10 +97,6 @@ public class JumpFrog : MonoBehaviour
         }
     }
 
-    private void DebugPrint()
-    {
-        print("OnJumped");
-    }
     private void HandleInput()
     {
         if (gamepads.Length > 2)
@@ -119,10 +115,6 @@ public class JumpFrog : MonoBehaviour
                     StartCoroutine(StartCooldown(false));
                 }
             }
-            else
-            {
-                //pressedRight = false;
-            }
 
             if (gamepads[1].buttonSouth.ReadValue() == 1 && leftLeg.GetGrounded())
             {
@@ -132,10 +124,6 @@ public class JumpFrog : MonoBehaviour
                     jumpedLeft = true;
                     StartCoroutine(StartCooldown(true));
                 }
-            }
-            else
-            {
-                //pressedLeft = false;
             }
         }
         if (gamepads.Length == 1)
@@ -149,10 +137,6 @@ public class JumpFrog : MonoBehaviour
                     StartCoroutine(StartCooldown(false));
                 }
             }
-            else
-            {
-                //pressedRight = false;
-            }
 
             if (gamepads[0].dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
             {
@@ -163,10 +147,6 @@ public class JumpFrog : MonoBehaviour
                     StartCoroutine(StartCooldown(true));
 
                 }
-            }
-            else
-            {
-                //pressedLeft = false;
             }
         }
         else
@@ -196,9 +176,9 @@ public class JumpFrog : MonoBehaviour
             if (Vector3.Dot(differenceLeft.normalized, Vector3.up) > jumpThreshold)
             {
                 //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
+            }
                 ApplyJumpForce(differenceLeft.normalized);
                 OnJumped?.Invoke();
-            }
             //StartCoroutine(StartCooldown(true));
             jumpedLeft = false;
         }
@@ -207,8 +187,8 @@ public class JumpFrog : MonoBehaviour
         {
             if (Vector3.Dot(differenceRight.normalized, Vector3.up) > jumpThreshold)
             {
-                ApplyJumpForce(differenceRight.normalized);
             }
+                ApplyJumpForce(differenceRight.normalized);
             //StartCoroutine(StartCooldown(false));
             jumpedRight = false;
         }
