@@ -13,9 +13,15 @@ public class SafePoint : MonoBehaviour
     {
         if(other.tag == "Body")
         {
+<<<<<<< HEAD
+            sanity.ResetSanityAmount();
+            //print(other.GetComponent<Respawning_Player>());
+            other.GetComponent<Respawning_Player>().SetGrassPoint(transform.position);
+=======
             //sanity.ResetSanityAmount();
             //print(other.GetComponent<Respawning_Player>());
             //other.GetComponent<Respawning_Player>().SetGrassPoint(transform.position);
+>>>>>>> master
         }
         
     }
