@@ -15,6 +15,7 @@ public class buttonsSelection : MonoBehaviour
     private int buttonIndex = 0;
     private Button targetButton;
 
+
     public ButtonControl aButton { get; }
     public ButtonControl bButton { get; }
 
@@ -27,14 +28,14 @@ public class buttonsSelection : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > joystickThreshold)
         {
             SelectButton(buttonIndex - 1);
-            if (selectSound!=null) {
+            if (selectSound!=null && !selectSound.isPlaying) {
                 selectSound.Play();
             } 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < -joystickThreshold)
         {
             SelectButton(buttonIndex + 1);
-            if (selectSound != null)
+            if (selectSound != null && !selectSound.isPlaying)
             {
                 selectSound.Play();
             }
@@ -42,27 +43,7 @@ public class buttonsSelection : MonoBehaviour
 
         if (Gamepad.current.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
         {
-            /*if (GameObject.Find("playSelected"))
-            {
-                //start game
-                Debug.Log("game start");
-            }
-            else if (GameObject.Find("OptionsSelected"))
-            {
-                //open options
-                Debug.Log("options");
-            }
-            else if (GameObject.Find("exitSelected"))
-            {
-                //exit game
-                Debug.Log("exit game");
-            }
-            else if (GameObject.Find("creditsSelected"))
-            {
-                //credits
-                Debug.Log("credits");
-                creditsScene.SetActive(true);
-            }*/
+            
             for (int i = 0; i < selectedButtons.Length; i++)
             {
                 if (selectedButtons[i].activeSelf)
