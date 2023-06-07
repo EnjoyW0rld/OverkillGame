@@ -1,0 +1,106 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eed5864476f84ce4b85454db09ca4eaa, type: 3}
+  m_Name: graph_0
+  m_EditorClassIdentifier: 
+  AssetPath: Assets/Models/Pipes/pipe_triple_initialShadingGroup.sbsar
+  OutputPath: Assets/Models/Pipes/pipe_triple_initialShadingGroup_graph_0
+  RawData: {fileID: -244192453324840774, guid: f9405b049fa2e6f41b08a14f51552a0d, type: 3}
+  Name: graph_0
+  IsRoot: 1
+  FlagedForDelete: 0
+  GUID: dfedf60c-7852-468e-b8a0-9a393d9f6ba7
+  Index: 0
+  Input: []
+  Output:
+  - Index: 0
+    VirtualOutputIndex: 4
+    Description:
+      Identifier: pipe_triple_initialShadingGroup_BaseMap
+      Label: pipe_triple_initialShadingGroup_BaseMap
+      Index: 0
+      Type: 8
+      Channel: baseColor
+    OutputTexture: {fileID: 2800000, guid: 2e24343b8f29c1e4bb6bd8da3cf1d199, type: 3}
+    sRGB: 1
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _BaseColorMap
+  - Index: 1
+    VirtualOutputIndex: 5
+    Description:
+      Identifier: pipe_triple_initialShadingGroup_MaskMap
+      Label: pipe_triple_initialShadingGroup_MaskMap
+      Index: 1
+      Type: 8
+      Channel: metallic
+    OutputTexture: {fileID: 0}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 1
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _MetallicGlossMap
+  - Index: 2
+    VirtualOutputIndex: 6
+    Description:
+      Identifier: pipe_triple_initialShadingGroup_Normal
+      Label: pipe_triple_initialShadingGroup_Normal
+      Index: 2
+      Type: 8
+      Channel: normal
+    OutputTexture: {fileID: 2800000, guid: b13141617f2c0d9489d686152511d3dc, type: 3}
+    sRGB: 0
+    IsVirtual: 0
+    IsAlphaAssignable: 0
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 0
+    MaterialTextureTarget: _NormalMap
+  - Index: 3
+    VirtualOutputIndex: 3
+    Description:
+      Identifier: mask
+      Label: mask
+      Index: 3
+      Type: 8
+      Channel: mask
+    OutputTexture: {fileID: 2800000, guid: 0c28308edfcfabc43b952b16070df0cc, type: 3}
+    sRGB: 0
+    IsVirtual: 1
+    IsAlphaAssignable: 0
+    AlphaChannel: 
+    InvertAssignedAlpha: 0
+    Flags: 6
+    MaterialTextureTarget: _MaskMap
+  HasPhysicalSize: 0
+  PhysicalSize: {x: 0, y: 0, z: 0}
+  EnablePhysicalSize: 0
+  Thumbnail: 
+  HasThumbnail: 0
+  CurrentStatePreset: 
+  IsRuntimeOnly: 0
+  GenerateAllOutputs: 0
+  GenerateAllMipmaps: 1
+  OutputMaterial: {fileID: 2100000, guid: bbdd913b6a4cf7e43ad89ef0c241d938, type: 2}
+  DefaultPreset: " <sbspreset pkgurl=\"pkg://pipe_triple_initialShadingGroup\" label=\"\"
+    >\n </sbspreset>\n"
+  MaterialShader: HDRP/Lit
+  RenderTextures: 0
+  OutputRemaped: 0
+  references:
+    version: 2
+    RefIds: []
