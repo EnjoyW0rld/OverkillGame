@@ -41,9 +41,13 @@ public class ObjectMoveOnLine : MonoBehaviour
     {
         currentPositionPercentage += Time.deltaTime * speed;
 
+        //Clamps as lerp is being used to set the position
         currentPositionPercentage = Mathf.Clamp(currentPositionPercentage, 0, 1);
 
+        //Exact values can be used because of the clamp above 
         if (currentPositionPercentage == 0 || currentPositionPercentage == 1) speed *= -1;
+
+
         this.transform.position = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
     }
 
@@ -53,6 +57,11 @@ public class ObjectMoveOnLine : MonoBehaviour
         this.transform.position = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
     }
 
+#if UNITY_EDITOR
+
+    /// <summary>
+    /// EditorScript to set the object on the line, easier to see where it would start when the game starts.
+    /// </summary>
     public void EditorSetObjectAtPercentageLine()
     {
         if (lineToFollow == null) lineToFollow = GetComponentInParent<LineForObjects>();
@@ -62,6 +71,8 @@ public class ObjectMoveOnLine : MonoBehaviour
         bottomPoint = lineToFollow.GetRightGlobalPosition();
         this.transform.position = Vector3.Lerp(topPoint, bottomPoint, currentPositionPercentage);
     }
+#endif
+
 
     public float getCurrentPositionPercentage()
     {
@@ -72,6 +83,8 @@ public class ObjectMoveOnLine : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public bool GetDirection() => speed > 0;
+
+
     public void OnDrawGizmos()
     {
 
