@@ -27,6 +27,7 @@ public class TrajectoryLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         float dt = seconds / amountPositions;
 
         for (int i = 0; i < amountPositions; i++)
@@ -37,9 +38,9 @@ public class TrajectoryLine : MonoBehaviour
             Vector3 velocity = body.GetPredictedVelocity();
 
             Vector3 positionILine;
+            //Master Formula for line trajectory with gravity enabled
             positionILine = new Vector3(originalPosition.x + velocity.x * (i * dt), originalPosition.y + (velocity.y * (i*dt)) + ((Physics.gravity.y * Mathf.Pow(i * dt, 2)) / 2), zValueLine);
 
-         //   positionILine = new Vector3(positionILine.z, positionILine.y, positionILine.x);
             lineRenderer.SetPosition(i, positionILine);
         }
 

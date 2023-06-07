@@ -18,6 +18,7 @@ public class LineForObjects : MonoBehaviour
         return new Vector3(rightLocalPosition.x, rightLocalPosition.y, 0) + this.transform.position;
     }
 
+    //Draws the line from left to right, so it's easier to see where the objects will move between
     public void OnDrawGizmos()
     {
         Gizmos.DrawLine(GetLeftGlobalPosition(), GetRightGlobalPosition());

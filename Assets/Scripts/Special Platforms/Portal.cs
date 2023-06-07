@@ -25,11 +25,16 @@ public class Portal : MonoBehaviour
 
     public void Update()
     {
+        //No Portal Connected nothing to do
+        if (connectedPortal == null) return;
+
         if (Input.GetKeyDown(KeyCode.T) && canTeleport)
         {
             player.transform.position = (new Vector3(connectedPortal.endPoint.x, connectedPortal.endPoint.y, 0) + connectedPortal.transform.position);
         }
     }
+
+    //OnTriggers set the bool, as you can't detect buttonpresses in ontriggers (doesn't run every frame)
 
     private void OnTriggerEnter(Collider other)
     {

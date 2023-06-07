@@ -4,7 +4,9 @@ using Unity.VisualScripting;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Video;
+using System;
 
+[Obsolete("Much quicker to do manually, then to automate")]
 public class AddVideoToScreen : MonoBehaviour
 {
     [SerializeField] string videoNames;
