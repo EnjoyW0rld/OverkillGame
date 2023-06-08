@@ -39,14 +39,14 @@ public class buttonsSelection : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > joystickThreshold)
         {
             SelectButton(buttonIndex - 1);
-            if (selectSound!=null) {
+            if (selectSound!=null && !selectSound.isPlaying) {
                 selectSound.Play();
             } 
         }
         else if (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetAxis("Vertical") < -joystickThreshold)
         {
             SelectButton(buttonIndex + 1);
-            if (selectSound != null)
+            if (selectSound != null && !selectSound.isPlaying)
             {
                 selectSound.Play();
             }
@@ -54,7 +54,7 @@ public class buttonsSelection : MonoBehaviour
 
         if (game.aButton.wasPressedThisFrame || Input.GetKeyDown(KeyCode.Return))
         {
-            print("pressed");
+            
             for (int i = 0; i < selectedButtons.Length; i++)
             {
                 if (selectedButtons[i].activeSelf)
