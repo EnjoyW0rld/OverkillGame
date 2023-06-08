@@ -13,6 +13,7 @@ public class Respawning_Player : MonoBehaviour
     private void Start()
     {
         FindObjectOfType<Sanity>().OnZeroSanity.AddListener(RespawnAtGrassPoint);
+        lastGrassPoint = transform.position;
     }
 
     void Update()
