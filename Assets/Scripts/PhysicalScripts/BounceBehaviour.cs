@@ -8,6 +8,7 @@ public class BounceBehaviour : BodyAffecter
     [SerializeField] private float jumpMultiplier = 1.5f;
     [SerializeField] private float reloadTime = 2;
     [SerializeField] private float bounceModifier = 4;
+    [SerializeField, Range(0, 1)] private float velocityPreserving;
     private bool reloaded = true;
 
     protected override void SetExpression()
@@ -25,8 +26,14 @@ public class BounceBehaviour : BodyAffecter
         {
             reloaded = false;
             Vector3 velocity = frog.GetVelocity();
-            Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up) * bounceModifier;
-            frog.ApplyForce(mirroredVel);
+            //Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up) * bounceModifier;
+            frog.ApplyForce(Vector3.up * velocity.magnitude);
+            //float speed = mirroredVel.magnitude;
+            //mirroredVel = mirroredVel.normalized * velocityPreserving + Vector3.up * (1 - velocityPreserving);
+            //mirroredVel *= speed;
+
+            //frog.ApplyForce(mirroredVel);
+            //print("applying more velocity " + mirroredVel);
             StartCoroutine(SetCooldown());
         }
         //base.OnCollisionAction(frog);
