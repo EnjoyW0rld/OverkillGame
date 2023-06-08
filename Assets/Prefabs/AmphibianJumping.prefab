@@ -418,8 +418,9 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 8748892135801146194, guid: 27b94b86d217112469a6ba9d3347141a, type: 3}
-  - {fileID: 2100000, guid: c01b0598f53435a4195a6931940ccd14, type: 2}
+  - {fileID: 2100000, guid: 7a14ede3bbc691f468340cc6c39c8c9e, type: 2}
+  - {fileID: 2100000, guid: b6c69edd7040b1a489bf3ba7042b33e8, type: 2}
+  - {fileID: 2100000, guid: 6d1a63310af18fb41a9a32466ce17e7f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -444,7 +445,7 @@ SkinnedMeshRenderer:
   m_Quality: 0
   m_UpdateWhenOffscreen: 0
   m_SkinnedMotionVectors: 1
-  m_Mesh: {fileID: -5523277661179574252, guid: ce3393a7b3400424eb90fbe209147a31, type: 3}
+  m_Mesh: {fileID: -5523277661179574252, guid: 744fc1dcf6d4bb94aabbb96aec78ac89, type: 3}
   m_Bones:
   - {fileID: 5253409536740623857}
   - {fileID: 7127733252733681953}
@@ -1039,7 +1040,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 2, y: 0.58, z: -0.06999999}
   m_RotationAtRest: {x: 0, y: 90, z: 77.087814}
   m_TranslationOffsets:
-  - {x: -0.06753901, y: -0.17528544, z: 0}
+  - {x: -0.06754017, y: -0.17528534, z: 0}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -1853,6 +1854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lastPosition: {x: 0, y: 0, z: 0}
+  lastGrassPoint: {x: 0, y: 0, z: 0}
   mask:
     serializedVersion: 2
     m_Bits: 256
@@ -1870,6 +1872,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sanity: 100
   reduceSpeed: 1
+  OnZeroSanity:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &6784820271638688552
 GameObject:
   m_ObjectHideFlags: 0
