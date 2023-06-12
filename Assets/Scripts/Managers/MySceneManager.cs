@@ -14,4 +14,9 @@ public class MySceneManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public static void ReloadScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
 }
