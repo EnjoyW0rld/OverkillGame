@@ -93,6 +93,7 @@ public class Sanity : MonoBehaviour
         {
             Debug.Log("Sanity zero invoked");
             OnZeroSanity?.Invoke();
+            sanity = initialSanityAmount;
         }
         sanity = sanity < 0 ? 0 : sanity;
     }
