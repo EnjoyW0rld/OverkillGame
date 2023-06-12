@@ -36,13 +36,16 @@ public class GlobalSettings : MonoBehaviour
         DontDestroyOnLoad(this.gameObject);
 
 
+    }
+
+    public void Start()
+    {
         volume.profile.TryGet<Exposure>(out Exposure pExposure);
 
         exposure = pExposure;
 
         LoadSettings();
     }
-
 
     public void SetSoundVolume(float amount)
     {
@@ -114,6 +117,8 @@ public class GlobalSettings : MonoBehaviour
     {
         onLoadOptions?.Invoke();
 
+
+        Debug.Log(GetSfxVolume());
         SetSoundVolume(GetSoundVolume());
         SetSfxVolume(GetSfxVolume());
         SetBrightness(GetBrightness());
