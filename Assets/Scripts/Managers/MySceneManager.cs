@@ -19,4 +19,9 @@ public class MySceneManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void Update()
+    {
+        if (Input.GetKeyUp(KeyCode.X)) ReloadScene();
+    }
+
 }
