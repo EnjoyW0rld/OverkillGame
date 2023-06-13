@@ -4455,8 +4455,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 268764566}
   m_LocalRotation: {x: -0, y: -0, z: 0.00000081956375, w: 1}
-  m_LocalPosition: {x: 95.7, y: -30.66, z: 31}
-  m_LocalScale: {x: 6.454538, y: 1.5980595, z: 4.8048}
+  m_LocalPosition: {x: 102.8245, y: -30.66, z: 31}
+  m_LocalScale: {x: 20.70289, y: 1.5980595, z: 4.8048}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 359897856}
@@ -15346,7 +15346,7 @@ BoxCollider:
   m_GameObject: {fileID: 783854301}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -20550,6 +20550,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 279091362, guid: 35f27c29e4c1dd748ae163e16d3eae3d, type: 3}
+      propertyPath: springStrenght
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233731163827684198, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
+        type: 3}
+      propertyPath: m_Spring
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8233731163827684248, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
+        type: 3}
+      propertyPath: m_Spring
+      value: 50
+      objectReference: {fileID: 0}
     - target: {fileID: 8233731164854446140, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
         type: 3}
       propertyPath: m_RootOrder
@@ -20610,7 +20624,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: ZigZag
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 9071275504179995861, guid: 35f27c29e4c1dd748ae163e16d3eae3d, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 35f27c29e4c1dd748ae163e16d3eae3d, type: 3}
 --- !u!1 &1129097896
 GameObject:
