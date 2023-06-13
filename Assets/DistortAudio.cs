@@ -19,6 +19,12 @@ public class DistortAudio : MonoBehaviour
 
     [SerializeField] AudioMixer mixer;
 
+
+    public void Start()
+    {
+        SetEffectMixer(.5f);
+    }
+
     public void SetEffectMixer(float percentage)
     {
         foreach(AudioEffect effect in effects)
