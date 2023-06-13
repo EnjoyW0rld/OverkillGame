@@ -13,19 +13,19 @@ MonoBehaviour:
   m_Name: graph_0
   m_EditorClassIdentifier: 
   AssetPath: Assets/TreeAssets/wires for pipes/metallic.sbsar
-  OutputPath: Assets/TreeAssets/wires for pipes/metallic_graph_0
+  OutputPath: Assets\TreeAssets\wires for pipes\metallic_graph_0
   RawData: {fileID: -244192453324840774, guid: 78352d3e5cd03844aaa7face1828072d, type: 3}
   Name: graph_0
   IsRoot: 1
   FlagedForDelete: 0
-  GUID: ebceb811-448d-4ff6-9130-a7d9090e1f95
+  GUID: 8afaf93c-623b-4c6b-a1f3-d4b165375ced
   Index: 0
   Input:
-  - rid: 5540962744601935872
-  - rid: 5540962744601935873
-  - rid: 5540962744601935874
-  - rid: 5540962744601935875
-  - rid: 5540962744601935876
+  - rid: 5760900272223158272
+  - rid: 5760900272223158273
+  - rid: 5760900272223158274
+  - rid: 5760900272223158275
+  - rid: 5760900272223158276
   Output:
   - Index: 0
     VirtualOutputIndex: 5
@@ -112,12 +112,7 @@ MonoBehaviour:
   EnablePhysicalSize: 0
   Thumbnail: 
   HasThumbnail: 0
-  CurrentStatePreset: " <sbspreset pkgurl=\"pkg://Metal\" label=\"\" >\n  <presetinput
-    identifier=\"$outputsize\" uid=\"2733954247\" type=\"8\" value=\"10,10\" />\n 
-    <presetinput identifier=\"dirtColor\" uid=\"3482863228\" type=\"3\" value=\"0.764151,0.598128,0.255919,1\"
-    />\n  <presetinput identifier=\"materialColor\" uid=\"3482863260\" type=\"3\"
-    value=\"0.451629,0.457529,0.481132,1\" />\n  <presetinput identifier=\"RoughnessColor\"
-    uid=\"3482861934\" type=\"0\" value=\"0.6\" />\n </sbspreset>\n"
+  CurrentStatePreset: 
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -131,7 +126,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5540962744601935872
+    - rid: 5760900272223158272
       type: {class: SubstanceInputInt2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 0
@@ -150,7 +145,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962744601935873
+    - rid: 5760900272223158273
       type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 1
@@ -172,7 +167,7 @@ MonoBehaviour:
           LabelTrue: 
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962744601935874
+    - rid: 5760900272223158274
       type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 2
@@ -183,7 +178,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 3
           WidgetType: 3
-        Data: {x: 0.764151, y: 0.59812754, z: 0.2559185, w: 1}
+        Data: {x: 0.247126, y: 0.242791, z: 0.242791, w: 1}
         NumericalDescription:
           DefaultValue: {x: 0.247126, y: 0.242791, z: 0.242791, w: 1}
           MinValue: {x: 0, y: 0, z: 0, w: 0}
@@ -192,7 +187,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962744601935875
+    - rid: 5760900272223158275
       type: {class: SubstanceInputFloat4, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 3
@@ -203,7 +198,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 3
           WidgetType: 3
-        Data: {x: 0.4516287, y: 0.4575294, z: 0.4811321, w: 1}
+        Data: {x: 0.203771, y: 0.214236, z: 0.247126, w: 1}
         NumericalDescription:
           DefaultValue: {x: 0.203771, y: 0.214236, z: 0.247126, w: 1}
           MinValue: {x: 0, y: 0, z: 0, w: 0}
@@ -212,7 +207,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962744601935876
+    - rid: 5760900272223158276
       type: {class: SubstanceInputFloat, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 4
@@ -223,7 +218,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 3
-        Data: 0.6
+        Data: 0.128686
         NumericalDescription:
           DefaultValue: 0.128686
           MinValue: 0
