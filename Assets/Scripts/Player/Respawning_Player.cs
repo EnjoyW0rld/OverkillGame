@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Respawning_Player : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class Respawning_Player : MonoBehaviour
     [SerializeField] private Vector3 lastGrassPoint;
     [SerializeField] LayerMask mask;
 
+
+    [SerializeField] UnityEvent onRespawnTest;
 
     private void Start()
     {
@@ -79,5 +82,10 @@ public class Respawning_Player : MonoBehaviour
     public void RespawnAtLastPosition()
     {
         transform.position = lastPosition;
+    }
+
+    public void FaderRespawn()
+    {
+        onRespawnTest?.Invoke();
     }
 }
