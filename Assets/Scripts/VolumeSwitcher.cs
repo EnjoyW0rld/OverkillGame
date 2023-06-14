@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
+[RequireComponent(typeof(Volume))]
 public class VolumeSwitcher : MonoBehaviour
 {
 
