@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Rendering;
 
-public class NewBehaviourScript : MonoBehaviour
+public class VolumeSwitcher : MonoBehaviour
 {
 
 

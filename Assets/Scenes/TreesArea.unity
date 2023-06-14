@@ -1272,6 +1272,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: --- LIGHTING ---
       objectReference: {fileID: 0}
+    - target: {fileID: 6944923857257154779, guid: 0e8e75d846675c0469f47ecf8a469c71,
+        type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6944923857257154781, guid: 0e8e75d846675c0469f47ecf8a469c71,
+        type: 3}
+      propertyPath: weight
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0e8e75d846675c0469f47ecf8a469c71, type: 3}
 --- !u!1001 &119924196
@@ -3825,6 +3835,88 @@ Transform:
   m_Father: {fileID: 1443298174}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &393748854
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 393748857}
+  - component: {fileID: 393748856}
+  - component: {fileID: 393748855}
+  - component: {fileID: 393748858}
+  m_Layer: 0
+  m_Name: VolumeDecraseSanity
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &393748855
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393748854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 0
+  sharedProfile: {fileID: 11400000, guid: dbbe039fb8a0ed24b95b63d47774bbc6, type: 2}
+--- !u!114 &393748856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393748854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: 18b08d8ab2a160041a11953eb0cdf0bd, type: 2}
+--- !u!4 &393748857
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393748854}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 152.39041, y: -37.50723, z: 3.593267}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 47
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &393748858
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 393748854}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8f9968a00eb6844f91b6f14d2361258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeStart: {fileID: 393748856}
+  volumeEnd: {fileID: 393748855}
 --- !u!1001 &395940476
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6549,6 +6641,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2032261461}
     - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
       propertyPath: OnZeroSanity.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
       objectReference: {fileID: 0}
@@ -6557,15 +6653,63 @@ PrefabInstance:
       value: Play
       objectReference: {fileID: 0}
     - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1279309562}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 393748858}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
       propertyPath: OnZeroSanity.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: UnityEngine.Animator, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPercentageDistortion
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetPercentageVolumes
       objectReference: {fileID: 0}
     - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
       propertyPath: OnZeroSanity.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
       value: Fader
       objectReference: {fileID: 0}
     - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DistortAudio, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: VolumeSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
       propertyPath: OnZeroSanity.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 2032261461, guid: b9d641ac9435ae9459dfb25838a57606, type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 1840040249146378922, guid: b9d641ac9435ae9459dfb25838a57606,
@@ -10459,6 +10603,9 @@ MonoBehaviour:
   OnZeroSanity:
     m_PersistentCalls:
       m_Calls: []
+  OnNormalizedSanityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!114 &889171942
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13669,6 +13816,9 @@ MonoBehaviour:
   OnZeroSanity:
     m_PersistentCalls:
       m_Calls: []
+  OnNormalizedSanityChanged:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1215378465 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 6784820271432421601, guid: b9d641ac9435ae9459dfb25838a57606,
@@ -14507,6 +14657,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1278636731}
   m_Mesh: {fileID: -1682125421048621038, guid: 656a2b0457a797b44829fbe7b9211293, type: 3}
+--- !u!114 &1279309562 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5597749385982252803, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
+    type: 3}
+  m_PrefabInstance: {fileID: 5597749386641496628}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c09f2bca45b6484d929c9962c0f3dde, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1286140916
 PrefabInstance:
   m_ObjectHideFlags: 0
