@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(MeshFilter))]
+[RequireComponent(typeof(MeshRenderer))]
 public class DroneAreaDraw : MonoBehaviour
 {
     private Vector3[] vertices;
@@ -10,7 +11,6 @@ public class DroneAreaDraw : MonoBehaviour
     private Mesh mesh;
     private Vector2[] uvs;
     [SerializeField] private Drone drone;
-    
     private void Start()
     {
         drone = transform.parent.GetComponent<Drone>();
