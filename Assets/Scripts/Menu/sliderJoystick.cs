@@ -11,6 +11,7 @@ public class sliderJoystick : MonoBehaviour
     void Update()
     {
         float h = Input.GetAxis("Horizontal");
+        print(gameObject.name);
         slider.value += h * sensitivity * Time.deltaTime;
     }
 }
