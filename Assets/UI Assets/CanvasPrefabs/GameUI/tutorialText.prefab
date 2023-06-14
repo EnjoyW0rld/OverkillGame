@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2364866011396717820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -67,7 +67,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_text: "Use your left joysticks to control the legs' positioning. \nEach of you
-    controls one leg, so you have to work together!"
+    controls one leg, so you must work together!"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d770675c1cac63458d7a3e1cce4c4cd, type: 2}
   m_sharedMaterial: {fileID: -8361073306119885745, guid: 4d770675c1cac63458d7a3e1cce4c4cd,
@@ -212,7 +212,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 62.4, y: 16.1}
+  m_AnchoredPosition: {x: 202.8, y: 16.1}
   m_SizeDelta: {x: 28, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2364866012249308720
@@ -320,10 +320,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Jump by pressing        .
+  m_text: 'Jump by putting your legs on the ground and pressing      .
 
-    To reach maximum power, synchronize your
-    forces.'
+    To reach
+    maximum power, synchronize your forces.'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d770675c1cac63458d7a3e1cce4c4cd, type: 2}
   m_sharedMaterial: {fileID: -8361073306119885745, guid: 4d770675c1cac63458d7a3e1cce4c4cd,
@@ -405,12 +405,12 @@ GameObject:
   - component: {fileID: 6975919918467341534}
   - component: {fileID: 1805443021014592309}
   m_Layer: 5
-  m_Name: sanityInfo (1)
+  m_Name: enemiesInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8906551872043959934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -459,11 +459,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'While you adventure through these ominous realms, your sanity will drop
-    to worrying levels.
+  m_text: 'Don''t forget that you are in a dangerous environment.
 
-    Keep yourself sane by touching some grass once in a
-    while.'
+    Some creatures
+    will drive you insane, so do your best to avoid them. '
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4d770675c1cac63458d7a3e1cce4c4cd, type: 2}
   m_sharedMaterial: {fileID: -8361073306119885745, guid: 4d770675c1cac63458d7a3e1cce4c4cd,
