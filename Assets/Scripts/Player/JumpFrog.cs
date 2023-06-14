@@ -65,22 +65,43 @@ public class JumpFrog : MonoBehaviour
         previousVelocity = rb.velocity;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = affector.GetExpression();
+            affector.OnCollisionAction(this);
+            print("Added new function");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = null;
+        }
+
+    }
     private void OnCollisionEnter(Collision collision)
     {
+        /**
         if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
             print("Added new function");
         }
+        /**/
         OnLanded?.Invoke();
     }
     private void OnCollisionExit(Collision collision)
     {
+        /**
         if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
             jumpModifier = null;
         }
+        /**/
     }
 
 
