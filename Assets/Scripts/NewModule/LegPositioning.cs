@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+using UnityEngine.Events;
+
 [RequireComponent(typeof(Rigidbody))]
 public class LegPositioning : MonoBehaviour
 {
@@ -16,6 +18,10 @@ public class LegPositioning : MonoBehaviour
     private float maxDist;
     private Gamepad gamepad;
     private bool twoGamepads;
+
+    [SerializeField] UnityEvent onLegsMovingStart;
+    [SerializeField] UnityEvent onLegsMovingStop;
+
 
     private void Start()
     {
@@ -31,7 +37,9 @@ public class LegPositioning : MonoBehaviour
         if (input.magnitude != 0 && !isGrounded)
         {
             rb.velocity += new Vector3(0, -rb.velocity.y, 0);
+            onLegsMovingStart?.Invoke();
         }
+        else onLegsMovingStop?.Invoke();
         rb.position += input * Time.deltaTime * _speed;
     }
     private void FixedUpdate()
