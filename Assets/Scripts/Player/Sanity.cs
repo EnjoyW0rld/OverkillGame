@@ -2,6 +2,15 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using System;
+
+
+[Serializable]
+public class FloatUnityEvent : UnityEvent<float>
+{
+
+}
+
 
 public class Sanity : MonoBehaviour
 {
@@ -13,6 +22,8 @@ public class Sanity : MonoBehaviour
     private bool coroutinePlaying;
 
     public UnityEvent OnZeroSanity;
+
+    public FloatUnityEvent OnNormalizedSanityChanged;
 
     private void Awake()
     {
@@ -60,6 +71,8 @@ public class Sanity : MonoBehaviour
     public void DecreaseSanity(float val)
     {
         sanity -= val < 0 ? 0 : val;
+
+        OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
     }
 
     /*
@@ -84,7 +97,12 @@ public class Sanity : MonoBehaviour
     {
         reduceSpeed = initialReduceSpeed;
     }
-    public void ResetSanityAmount() => sanity = initialSanityAmount;
+    public void ResetSanityAmount()
+    {
+        sanity = initialSanityAmount;
+        OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
+    }
+
 
     public void ReduceSanity(float amount)
     {
@@ -93,14 +111,19 @@ public class Sanity : MonoBehaviour
         {
             Debug.Log("Sanity zero invoked");
             OnZeroSanity?.Invoke();
-            sanity = initialSanityAmount;
+            ResetSanityAmount();
+            return;
         }
         sanity = sanity < 0 ? 0 : sanity;
+
+        OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
     }
     public void AddSanity(float amount)
     {
         sanity += amount * Time.deltaTime;
         sanity = Mathf.Min(100.0f, sanity);
+
+        OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
     }
     public float GetNormalizedSanity()
     {

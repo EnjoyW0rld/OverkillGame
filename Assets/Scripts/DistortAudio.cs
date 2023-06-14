@@ -20,29 +20,15 @@ public class DistortAudio : MonoBehaviour
     [SerializeField] List<AudioEffect> effects;
     [SerializeField] AudioMixer mixer;
 
-    Sanity sanity;
-
-
-    private void Start()
+    public void SetPercentageDistortion(float amount)
     {
-        sanity = FindObjectOfType<Sanity>();
-        if (sanity == null)
-        {
-            Debug.LogWarning("No sanity object was found, destroying self - " + name);
-            Destroy(this);
-        }
-    }
-
-    private void Update()
-    {
-
         //Makes the distortion happen roughly 2/3 way in, and quickly distorting
-        float percentage = Mathf.Pow(sanity.GetNormalizedSanity(), 10);
+        float percentage = Mathf.Pow(amount, 10);
 
         SetEffectMixer(percentage);
     }
 
-    public void SetEffectMixer(float percentage)
+    private void SetEffectMixer(float percentage)
     {
         foreach(AudioEffect effect in effects)
         {
