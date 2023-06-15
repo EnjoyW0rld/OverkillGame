@@ -2,6 +2,10 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+
+[Serializable]
+public class DirectionEvent : UnityEvent<Vector3> { }
 
 public class Fly : MonoBehaviour
 {
@@ -19,7 +23,9 @@ public class Fly : MonoBehaviour
 
     Sanity sanity;
 
+    public DirectionEvent onDirectionChanged;
 
+    private bool frogInDamgaeArea = false;
 
 
     public void OnDrawGizmos()
@@ -45,6 +51,9 @@ public class Fly : MonoBehaviour
         {
             Vector3 difNormal = (player.position - this.transform.position).normalized;
 
+            if (frogInDamgaeArea) return;
+            onDirectionChanged?.Invoke(difNormal);
+
             transform.position += difNormal * speed * Time.deltaTime;
         }
         else if (Vector3.Distance(startPos, this.transform.position) > .1f)
@@ -56,18 +65,16 @@ public class Fly : MonoBehaviour
 
     public void OnTriggerEnter(Collider other)
     {
+        frogInDamgaeArea = true;
         sanity.ChangeSanitySpeed(reduceSanitySpeed);
        // Debug.Log("enteredsanity");
     }
 
     public void OnTriggerExit(Collider other)
     {
+        frogInDamgaeArea = false;
         sanity.ResetSanitySpeed();
        // Debug.Log("exitsanity");
     }
-
-
-
-
 
 }
