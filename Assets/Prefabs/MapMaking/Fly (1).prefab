@@ -273,11 +273,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752b992074b77f6418673d84f0d30322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseType: 0
+  decreaseType: 1
   playerTag: Body
-  executeAutomatically: 0
+  executeAutomatically: 1
   gradualDecrease:
-    _reductionSpeed: 0
+    _reductionSpeed: 2
   instantDecrease:
     _valueToDecrease: 0
 --- !u!114 &2686037917238992150
