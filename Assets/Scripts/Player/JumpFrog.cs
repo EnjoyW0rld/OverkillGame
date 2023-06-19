@@ -17,7 +17,7 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
     [Header("Events")]
-    [SerializeField] private UnityEvent OnJumped;
+    public UnityEvent OnJumped;
     [SerializeField] private UnityEvent OnLanded;
 
     private Vector3 previousVelocity;
@@ -65,22 +65,43 @@ public class JumpFrog : MonoBehaviour
         previousVelocity = rb.velocity;
     }
 
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = affector.GetExpression();
+            affector.OnCollisionAction(this);
+            print("Added new function");
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = null;
+        }
+
+    }
     private void OnCollisionEnter(Collision collision)
     {
+        /**
         if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
             print("Added new function");
         }
+        /**/
         OnLanded?.Invoke();
     }
     private void OnCollisionExit(Collision collision)
     {
+        /**
         if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
             jumpModifier = null;
         }
+        /**/
     }
 
 
@@ -90,10 +111,14 @@ public class JumpFrog : MonoBehaviour
         if (jumpModifier == null)
         {
             rb.AddForce(normalDirection * strenght, ForceMode.Impulse);
+            OnJumped?.Invoke();
+
         }
         else
         {
             rb.AddForce(normalDirection * jumpModifier(strenght), ForceMode.Impulse);
+            OnJumped?.Invoke();
+
         }
     }
 
@@ -178,7 +203,6 @@ public class JumpFrog : MonoBehaviour
                 //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
             }
                 ApplyJumpForce(differenceLeft.normalized);
-                OnJumped?.Invoke();
             //StartCoroutine(StartCooldown(true));
             jumpedLeft = false;
         }

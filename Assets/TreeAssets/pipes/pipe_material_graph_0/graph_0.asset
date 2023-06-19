@@ -13,16 +13,16 @@ MonoBehaviour:
   m_Name: graph_0
   m_EditorClassIdentifier: 
   AssetPath: Assets/TreeAssets/pipes/pipe_material.sbsar
-  OutputPath: Assets/TreeAssets/pipes/pipe_material_graph_0
+  OutputPath: Assets\TreeAssets\pipes\pipe_material_graph_0
   RawData: {fileID: -244192453324840774, guid: 4baa76fb00f5e1d468e39181b064611a, type: 3}
   Name: graph_0
   IsRoot: 1
   FlagedForDelete: 0
-  GUID: 4b92a4ab-bf8b-42c5-9ae0-94a07e437586
+  GUID: 23beb4ff-97a7-4351-8cb3-1842a4ca79f1
   Index: 0
   Input:
-  - rid: 5540962744601935877
-  - rid: 5540962744601935878
+  - rid: 7705398703154790405
+  - rid: 7705398703154790406
   Output:
   - Index: 0
     VirtualOutputIndex: 7
@@ -155,7 +155,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5540962744601935877
+    - rid: 7705398703154790405
       type: {class: SubstanceInputInt2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 0
@@ -174,7 +174,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962744601935878
+    - rid: 7705398703154790406
       type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 1
