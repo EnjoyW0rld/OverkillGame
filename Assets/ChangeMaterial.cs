@@ -17,7 +17,6 @@ public class ChangeMaterial : MonoBehaviour
         rend = GetComponent<SkinnedMeshRenderer>();
         mat = rend.materials[1];
 
-        HideMaterial();
         ShowMaterial();
 
 
@@ -27,7 +26,7 @@ public class ChangeMaterial : MonoBehaviour
     {
         List<Material> temp = new List<Material>(rend.materials);
 
-        temp[1] = null;
+        temp[1] = test2;
         rend.materials = temp.ToArray();
 
         Debug.Log(rend.materials[1]);
@@ -42,11 +41,7 @@ public class ChangeMaterial : MonoBehaviour
     }
 
 
-    public void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.T)) HideMaterial();
-        if (Input.GetKeyDown(KeyCode.Y)) ShowMaterial();
-    }
+
 
 
 }
