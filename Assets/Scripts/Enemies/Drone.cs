@@ -80,7 +80,7 @@ public class Drone : MonoBehaviour
     {
         endRayPoints[0].x = transform.position.x + rayDist;
         endRayPoints[1].x = transform.position.x - rayDist;
-        CheckIfPlayerInside();
+        playerInRange = IsDroneSeeingPlayer();
         if (playerInRange)
         {
             OnPlayerSpotted?.Invoke();
@@ -96,40 +96,34 @@ public class Drone : MonoBehaviour
     }
 
     //Check IF ANGLE IS VIALBE
-    private void CheckIfPlayerInside()
+    private bool IsDroneSeeingPlayer()
     {
-        playerInRange = IsInsideTriangular();
-        /**
-        Vector3 vector = player.position - transform.position;
-        float angleDiference = Mathf.Atan(vector.y / vector.x);
+        if (!IsInsideTriangular()) return false;
 
-        float angleDeg = angleDiference * Mathf.Rad2Deg;
+        if (!IsNothingBetweenDroneAndPlayer()) return false;
 
-   //     Debug.Log("______");
-   //     Debug.Log(angleDeg);
-   //     Debug.Log(vector.magnitude);
-
-        bool leftCor = (angleDeg >= -90 && angleDeg <= -(90  - angle));
-        bool rightCor = (angleDeg >= (90 - angle) && angleDeg <= 90);
-
-
-        if ((leftCor || rightCor) && vector.magnitude < range )
-        {
-            if (!playerInRange)
-
-            {
-                //sanity.ChangeSanitySpeed(reduceSanitySpeed);
-                playerInRange = true;
-            }
-        //    Debug.Log("InArea");
-        } else if (playerInRange)
-        {
-            //sanity.ResetSanitySpeed();
-            playerInRange = false;
-        }
-        /**/
+        Debug.Log("Seeing!");
+        return true;
 
     }
+
+    private bool IsNothingBetweenDroneAndPlayer()
+    {
+        Vector3 playerPos = player.transform.position;
+        Vector3 dronePosition = this.transform.position;
+
+
+        Vector3 direction = playerPos - dronePosition;
+
+        if (!Physics.Raycast(this.transform.position, direction, out RaycastHit hitInfo, range)) 
+        {
+            Debug.LogError("Couldn't see player in range from drone");
+            return false;
+        }
+
+        return hitInfo.collider.gameObject == player.gameObject;
+    }
+
     private bool IsInsideTriangular()
     {
         Vector3 playerPos = player.transform.position;
