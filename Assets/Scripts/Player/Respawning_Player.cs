@@ -3,8 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+
 public class Respawning_Player : MonoBehaviour
 {
+
 
     [SerializeField] private Vector3 lastPosition;
     [SerializeField] private Vector3 lastGrassPoint;
@@ -13,9 +16,10 @@ public class Respawning_Player : MonoBehaviour
 
     [SerializeField] UnityEvent onRespawnTest;
 
+
     private void Start()
     {
-        FindObjectOfType<Sanity>().OnZeroSanity.AddListener(RespawnAtGrassPoint);
+        FindObjectOfType<Sanity>().OnZeroSanity.AddListener(FaderRespawnGrassPoint);
         lastGrassPoint = transform.position;
     }
 
@@ -87,5 +91,12 @@ public class Respawning_Player : MonoBehaviour
     public void FaderRespawn()
     {
         onRespawnTest?.Invoke();
+        FadeInOut.Instance.Fade(RespawnAtLastPosition);
+    }
+
+    public void FaderRespawnGrassPoint()
+    {
+        onRespawnTest?.Invoke();
+        FadeInOut.Instance.Fade(RespawnAtGrassPoint);
     }
 }
