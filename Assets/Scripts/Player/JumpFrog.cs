@@ -17,7 +17,7 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
     [Header("Events")]
-    [SerializeField] private UnityEvent OnJumped;
+    public UnityEvent OnJumped;
     [SerializeField] private UnityEvent OnLanded;
 
     private Vector3 previousVelocity;
@@ -111,10 +111,14 @@ public class JumpFrog : MonoBehaviour
         if (jumpModifier == null)
         {
             rb.AddForce(normalDirection * strenght, ForceMode.Impulse);
+            OnJumped?.Invoke();
+
         }
         else
         {
             rb.AddForce(normalDirection * jumpModifier(strenght), ForceMode.Impulse);
+            OnJumped?.Invoke();
+
         }
     }
 
@@ -199,7 +203,6 @@ public class JumpFrog : MonoBehaviour
                 //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
             }
                 ApplyJumpForce(differenceLeft.normalized);
-                OnJumped?.Invoke();
             //StartCoroutine(StartCooldown(true));
             jumpedLeft = false;
         }
