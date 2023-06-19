@@ -6,11 +6,11 @@ using UnityEngine.InputSystem;
 
 public class TutorialHandler : MonoBehaviour
 {
-    [SerializeField] private CanvasGroup legControlls, jumpControlls, sanityTutorial;
+    [SerializeField] private CanvasGroup legControlls, jumpControlls, sanityTutorial, enemyTutorial;
     [SerializeField] private float fadeTime;
     private Gamepad[] gamepads;
 
-    private enum TutorialState { Leg, Jump, Sanity, Finished }
+    private enum TutorialState { Leg, Jump, Sanity, Enemy, Finished }
     private TutorialState state;
 
     [Header("Leg controlls variables")]
@@ -26,6 +26,11 @@ public class TutorialHandler : MonoBehaviour
     [Header("Sanity tutorial variables")]
     [SerializeField] private float sanityTutorialTimer;
     private float sanityTutorialCurrentTime;
+
+    [Header("Enemy tutorial variables")]
+    [SerializeField] private float enemyTutorialTimer;
+    private float enemyTutorialCurrentTime;
+
 
     private JumpFrog jumpFrog;
 
@@ -52,6 +57,9 @@ public class TutorialHandler : MonoBehaviour
             case TutorialState.Finished:
                 jumpFrog.OnJumped.RemoveListener(SetJumped);
                 Destroy(gameObject);
+                break;
+            case TutorialState.Enemy:
+                EnemyTutorialControll();
                 break;
         }
     }
@@ -90,9 +98,21 @@ public class TutorialHandler : MonoBehaviour
     private void SanityTutorialControll()
     {
         sanityTutorialCurrentTime += Time.deltaTime;
-        if( sanityTutorialCurrentTime > sanityTutorialTimer)
+        if (sanityTutorialCurrentTime > sanityTutorialTimer)
         {
             StartCoroutine(Fade(sanityTutorial, 0, () =>
+            {
+                StartCoroutine(Fade(enemyTutorial, 1));
+                state = TutorialState.Enemy;
+            }));
+        }
+    }
+    private void EnemyTutorialControll()
+    {
+        enemyTutorialCurrentTime += Time.deltaTime;
+        if (enemyTutorialCurrentTime > sanityTutorialTimer)
+        {
+            StartCoroutine(Fade(enemyTutorial, 0, () =>
             {
                 state = TutorialState.Finished;
             }));

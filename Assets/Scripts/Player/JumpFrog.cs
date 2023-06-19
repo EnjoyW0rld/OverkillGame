@@ -71,7 +71,6 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
-            print("Added new function");
         }
     }
     private void OnTriggerExit(Collider other)

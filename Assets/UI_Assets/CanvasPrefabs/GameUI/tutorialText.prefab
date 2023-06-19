@@ -206,10 +206,12 @@ MonoBehaviour:
   legControlls: {fileID: 615262643}
   jumpControlls: {fileID: 155282223}
   sanityTutorial: {fileID: 312390552}
+  enemyTutorial: {fileID: 2647753958388622840}
   fadeTime: 2
   legControllsTimer: 4
   jumpControllsTimer: 4
   sanityTutorialTimer: 4
+  enemyTutorialTimer: 4
 --- !u!1 &2364866012249308723
 GameObject:
   m_ObjectHideFlags: 0
@@ -450,13 +452,14 @@ GameObject:
   - component: {fileID: 8906551872043959934}
   - component: {fileID: 6975919918467341534}
   - component: {fileID: 1805443021014592309}
+  - component: {fileID: 2647753958388622840}
   m_Layer: 5
   m_Name: enemiesInfo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8906551872043959934
 RectTransform:
   m_ObjectHideFlags: 0
@@ -578,6 +581,18 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!225 &2647753958388622840
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3245669633736776990}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7126301945637921291
 GameObject:
   m_ObjectHideFlags: 0
