@@ -27,6 +27,13 @@ public class Fly : MonoBehaviour
 
     private bool frogInDamgaeArea = false;
 
+    public UnityEvent onPlayerEnterFly;
+    public UnityEvent onPlayerExitFly;
+    public UnityEvent onPlayerEnterTargetRange;
+    public UnityEvent onPlayerExitTargetRange;
+
+    private bool inRange = false;
+
 
     public void OnDrawGizmos()
     {
@@ -47,6 +54,8 @@ public class Fly : MonoBehaviour
     void Update()
     {
 
+
+
         if (Vector3.Distance(player.position, this.transform.position) <= range)
         {
             Vector3 difNormal = (player.position - this.transform.position).normalized;
@@ -55,26 +64,36 @@ public class Fly : MonoBehaviour
             onDirectionChanged?.Invoke(difNormal);
 
             transform.position += difNormal * speed * Time.deltaTime;
+
+            if (!inRange)
+            {
+                onPlayerEnterTargetRange?.Invoke();
+                inRange = true;
+            }
+
         }
         else if (Vector3.Distance(startPos, this.transform.position) > .1f)
         {
             transform.position = Vector3.Lerp(this.transform.position, startPos, Time.deltaTime * 4f);
-            // transform.position = Vector3.Lerp(this.transform.position, startPos, .05f);
+
+            if (inRange)
+            {
+                onPlayerExitTargetRange?.Invoke();
+                inRange = false;
+            }
         }
     }
 
     public void OnTriggerEnter(Collider other)
     {
         frogInDamgaeArea = true;
-        sanity.ChangeSanitySpeed(reduceSanitySpeed);
-       // Debug.Log("enteredsanity");
+        onPlayerEnterFly?.Invoke();
     }
 
     public void OnTriggerExit(Collider other)
     {
         frogInDamgaeArea = false;
-        sanity.ResetSanitySpeed();
-       // Debug.Log("exitsanity");
+        onPlayerExitFly?.Invoke();
     }
 
 }
