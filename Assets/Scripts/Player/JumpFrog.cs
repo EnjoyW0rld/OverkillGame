@@ -73,6 +73,7 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -241,8 +242,17 @@ public class JumpFrog : MonoBehaviour
     }
     public Vector3 GetPredictedVelocity()
     {
-        // velocity = Force/Mass
-        return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+        if (jumpModifier == null)
+        {
+            return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+
+        }
+        else
+        {
+            return (differenceLeft.normalized * jumpModifier(strenght) + differenceRight.normalized * jumpModifier(strenght)) / rb.mass;
+
+        }
+
     }
 
 }
