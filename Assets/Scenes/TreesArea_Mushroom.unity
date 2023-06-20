@@ -16050,6 +16050,18 @@ MonoBehaviour:
   onDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &549079870
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16535,6 +16547,7 @@ GameObject:
   - component: {fileID: 561646374}
   - component: {fileID: 561646376}
   - component: {fileID: 561646375}
+  - component: {fileID: 561646377}
   m_Layer: 8
   m_Name: pond
   m_TagString: Untagged
@@ -16607,6 +16620,103 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 561646373}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!82 &561646377
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 561646373}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 7fb3cbc869797c04aaf188066e6b416f, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 80
+  MaxDistance: 100
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &563952096
 GameObject:
   m_ObjectHideFlags: 0
@@ -27470,6 +27580,18 @@ MonoBehaviour:
   onDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &927140668
 GameObject:
   m_ObjectHideFlags: 0
@@ -28294,6 +28416,18 @@ MonoBehaviour:
   speed: 1
   reduceSanitySpeed: 2
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &968361007
@@ -35902,6 +36036,18 @@ MonoBehaviour:
   onDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &1276740571
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -36467,6 +36613,18 @@ MonoBehaviour:
   speed: 2
   reduceSanitySpeed: 5
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1297044000
@@ -50305,6 +50463,18 @@ MonoBehaviour:
   onDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &1774588073
 GameObject:
   m_ObjectHideFlags: 0
@@ -51617,6 +51787,18 @@ MonoBehaviour:
   speed: 2
   reduceSanitySpeed: 5
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1830720059
@@ -54146,6 +54328,18 @@ MonoBehaviour:
   speed: 1
   reduceSanitySpeed: 2
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &1931051878
@@ -57127,6 +57321,18 @@ MonoBehaviour:
   onDirectionChanged:
     m_PersistentCalls:
       m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &2031183027
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57383,6 +57589,18 @@ MonoBehaviour:
   speed: 2
   reduceSanitySpeed: 5
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!1001 &2033746181
@@ -57991,6 +58209,18 @@ MonoBehaviour:
   speed: 1
   reduceSanitySpeed: 2
   onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
     m_PersistentCalls:
       m_Calls: []
 --- !u!4 &2044896424 stripped
