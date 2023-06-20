@@ -10,6 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 8002738145868543875}
   - component: {fileID: 2401157017861455435}
+  - component: {fileID: 8530530688902952862}
+  - component: {fileID: 6729752650625606527}
+  - component: {fileID: 585323649422444870}
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
@@ -43,11 +46,11 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 8e8f094bfd8709e4fa9d1c6a89526da1, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 9786cd45ff15abd45a6fe3d09e89636f, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -129,6 +132,136 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!82 &8530530688902952862
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628399074832919704}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
+    type: 2}
+  m_audioClip: {fileID: 8300000, guid: 8e8f094bfd8709e4fa9d1c6a89526da1, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 0
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &6729752650625606527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628399074832919704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d874293a75515048bba81bd5765aaf1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstSource: {fileID: 2401157017861455435}
+  secondSource: {fileID: 8530530688902952862}
+--- !u!114 &585323649422444870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1628399074832919704}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7de142809759384469427b7cb35ecf3b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  soundMinBetween: 0
+  soundMaxBetween: 0
+  clips:
+  - {fileID: 8300000, guid: fb9303b477077734881f66293804d4cf, type: 3}
+  - {fileID: 8300000, guid: 1dd9a41ff205bd943a2e4cac3defc99c, type: 3}
+  - {fileID: 8300000, guid: 9786cd45ff15abd45a6fe3d09e89636f, type: 3}
+  - {fileID: 8300000, guid: 75d9c3e276b73eb4cb0a49a234845b81, type: 3}
 --- !u!1 &4893249969839593063
 GameObject:
   m_ObjectHideFlags: 0
@@ -261,6 +394,66 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5654118947590600972}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: OnEnterDamageArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5654118947590600972}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: OnExitDamageArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6729752650625606527}
+        m_TargetAssemblyTypeName: AudioSwitcher, Assembly-CSharp
+        m_MethodName: SwithToDifferent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6729752650625606527}
+        m_TargetAssemblyTypeName: AudioSwitcher, Assembly-CSharp
+        m_MethodName: SwitchToNormal
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5654118947590600972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,13 +466,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 752b992074b77f6418673d84f0d30322, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  decreaseType: 1
+  decreaseType: 0
   playerTag: Body
-  executeAutomatically: 1
+  executeAutomatically: 0
   gradualDecrease:
-    _reductionSpeed: 2
+    _reductionSpeed: 10
   instantDecrease:
-    _valueToDecrease: 0
+    _valueToDecrease: 10
 --- !u!114 &2686037917238992150
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -6,7 +6,7 @@ using UnityEngine.InputSystem;
 public class PauseMenuHandler : MonoBehaviour
 {
     private Gamepad[] gamepads;
-    [SerializeField] private GameObject gamePauseCanvas, optionCanvas;
+    [SerializeField] private GameObject gamePauseCanvas, optionCanvas, controllsCanvas;
     private void Start()
     {
         gamepads = Gamepad.all.ToArray();
@@ -16,6 +16,11 @@ public class PauseMenuHandler : MonoBehaviour
         if (PressedPauseButton())
         {
             gamePauseCanvas.SetActive(!gamePauseCanvas.activeSelf);
+            if (!gamePauseCanvas.activeSelf)
+            {
+                optionCanvas.SetActive(false);
+                controllsCanvas.SetActive(false);
+            }
         }
     }
     private bool PressedPauseButton()

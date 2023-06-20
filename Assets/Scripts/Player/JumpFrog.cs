@@ -12,10 +12,12 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private LegPositioning leftLeg;
     [SerializeField] private LegPositioning rightLeg;
     [SerializeField] private float cooldownTime = 10;
+
     [Header("Move variables")]
     [SerializeField] private float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
+    [SerializeField] private float maxVelocityMagnitude = 7;
     [Header("Events")]
     public UnityEvent OnJumped;
     [SerializeField] private UnityEvent OnLanded;
@@ -71,6 +73,7 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
+            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
     private void OnTriggerExit(Collider other)
@@ -107,6 +110,7 @@ public class JumpFrog : MonoBehaviour
     //Private functions
     private void ApplyJumpForce(Vector3 normalDirection)
     {
+        if (GetVelocity().magnitude > maxVelocityMagnitude) return;
         if (jumpModifier == null)
         {
             rb.AddForce(normalDirection * strenght, ForceMode.Impulse);
@@ -238,8 +242,17 @@ public class JumpFrog : MonoBehaviour
     }
     public Vector3 GetPredictedVelocity()
     {
-        // velocity = Force/Mass
-        return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+        if (jumpModifier == null)
+        {
+            return (differenceLeft.normalized * strenght + differenceRight.normalized * strenght) / rb.mass;
+
+        }
+        else
+        {
+            return (differenceLeft.normalized * jumpModifier(strenght) + differenceRight.normalized * jumpModifier(strenght)) / rb.mass;
+
+        }
+
     }
 
 }

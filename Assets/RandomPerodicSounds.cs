@@ -42,6 +42,8 @@ public class RandomPerodicSounds : MonoBehaviour
         while(true)
         {
             yield return new WaitForSeconds(waitTime);
+
+            if (source.isPlaying) continue;
             PlayRandomSound();
             waitTime = Random.Range(soundMinBetween, soundMaxBetween);
         }
