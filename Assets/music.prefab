@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5597749385982252802}
   - component: {fileID: 5597749385982252801}
   - component: {fileID: 5597749385982252803}
+  - component: {fileID: -413632016129584266}
   m_Layer: 0
   m_Name: music
   m_TagString: Untagged
@@ -183,3 +184,15 @@ MonoBehaviour:
     startValue: 0
     endValue: -14.6
   mixer: {fileID: 24100000, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e, type: 2}
+--- !u!114 &-413632016129584266
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5597749385982252800}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32432f806f0eab1429a07605d2684dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
