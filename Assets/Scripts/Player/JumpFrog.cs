@@ -12,10 +12,12 @@ public class JumpFrog : MonoBehaviour
     [SerializeField] private LegPositioning leftLeg;
     [SerializeField] private LegPositioning rightLeg;
     [SerializeField] private float cooldownTime = 10;
+
     [Header("Move variables")]
     [SerializeField] private float strenght = 1.0f;
     [SerializeField] private float maxDist = 1;
     [SerializeField] private float jumpThreshold = .5f;
+    [SerializeField] private float maxVelocityMagnitude = 7;
     [Header("Events")]
     public UnityEvent OnJumped;
     [SerializeField] private UnityEvent OnLanded;
@@ -107,6 +109,7 @@ public class JumpFrog : MonoBehaviour
     //Private functions
     private void ApplyJumpForce(Vector3 normalDirection)
     {
+        if (GetVelocity().magnitude > maxVelocityMagnitude) return;
         if (jumpModifier == null)
         {
             rb.AddForce(normalDirection * strenght, ForceMode.Impulse);

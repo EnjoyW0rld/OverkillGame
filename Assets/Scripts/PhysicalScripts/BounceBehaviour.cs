@@ -6,16 +6,18 @@ public class BounceBehaviour : BodyAffecter
 {
     [ReadMe("Apply this is script to the platform you want to be bouncy")]
     [SerializeField] private float jumpMultiplier = 1.5f;
-    [SerializeField] private float reloadTime = 2;
-    [SerializeField] private float bounceModifier = 4;
+    //[SerializeField] private float reloadTime = 2;
+    //[SerializeField] private float bounceModifier = 4;
     //[ReadMe("")]
     //[SerializeField, Range(0, 1)] private float velocityPreserving;
-    private bool reloaded = true;
+    //private bool reloaded = true;
 
     protected override void SetExpression()
     {
         expression = x => x * jumpMultiplier;
     }
+
+    /**
     private IEnumerator SetCooldown()
     {
         yield return new WaitForSeconds(reloadTime);
@@ -23,22 +25,27 @@ public class BounceBehaviour : BodyAffecter
     }
     public override void OnCollisionAction(JumpFrog frog)
     {
-        print("is here");
+        //return;
         if (reloaded)
         {
             print("on reloaded");
             reloaded = false;
             Vector3 velocity = frog.GetVelocity();
             //Vector3 mirroredVel = Vector3.Reflect(velocity, Vector3.up) * bounceModifier;
-            frog.ApplyForce(Vector3.up * velocity.magnitude * bounceModifier);
+            if (velocity.magnitude < 8)
+            {
+                frog.ApplyForce(Vector3.up * velocity.magnitude * bounceModifier);
+                print(transform.parent.name);
+            }
             //float speed = mirroredVel.magnitude;
             //mirroredVel = mirroredVel.normalized * velocityPreserving + Vector3.up * (1 - velocityPreserving);
             //mirroredVel *= speed;
-
+            //if (frog.GetVelocity().magnitude > 5) print("huuuge velocity is " + frog.GetVelocity().magnitude);
             //frog.ApplyForce(mirroredVel);
             //print("applying more velocity " + mirroredVel);
             StartCoroutine(SetCooldown());
         }
         //base.OnCollisionAction(frog);
     }
+    /**/
 }
