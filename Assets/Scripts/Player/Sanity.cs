@@ -103,6 +103,11 @@ public class Sanity : MonoBehaviour
         OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
     }
 
+    public void ResetSanityAmountFader()
+    {
+        FadeInOut.Instance.Fade(ResetSanityAmount);
+    }
+
 
     public void ReduceSanity(float amount)
     {
@@ -111,7 +116,7 @@ public class Sanity : MonoBehaviour
         {
             Debug.Log("Sanity zero invoked");
             OnZeroSanity?.Invoke();
-            ResetSanityAmount();
+            ResetSanityAmountFader();
             return;
         }
         sanity = sanity < 0 ? 0 : sanity;
