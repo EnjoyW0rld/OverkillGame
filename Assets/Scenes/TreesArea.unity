@@ -24,7 +24,7 @@ RenderSettings:
   m_AmbientEquatorColor: {r: 0.114, g: 0.125, b: 0.133, a: 1}
   m_AmbientGroundColor: {r: 0.047, g: 0.043, b: 0.035, a: 1}
   m_AmbientIntensity: 1
-  m_AmbientMode: 0
+  m_AmbientMode: 4
   m_SubtractiveShadowColor: {r: 0.42, g: 0.478, b: 0.627, a: 1}
   m_SkyboxMaterial: {fileID: 0}
   m_HaloStrength: 0.5
@@ -10524,7 +10524,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599587078}
   m_LocalRotation: {x: 0.070854425, y: 0, z: 0, w: 0.9974867}
-  m_LocalPosition: {x: -61.579998, y: -5.536474, z: 9.100405}
+  m_LocalPosition: {x: -61.58, y: -5.5364738, z: -2.9795964}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -11226,7 +11226,7 @@ PrefabInstance:
     - target: {fileID: 2114801240078347034, guid: c15dd911c05bf9249b755a0dbb458e0d,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c15dd911c05bf9249b755a0dbb458e0d, type: 3}
@@ -23037,6 +23037,20 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1659570723}
     m_Modifications:
+    - target: {fileID: 312390552, guid: 026df70158c3acb449a8ea7f730c7d33, type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805443021014592309, guid: 026df70158c3acb449a8ea7f730c7d33,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 95.092255
+      objectReference: {fileID: 0}
+    - target: {fileID: 1805443021014592309, guid: 026df70158c3acb449a8ea7f730c7d33,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 98.30411
+      objectReference: {fileID: 0}
     - target: {fileID: 2364866011873222641, guid: 026df70158c3acb449a8ea7f730c7d33,
         type: 3}
       propertyPath: m_Pivot.x
@@ -23151,6 +23165,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2647753958388622840, guid: 026df70158c3acb449a8ea7f730c7d33,
+        type: 3}
+      propertyPath: m_Alpha
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948484028623684981, guid: 026df70158c3acb449a8ea7f730c7d33,
+        type: 3}
+      propertyPath: m_margin.x
+      value: 95.20679
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948484028623684981, guid: 026df70158c3acb449a8ea7f730c7d33,
+        type: 3}
+      propertyPath: m_margin.z
+      value: 96.135056
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 026df70158c3acb449a8ea7f730c7d33, type: 3}
@@ -23376,7 +23405,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ad980451443d70438faac0bc6c235a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_TrackedObjectOffset: {x: 12, y: 1.5, z: 0.02}
+  m_TrackedObjectOffset: {x: 24.08, y: 1.5, z: 0.02}
   m_LookaheadTime: 0.1
   m_LookaheadSmoothing: 0.1
   m_LookaheadIgnoreY: 0
@@ -25881,7 +25910,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 65c9fd94ad977ec42a2515d78ca556bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
+  animator: {fileID: 1523942930}
 --- !u!4 &1525956830 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4462948341937109696, guid: b1d53cf567b1bba4bb09ca9155254178,
@@ -28236,7 +28265,7 @@ PrefabInstance:
     - target: {fileID: 2114801240078347034, guid: c15dd911c05bf9249b755a0dbb458e0d,
         type: 3}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c15dd911c05bf9249b755a0dbb458e0d, type: 3}
