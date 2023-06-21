@@ -238,6 +238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3328265190354541924}
+  - component: {fileID: 7332648567201445032}
   m_Layer: 0
   m_Name: tutorialBetter
   m_TagString: Untagged
@@ -261,6 +262,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7332648567201445032
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1167664910579004096}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc0132e43d7e3c242894f6c9e2e25a44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  legControlls: {fileID: 4573820956159377364}
+  jumpControlls: {fileID: 441897492522392833}
+  sanityTutorial: {fileID: 7179553451601148109}
+  enemyTutorial: {fileID: 4203010138892111327}
+  fadeTime: 2
+  legControllsTimer: 4
+  jumpControllsTimer: 4
+  sanityTutorialTimer: 4
+  enemyTutorialTimer: 4
 --- !u!1 &1695457542064622747
 GameObject:
   m_ObjectHideFlags: 0
