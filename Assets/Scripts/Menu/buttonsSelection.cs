@@ -67,7 +67,7 @@ public class buttonsSelection : MonoBehaviour
         if (Gamepad.current.bButton.wasPressedThisFrame)
         {
 
-            return;
+            
 
             if (backButton)
             {
