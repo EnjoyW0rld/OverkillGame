@@ -25,11 +25,14 @@ public class Sanity : MonoBehaviour
 
     public FloatUnityEvent OnNormalizedSanityChanged;
 
+    private bool fading = false;
+
     private void Awake()
     {
         initialSanityAmount = sanity;
         initialReduceSpeed = reduceSpeed;
         InitializeDamagables();
+
     }
 
     void Start()
@@ -101,20 +104,29 @@ public class Sanity : MonoBehaviour
     {
         sanity = initialSanityAmount;
         OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
+        
+        fading = false;
     }
 
     public void ResetSanityAmountFader()
     {
+        fading = true;
         FadeInOut.Instance.Fade(ResetSanityAmount);
     }
 
 
     public void ReduceSanity(float amount)
     {
+        if (fading) return;
+
         sanity -= amount * Time.deltaTime;
+
+        Debug.Log("_______________");
+        Debug.Log("Sanity amount: " + sanity);
         if (sanity <= 0)
         {
-            Debug.Log("Sanity zero invoked");
+
+           // Debug.Log("Sanity zero invoked");
             OnZeroSanity?.Invoke();
             ResetSanityAmountFader();
             return;

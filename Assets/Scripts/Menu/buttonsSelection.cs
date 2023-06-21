@@ -66,6 +66,9 @@ public class buttonsSelection : MonoBehaviour
         }
         if (Gamepad.current.bButton.wasPressedThisFrame)
         {
+
+            return;
+
             if (backButton)
             {
                 targetButton = backButton.GetComponent<Button>();
@@ -73,6 +76,7 @@ public class buttonsSelection : MonoBehaviour
                 Debug.Log("go back");
                 
             }
+           
         }
     }
 

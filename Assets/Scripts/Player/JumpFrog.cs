@@ -73,7 +73,6 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = affector.GetExpression();
             affector.OnCollisionAction(this);
-            Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         }
     }
     private void OnTriggerExit(Collider other)
