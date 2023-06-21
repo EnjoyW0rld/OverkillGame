@@ -29,7 +29,6 @@ public class ChangeMaterial : MonoBehaviour
         temp[1] = test2;
         rend.materials = temp.ToArray();
 
-        Debug.Log(rend.materials[1]);
     }
 
     public void ShowMaterial()
