@@ -25,4 +25,18 @@ public class DeathCube : MonoBehaviour
             playerRespawn.FaderRespawn();
         }
     }
+
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag == "Body")
+        {
+            if (playerRespawn == null)
+            {
+                playerRespawn = collision.gameObject.GetComponent<Respawning_Player>();
+            }
+
+            //  playerRespawn.RespawnAtLastPosition();
+            playerRespawn.FaderRespawn();
+        }
+    }
 }
