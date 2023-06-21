@@ -14,6 +14,12 @@ public class MySceneManager : MonoBehaviour
         SceneManager.LoadScene(name);
     }
 
+    public static void LoadMainMenu()
+    {
+        SetScene("MainMenu");
+    }
+
+
     public static void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
