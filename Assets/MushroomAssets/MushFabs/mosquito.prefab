@@ -138,6 +138,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7712984484500154559}
+  - component: {fileID: 7127979537200517866}
+  - component: {fileID: 8410351678871893465}
   m_Layer: 0
   m_Name: mosquito
   m_TagString: Untagged
@@ -162,6 +164,60 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7127979537200517866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368227568459026497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 32432f806f0eab1429a07605d2684dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8410351678871893465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8368227568459026497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7e60a819e813c77459fb37502047fd3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 5
+  speed: 2
+  reduceSanitySpeed: 5
+  onDirectionChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 7127979537200517866}
+        m_TargetAssemblyTypeName: LookAtDirectionFlying, Assembly-CSharp
+        m_MethodName: LookInDirection
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  onPlayerEnterFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitFly:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerEnterTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
+  onPlayerExitTargetRange:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1001 &5488950182298316412
 PrefabInstance:
   m_ObjectHideFlags: 0
