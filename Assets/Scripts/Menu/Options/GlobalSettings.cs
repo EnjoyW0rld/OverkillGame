@@ -31,9 +31,8 @@ public class GlobalSettings : MonoBehaviour
 
         Instance = this;
 
-        Debug.Log(brightness);
 
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
 
 
     }

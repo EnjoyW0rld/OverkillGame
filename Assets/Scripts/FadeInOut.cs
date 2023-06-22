@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static FadeInOut;
 
 public class FadeInOut : MonoBehaviour
 {
@@ -11,7 +12,9 @@ public class FadeInOut : MonoBehaviour
 
     public delegate void FadedOut();
 
+
     FadedOut onFadedOut;
+
 
     bool currentlyFading = false;
 
@@ -38,6 +41,7 @@ public class FadeInOut : MonoBehaviour
         currentlyFading = true;
 
     }
+
 
     public void DoDelegates()
     {

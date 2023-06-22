@@ -112,6 +112,7 @@ public class Sanity : MonoBehaviour
     {
         fading = true;
         FadeInOut.Instance.Fade(ResetSanityAmount);
+        FadeInOut.Instance.Fade(OnZeroSanity.Invoke);
     }
 
 
@@ -127,7 +128,7 @@ public class Sanity : MonoBehaviour
         {
 
            // Debug.Log("Sanity zero invoked");
-            OnZeroSanity?.Invoke();
+            
             ResetSanityAmountFader();
             return;
         }
