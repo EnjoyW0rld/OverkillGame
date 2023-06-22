@@ -13,17 +13,17 @@ MonoBehaviour:
   m_Name: graph_0
   m_EditorClassIdentifier: 
   AssetPath: Assets/CaveAssets/rock.sbsar
-  OutputPath: Assets/CaveAssets/rock_graph_0
+  OutputPath: Assets\CaveAssets\rock_graph_0
   RawData: {fileID: -244192453324840774, guid: 2288863d469ccff469d7ec33c5fe326f, type: 3}
   Name: graph_0
   IsRoot: 1
   FlagedForDelete: 0
-  GUID: 2ccd82e3-e418-42cb-99f5-d82dfab31744
+  GUID: 5cf03237-cb7f-46f7-8901-f56a63dd1f94
   Index: 0
   Input:
-  - rid: 5540962968240652288
-  - rid: 5540962968240652289
-  - rid: 5540962968240652290
+  - rid: 5540962970781614110
+  - rid: 5540962970781614111
+  - rid: 5540962970781614112
   Output:
   - Index: 0
     VirtualOutputIndex: 10
@@ -204,7 +204,7 @@ MonoBehaviour:
   references:
     version: 2
     RefIds:
-    - rid: 5540962968240652288
+    - rid: 5540962970781614110
       type: {class: SubstanceInputInt2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 0
@@ -223,7 +223,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962968240652289
+    - rid: 5540962970781614111
       type: {class: SubstanceInputFloat2, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 1
@@ -243,7 +243,7 @@ MonoBehaviour:
           SliderClamp: 0
           EnumValueCount: 0
           EnumValues: []
-    - rid: 5540962968240652290
+    - rid: 5540962970781614112
       type: {class: SubstanceInputInt, ns: Adobe.Substance.Input, asm: Adobe.Substance}
       data:
         Index: 2
