@@ -22630,7 +22630,7 @@ GameObject:
   m_Layer: 0
   m_Name: Audio
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -22660,7 +22660,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 4f2d41de2e702434ab5c4aa4993ae4e2, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 7f20a32a6508a9945a9975d2a2275d37, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -34903,6 +34903,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: music (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 5597749385982252801, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
+        type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: bbb8bf0638522f244a8bb52dbcc3bfe3, type: 3}
     - target: {fileID: 5597749385982252802, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
         type: 3}
       propertyPath: m_RootOrder
