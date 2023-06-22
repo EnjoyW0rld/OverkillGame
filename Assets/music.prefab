@@ -177,12 +177,6 @@ MonoBehaviour:
   - name: ShiftOverlap
     startValue: 4
     endValue: 17
-  - name: ShiftMax
-    startValue: 0
-    endValue: 4.9
-  - name: MusicVolume
-    startValue: 0
-    endValue: -14.6
   mixer: {fileID: 24100000, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e, type: 2}
 --- !u!114 &-413632016129584266
 MonoBehaviour:
