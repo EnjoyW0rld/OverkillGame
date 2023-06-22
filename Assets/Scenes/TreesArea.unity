@@ -27160,7 +27160,7 @@ GameObject:
   m_Icon: {fileID: 419385456094870383, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1526028103
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -27181,7 +27181,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1526028102}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -34906,7 +34906,7 @@ PrefabInstance:
     - target: {fileID: 5597749385982252802, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
         type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5597749385982252802, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
         type: 3}
@@ -34957,21 +34957,6 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597749385982252803, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
-        type: 3}
-      propertyPath: effects.Array.size
-      value: 11
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597749385982252803, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
-        type: 3}
-      propertyPath: effects.Array.data[11].name
-      value: MusicVolume
-      objectReference: {fileID: 0}
-    - target: {fileID: 5597749385982252803, guid: 3aeb1916ad44b664ea41b1b0359c31eb,
-        type: 3}
-      propertyPath: effects.Array.data[11].endValue
-      value: -14.6
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3aeb1916ad44b664ea41b1b0359c31eb, type: 3}
