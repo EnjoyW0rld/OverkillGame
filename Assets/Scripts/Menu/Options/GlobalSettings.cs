@@ -33,7 +33,7 @@ public class GlobalSettings : MonoBehaviour
 
         Debug.Log(brightness);
 
-        DontDestroyOnLoad(this.gameObject);
+       // DontDestroyOnLoad(this.gameObject);
 
 
     }
