@@ -31,7 +31,6 @@ public class GlobalSettings : MonoBehaviour
 
         Instance = this;
 
-        Debug.Log("AAAAAAAAAAAAAH");
 
        // DontDestroyOnLoad(this.gameObject);
 

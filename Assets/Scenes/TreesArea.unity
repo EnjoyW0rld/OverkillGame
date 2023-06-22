@@ -17567,6 +17567,11 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6071012088036286282, guid: 8a6184bad8f3506478dd059defc7cf46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6071012088090758842, guid: 8a6184bad8f3506478dd059defc7cf46,
         type: 3}
       propertyPath: m_IsActive
@@ -17616,6 +17621,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: GamePaused
+      objectReference: {fileID: 0}
+    - target: {fileID: 6071012089086794873, guid: 8a6184bad8f3506478dd059defc7cf46,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6071012089086794874, guid: 8a6184bad8f3506478dd059defc7cf46,
         type: 3}
