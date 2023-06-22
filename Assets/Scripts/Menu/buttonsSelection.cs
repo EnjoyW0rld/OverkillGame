@@ -69,7 +69,7 @@ public class buttonsSelection : MonoBehaviour
 
             
 
-            if (backButton)
+            if (backButton!=null)
             {
                 targetButton = backButton.GetComponent<Button>();
                 targetButton.onClick.Invoke();
