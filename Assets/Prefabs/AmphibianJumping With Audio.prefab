@@ -278,6 +278,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091262979013709724}
+  - component: {fileID: 1838358937}
   m_Layer: 0
   m_Name: L_Ankle_J
   m_TagString: Untagged
@@ -301,6 +302,51 @@ Transform:
   m_Father: {fileID: 941201340634380545}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1838358937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1311942176435121311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 07d1113a0446a6441a6dfed4ec92d6e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerCheck:
+    serializedVersion: 2
+    m_Bits: 1024
+  somethingBeforeLeg:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1831709397}
+        m_TargetAssemblyTypeName: ChangeMaterial, Assembly-CSharp
+        m_MethodName: HideMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  nothingBeforeLeg:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1831709397}
+        m_TargetAssemblyTypeName: ChangeMaterial, Assembly-CSharp
+        m_MethodName: ShowMaterial
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1578640736663285442
 GameObject:
   m_ObjectHideFlags: 0
@@ -741,7 +787,7 @@ LineRenderer:
   m_RenderingLayerMask: 257
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 76bcad0106690a04fbe5c33c80252cd6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -773,20 +819,29 @@ LineRenderer:
       m_Curve:
       - serializedVersion: 3
         time: 0
-        value: 0.23364449
+        value: 1
         inSlope: 0
         outSlope: 0
         tangentMode: 0
         weightedMode: 0
         inWeight: 0.33333334
         outWeight: 0.33333334
+      - serializedVersion: 3
+        time: 1
+        value: 1
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 0
+        weightedMode: 0
+        inWeight: 0
+        outWeight: 0
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 1, b: 1, a: 1}
-      key1: {r: 1, g: 1, b: 1, a: 1}
+      key0: {r: 1, g: 0.32010546, b: 0, a: 1}
+      key1: {r: 0.16037738, g: 0.16037738, b: 0.16037738, a: 0.101960786}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
       key4: {r: 0, g: 0, b: 0, a: 0}
@@ -794,8 +849,8 @@ LineRenderer:
       key6: {r: 0, g: 0, b: 0, a: 0}
       key7: {r: 0, g: 0, b: 0, a: 0}
       ctime0: 0
-      ctime1: 65535
-      ctime2: 0
+      ctime1: 37972
+      ctime2: 65535
       ctime3: 0
       ctime4: 0
       ctime5: 0
@@ -810,12 +865,12 @@ LineRenderer:
       atime6: 0
       atime7: 0
       m_Mode: 0
-      m_NumColorKeys: 2
+      m_NumColorKeys: 3
       m_NumAlphaKeys: 2
     numCornerVertices: 0
     numCapVertices: 0
     alignment: 0
-    textureMode: 0
+    textureMode: 1
     shadowBias: 0.5
     generateLightingData: 0
   m_UseWorldSpace: 1
@@ -1087,10 +1142,11 @@ AudioSource:
   m_GameObject: {fileID: 3008333337262149601}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.6
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -1233,7 +1289,8 @@ AudioSource:
   m_GameObject: {fileID: 3008333337537929701}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: -2301366009477834016, guid: 0289fd23a9c8fce49b8f6b0ac0c0ac7e,
+    type: 2}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
   m_Volume: 1
@@ -2015,6 +2072,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4448408821414714469}
   - component: {fileID: 7928932322199436741}
+  - component: {fileID: 1831709397}
   m_Layer: 0
   m_Name: Mesh
   m_TagString: Untagged
@@ -2114,6 +2172,21 @@ SkinnedMeshRenderer:
     m_Center: {x: 0, y: -1.865752, z: -1.5323918}
     m_Extent: {x: 3.31982, y: 5.2211533, z: 6.063796}
   m_DirtyAABB: 0
+--- !u!114 &1831709397
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4200278639000487560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc49b67b3e43ad848a9756dd40aaaa11, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rend: {fileID: 0}
+  test2: {fileID: 2100000, guid: 2a8c5a16bcc8ea3419b24a2375a98265, type: 2}
+  test: 0
 --- !u!1 &4372239955486908970
 GameObject:
   m_ObjectHideFlags: 0
@@ -2422,6 +2495,7 @@ MonoBehaviour:
   strenght: 50
   maxDist: 1.789634
   jumpThreshold: 0.5
+  maxVelocityMagnitude: 7
   OnJumped:
     m_PersistentCalls:
       m_Calls:
@@ -2471,6 +2545,21 @@ MonoBehaviour:
   mask:
     serializedVersion: 2
     m_Bits: 256
+  onRespawnTest:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &3008333337127278977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2487,7 +2576,46 @@ MonoBehaviour:
   reduceSpeed: 1
   OnZeroSanity:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3008333337127278983}
+        m_TargetAssemblyTypeName: Respawning_Player, Assembly-CSharp
+        m_MethodName: RespawnAtGrassPoint
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  OnNormalizedSanityChanged:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: DistortAudio, Assembly-CSharp
+        m_MethodName: SetPercentageDistortion
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: VolumeSwitcher, Assembly-CSharp
+        m_MethodName: SetPercentageVolumes
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8617419280246027260
 GameObject:
   m_ObjectHideFlags: 0

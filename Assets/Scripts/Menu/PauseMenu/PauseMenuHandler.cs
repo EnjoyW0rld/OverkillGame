@@ -16,11 +16,15 @@ public class PauseMenuHandler : MonoBehaviour
         if (PressedPauseButton())
         {
             gamePauseCanvas.SetActive(!gamePauseCanvas.activeSelf);
+
+
             if (!gamePauseCanvas.activeSelf)
             {
+                Time.timeScale = 0;
                 optionCanvas.SetActive(false);
                 controllsCanvas.SetActive(false);
             }
+            else Time.timeScale = 1;
         }
     }
     private bool PressedPauseButton()
