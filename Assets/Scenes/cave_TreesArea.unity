@@ -74673,7 +74673,7 @@ PrefabInstance:
     - target: {fileID: 8233731164854446140, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.3899415
+      value: 3.1
       objectReference: {fileID: 0}
     - target: {fileID: 8233731164854446140, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
         type: 3}
@@ -74724,6 +74724,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: ZigZag (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 9071275504179995861, guid: 35f27c29e4c1dd748ae163e16d3eae3d,
+        type: 3}
+      propertyPath: springStrenght
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 35f27c29e4c1dd748ae163e16d3eae3d, type: 3}
