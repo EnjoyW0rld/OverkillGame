@@ -219,13 +219,19 @@ MonoBehaviour:
   HasThumbnail: 1
   CurrentStatePreset: " <sbspreset pkgurl=\"pkg://stylized_island_cliff\" label=\"\"
     >\n  <presetinput identifier=\"$outputsize\" uid=\"4119291714\" type=\"8\" value=\"10,10\"
-    />\n  <presetinput identifier=\"base_color\" uid=\"2625225246\" type=\"2\" value=\"1,0.905882,0.85098\"
+    />\n  <presetinput identifier=\"base_color\" uid=\"2625225246\" type=\"2\" value=\"0.247059,0.231373,0.211765\"
     />\n  <presetinput identifier=\"color_base_variation\" uid=\"2625438731\" type=\"2\"
-    value=\"0.67451,0.611765,0.580392\" />\n  <presetinput identifier=\"top_edge_color\"
-    uid=\"2625233569\" type=\"2\" value=\"0.482353,0.435294,0.427451\" />\n  <presetinput
-    identifier=\"bottom_color\" uid=\"2625235500\" type=\"2\" value=\"0.666667,0.529412,0.392157\"
-    />\n  <presetinput identifier=\"cavity_color\" uid=\"2625233713\" type=\"2\"
-    value=\"0.784314,0.690196,0.643137\" />\n </sbspreset>\n"
+    value=\"0.631,0.598915,0.534746\" />\n  <presetinput identifier=\"top_color\"
+    uid=\"2625237578\" type=\"2\" value=\"0.196078,0.176471,0.156863\" />\n  <presetinput
+    identifier=\"top_edge_color\" uid=\"2625233569\" type=\"2\" value=\"0.688679,0.688679,0.688679\"
+    />\n  <presetinput identifier=\"bottom_color\" uid=\"2625235500\" type=\"2\"
+    value=\"0.471698,0.198024,0.25548\" />\n  <presetinput identifier=\"cavity_color\"
+    uid=\"2625233713\" type=\"2\" value=\"0.358491,0.355109,0.353418\" />\n  <presetinput
+    identifier=\"cliff_shape_variation\" uid=\"2623786514\" type=\"0\" value=\"0.388\"
+    />\n  <presetinput identifier=\"erosion_intensity\" uid=\"2625193847\" type=\"0\"
+    value=\"0.643\" />\n  <presetinput identifier=\"cracks_spread\" uid=\"2625281663\"
+    type=\"0\" value=\"0.698\" />\n  <presetinput identifier=\"saturation\" uid=\"4040941292\"
+    type=\"0\" value=\"0.427\" />\n </sbspreset>\n"
   IsRuntimeOnly: 0
   GenerateAllOutputs: 0
   GenerateAllMipmaps: 1
@@ -291,7 +297,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 1, y: 0.9058824, z: 0.85098046}
+        Data: {x: 0.24705884, y: 0.23137257, z: 0.21176472}
         NumericalDescription:
           DefaultValue: {x: 0.482353, y: 0.255283, z: 0.138085}
           MinValue: {x: 0, y: 0, z: 0}
@@ -311,7 +317,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.6745098, y: 0.6117647, z: 0.5803922}
+        Data: {x: 0.631, y: 0.5989152, z: 0.53474575}
         NumericalDescription:
           DefaultValue: {x: 0.411765, y: 0.341534, z: 0.289672}
           MinValue: {x: 0, y: 0, z: 0}
@@ -331,7 +337,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.721569, y: 0.615298, z: 0.537639}
+        Data: {x: 0.19607845, y: 0.1764706, z: 0.15686275}
         NumericalDescription:
           DefaultValue: {x: 0.721569, y: 0.615298, z: 0.537639}
           MinValue: {x: 0, y: 0, z: 0}
@@ -351,7 +357,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.48235297, y: 0.43529415, z: 0.427451}
+        Data: {x: 0.6886792, y: 0.6886792, z: 0.6886792}
         NumericalDescription:
           DefaultValue: {x: 1, y: 0.791496, z: 0.656977}
           MinValue: {x: 0, y: 0, z: 0}
@@ -371,7 +377,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.6666667, y: 0.5294118, z: 0.3921569}
+        Data: {x: 0.4716981, y: 0.1980242, z: 0.25548008}
         NumericalDescription:
           DefaultValue: {x: 0.227451, y: 0.0722491, z: 0.134503}
           MinValue: {x: 0, y: 0, z: 0}
@@ -391,7 +397,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 2
           WidgetType: 3
-        Data: {x: 0.7843138, y: 0.6901961, z: 0.6431373}
+        Data: {x: 0.3584906, y: 0.3551086, z: 0.3534176}
         NumericalDescription:
           DefaultValue: {x: 0.396078, y: 0.270588, z: 0.227451}
           MinValue: {x: 0, y: 0, z: 0}
@@ -431,7 +437,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.25
+        Data: 0.388
         NumericalDescription:
           DefaultValue: 0.25
           MinValue: 0
@@ -451,7 +457,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.75
+        Data: 0.643
         NumericalDescription:
           DefaultValue: 0.75
           MinValue: 0
@@ -471,7 +477,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.8
+        Data: 0.698
         NumericalDescription:
           DefaultValue: 0.8
           MinValue: 0
@@ -749,7 +755,7 @@ MonoBehaviour:
           GuiDescription: 
           Type: 0
           WidgetType: 1
-        Data: 0.5
+        Data: 0.427
         NumericalDescription:
           DefaultValue: 0.5
           MinValue: 0

@@ -99,6 +99,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: rock_platform_2
       objectReference: {fileID: 0}
+    - target: {fileID: 4162406812903910585, guid: 94c670130e97d354c8a0b0b6db9f1436,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: fd1ceb5721e91624db516b9e3bbbf409, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 94c670130e97d354c8a0b0b6db9f1436, type: 3}
 --- !u!4 &2720645216763053046 stripped
