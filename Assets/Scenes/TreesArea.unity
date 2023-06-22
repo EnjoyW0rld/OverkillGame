@@ -13581,7 +13581,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ced0373fec1a0f42bdf3ec617e9497b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  index: 0
+  nameScene: MainMenu
 --- !u!65 &726098319
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32166,6 +32166,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 540
       objectReference: {fileID: 0}
+    - target: {fileID: 6621969013596040467, guid: 9b4c17ae82051634db736179d3d90631,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9b4c17ae82051634db736179d3d90631, type: 3}
 --- !u!4 &1850077128 stripped
@@ -32350,7 +32355,7 @@ PrefabInstance:
     - target: {fileID: 214880071674880344, guid: 524917de8d8b1e94dad11891599bf5c2,
         type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 214880071674880344, guid: 524917de8d8b1e94dad11891599bf5c2,
         type: 3}

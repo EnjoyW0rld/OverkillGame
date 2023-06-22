@@ -6,12 +6,14 @@ using static FadeInOut;
 public class SwitchLevelCube : MonoBehaviour
 {
 
-    [SerializeField] int index;
+    [SerializeField] string nameScene;
 
 
     public void FadeSwitchLevel()
     {
-        FadeInOut.Instance.Fade(MySceneManager.LoadMainMenu);
 
+        //Anomynous function to switch scenes with name
+        FadeInOut.Instance.Fade( () => MySceneManager.SetScene(nameScene));
     }
+
 }
