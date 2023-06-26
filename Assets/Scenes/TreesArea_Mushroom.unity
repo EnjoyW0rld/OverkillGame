@@ -40697,7 +40697,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3ced0373fec1a0f42bdf3ec617e9497b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  nameScene: CaveLevel
+  nameScene: cave_TreesArea
 --- !u!65 &1337020939
 BoxCollider:
   m_ObjectHideFlags: 0
