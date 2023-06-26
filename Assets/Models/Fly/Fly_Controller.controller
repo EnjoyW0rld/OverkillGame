@@ -51,7 +51,7 @@ AnimatorState:
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
-  m_CycleOffsetParameter: 
+  m_CycleOffsetParameter: New Float
   m_TimeParameter: 
 --- !u!1102 &-2828225590388741093
 AnimatorState:
