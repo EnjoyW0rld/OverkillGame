@@ -9471,7 +9471,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 599587078}
   m_LocalRotation: {x: 0.070854425, y: 0, z: 0, w: 0.9974867}
-  m_LocalPosition: {x: 1042.02, y: -67.53647, z: 9.100405}
+  m_LocalPosition: {x: 796.52, y: -69.83647, z: 9.100404}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -10112,12 +10112,12 @@ PrefabInstance:
     - target: {fileID: 1023878740778302298, guid: 4c2d01cfa3fc20448afe21f416e885bb,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1042
+      value: 796.5
       objectReference: {fileID: 0}
     - target: {fileID: 1023878740778302298, guid: 4c2d01cfa3fc20448afe21f416e885bb,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -72.2
+      value: -74.5
       objectReference: {fileID: 0}
     - target: {fileID: 1023878740778302298, guid: 4c2d01cfa3fc20448afe21f416e885bb,
         type: 3}
@@ -21148,8 +21148,9 @@ GameObject:
   - component: {fileID: 1328601300}
   - component: {fileID: 1328601303}
   - component: {fileID: 1328601302}
-  - component: {fileID: 1328601301}
   - component: {fileID: 1328601304}
+  - component: {fileID: 1328601306}
+  - component: {fileID: 1328601305}
   m_Layer: 0
   m_Name: damage (1)
   m_TagString: Untagged
@@ -21173,18 +21174,6 @@ Transform:
   m_Father: {fileID: 58255005}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 9.977, y: -0.334, z: -0.954}
---- !u!114 &1328601301
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1328601299}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a193adfc9ac447040aea6c99124b8e15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!65 &1328601302
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -21193,8 +21182,8 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1328601299}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 0
+  m_IsTrigger: 1
+  m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
@@ -21303,6 +21292,64 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &1328601305
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328601299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6255699078e6ada48952ff812ecebcf9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  assignedEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1328601306}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: OnEnterDamageArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1834478021}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &1328601306
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1328601299}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 752b992074b77f6418673d84f0d30322, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  decreaseType: 0
+  playerTag: Body
+  executeAutomatically: 0
+  gradualDecrease:
+    _reductionSpeed: 0
+  instantDecrease:
+    _valueToDecrease: 10
 --- !u!1001 &1336552083
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31922,12 +31969,12 @@ PrefabInstance:
     - target: {fileID: 2397320004970879333, guid: 3f528b089a3e15c4b9f2c1f1e9e015a1,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 276.73
+      value: 281.48
       objectReference: {fileID: 0}
     - target: {fileID: 2397320004970879333, guid: 3f528b089a3e15c4b9f2c1f1e9e015a1,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1.56
+      value: -5.56
       objectReference: {fileID: 0}
     - target: {fileID: 2397320004970879333, guid: 3f528b089a3e15c4b9f2c1f1e9e015a1,
         type: 3}
