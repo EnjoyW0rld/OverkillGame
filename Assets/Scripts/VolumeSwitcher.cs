@@ -13,8 +13,6 @@ public class VolumeSwitcher : MonoBehaviour
 
     public void SetPercentageVolumes(float amount)
     {
-        Debug.Log("_______________");
-        Debug.Log("PercentagesSet: " + amount);
         volumeStart.weight = 1 - amount;
         volumeEnd.weight = amount;
     }

@@ -13,7 +13,6 @@ public class ChangePercentageSliderText : MonoBehaviour
     public void SetupPercentage()
     {
         float amount = PlayerPrefs.GetFloat(playerPrefabName, -1);
-        Debug.Log(amount);
 
         if (amount == -1) return;
         

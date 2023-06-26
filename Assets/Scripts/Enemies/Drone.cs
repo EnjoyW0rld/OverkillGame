@@ -102,7 +102,6 @@ public class Drone : MonoBehaviour
 
         if (!IsNothingBetweenDroneAndPlayer()) return false;
 
-        Debug.Log("Seeing!");
         return true;
 
     }
@@ -117,7 +116,6 @@ public class Drone : MonoBehaviour
 
         if (!Physics.Raycast(this.transform.position, direction, out RaycastHit hitInfo, range)) 
         {
-            Debug.LogError("Couldn't see player in range from drone");
             return false;
         }
 
@@ -152,9 +150,6 @@ public class Drone : MonoBehaviour
 
         float angleDeg = angleDiference * Mathf.Rad2Deg;
 
-        //     Debug.Log("______");
-        //     Debug.Log(angleDeg);
-        //     Debug.Log(vector.magnitude);
 
         bool leftCor = (angleDeg >= -90 && angleDeg <= -(90 - angle));
         bool rightCor = (angleDeg >= (90 - angle) && angleDeg <= 90);
@@ -167,7 +162,6 @@ public class Drone : MonoBehaviour
                 //sanity.ChangeSanitySpeed(reduceSanitySpeed);
             }
             return true;
-            //    Debug.Log("InArea");
         }
         else
         {
