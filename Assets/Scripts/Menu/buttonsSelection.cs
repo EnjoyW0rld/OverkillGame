@@ -73,7 +73,7 @@ public class buttonsSelection : MonoBehaviour
             {
                 targetButton = backButton.GetComponent<Button>();
                 targetButton.onClick.Invoke();
-                Debug.Log("go back");
+               // Debug.Log("go back");
                 
             }
            
