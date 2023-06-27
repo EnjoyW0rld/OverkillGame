@@ -6,14 +6,14 @@ using UnityEngine;
 public class TrajectoryLine : MonoBehaviour
 {
 
-    float zValueLine;
+    private float zValueLine;
 
-    [SerializeField] float seconds;
-    [SerializeField] int amountPositions;
+    [SerializeField] private float seconds;
+    [SerializeField] private int amountPositions;
 
-    [SerializeField] JumpFrog body;
+    [SerializeField] private JumpFrog body;
 
-    LineRenderer lineRenderer;
+    private LineRenderer lineRenderer;
 
     // Start is called before the first frame update
     void Start()
@@ -27,13 +27,10 @@ public class TrajectoryLine : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
         float dt = seconds / amountPositions;
 
         for (int i = 0; i < amountPositions; i++)
         {
-
-
             Vector3 originalPosition = body.gameObject.transform.position;
             Vector3 velocity = body.GetPredictedVelocity();
 
@@ -42,10 +39,6 @@ public class TrajectoryLine : MonoBehaviour
             positionILine = new Vector3(originalPosition.x + velocity.x * (i * dt), originalPosition.y + (velocity.y * (i*dt)) + ((Physics.gravity.y * Mathf.Pow(i * dt, 2)) / 2), zValueLine);
 
             lineRenderer.SetPosition(i, positionILine);
-        }
-
-
-
-        
+        } 
     }
 }

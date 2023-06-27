@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class ObjectMoveOnLine : MonoBehaviour
 {
-    LineForObjects lineToFollow;
+    private LineForObjects lineToFollow;
 
     //Add editor to put the object at the right position
     [SerializeField, Range(0, 1)] protected float currentPositionPercentage;
@@ -23,7 +23,6 @@ public class ObjectMoveOnLine : MonoBehaviour
         lineToFollow = GetComponentInParent<LineForObjects>();
 
         if (lineToFollow == null) Debug.LogError("No Line to Follow for " + this.name + "\b Add a LineForObjects on this parent");
-
 
         topPoint = lineToFollow.GetLeftGlobalPosition();
         bottomPoint = lineToFollow.GetRightGlobalPosition();
@@ -83,7 +82,6 @@ public class ObjectMoveOnLine : MonoBehaviour
     /// </summary>
     /// <returns></returns>
     public bool GetDirection() => speed > 0;
-
 
     public void OnDrawGizmos()
     {

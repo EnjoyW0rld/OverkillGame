@@ -11,7 +11,6 @@ public class Grass : MonoBehaviour
         if (other.gameObject.TryGetComponent<Sanity>(out Sanity sanity))
         {
             sanity.AddSanity(10);
-
         }
     }
 }

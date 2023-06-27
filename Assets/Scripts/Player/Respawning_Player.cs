@@ -11,7 +11,7 @@ public class Respawning_Player : MonoBehaviour
 
     [SerializeField] private Vector3 lastPosition;
     [SerializeField] private Vector3 lastGrassPoint;
-    [SerializeField] LayerMask mask;
+    [SerializeField] private LayerMask mask;
 
 
     [SerializeField] UnityEvent onRespawnTest;
@@ -71,13 +71,6 @@ public class Respawning_Player : MonoBehaviour
         return false;
     }
 
-    //Draws the ray it uses to check
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.right).normalized * 3f);
-        Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.left).normalized * 3f);
-    }
-
     public void SetGrassPoint(Vector3 point) => lastGrassPoint = point;
     public void RespawnAtGrassPoint()
     {
@@ -98,5 +91,12 @@ public class Respawning_Player : MonoBehaviour
     {
         onRespawnTest?.Invoke();
         FadeInOut.Instance.Fade(RespawnAtGrassPoint);
+    }
+
+    //Draws the ray it uses to check
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.right).normalized * 3f);
+        Gizmos.DrawRay(this.transform.position, (Vector3.down + Vector3.left).normalized * 3f);
     }
 }

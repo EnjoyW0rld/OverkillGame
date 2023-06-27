@@ -85,26 +85,8 @@ public class JumpFrog : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
-        /**
-        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
-        {
-            jumpModifier = affector.GetExpression();
-            affector.OnCollisionAction(this);
-            print("Added new function");
-        }
-        /**/
         OnLanded?.Invoke();
     }
-    private void OnCollisionExit(Collision collision)
-    {
-        /**
-        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
-        {
-            jumpModifier = null;
-        }
-        /**/
-    }
-
 
     //Private functions
     private void ApplyJumpForce(Vector3 normalDirection)
@@ -200,36 +182,16 @@ public class JumpFrog : MonoBehaviour
 
         if (jumpedLeft)
         {
-            if (Vector3.Dot(differenceLeft.normalized, Vector3.up) > jumpThreshold)
-            {
-                //rb.AddForce(differenceRight.normalized * strenght, ForceMode.Impulse);
-            }
-                ApplyJumpForce(differenceLeft.normalized);
-            //StartCoroutine(StartCooldown(true));
+            ApplyJumpForce(differenceLeft.normalized);
             jumpedLeft = false;
         }
 
         if (jumpedRight)
         {
-            if (Vector3.Dot(differenceRight.normalized, Vector3.up) > jumpThreshold)
-            {
-            }
-                ApplyJumpForce(differenceRight.normalized);
-            //StartCoroutine(StartCooldown(false));
+            ApplyJumpForce(differenceRight.normalized);
             jumpedRight = false;
         }
 
-    }
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
-
-
-        Gizmos.color = Color.magenta;
-        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
-
-        Gizmos.color = Color.white;
     }
 
     //public functions
@@ -249,9 +211,18 @@ public class JumpFrog : MonoBehaviour
         else
         {
             return (differenceLeft.normalized * jumpModifier(strenght) + differenceRight.normalized * jumpModifier(strenght)) / rb.mass;
-
         }
 
+    }
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceLeft.normalized * 5);
+
+        Gizmos.color = Color.magenta;
+        Gizmos.DrawLine(this.transform.position, this.transform.position + differenceRight.normalized * 5);
+
+        Gizmos.color = Color.white;
     }
 
 }
