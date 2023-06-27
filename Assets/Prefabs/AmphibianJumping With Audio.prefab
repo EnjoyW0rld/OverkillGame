@@ -1476,7 +1476,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3474137751224617592}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1637,7 +1637,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3474137751487730443}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -1791,7 +1791,7 @@ ParentConstraint:
   m_TranslationAtRest: {x: 2.0000002, y: 0.579998, z: -0.07000702}
   m_RotationAtRest: {x: 0, y: 90, z: 77.087814}
   m_TranslationOffsets:
-  - {x: -0.06755066, y: -0.17529297, z: 0}
+  - {x: -0.06754112, y: -0.17528534, z: 0}
   m_RotationOffsets:
   - {x: 0, y: 0, z: 0}
   m_AffectTranslationX: 1
@@ -2185,8 +2185,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rend: {fileID: 0}
-  test2: {fileID: 2100000, guid: 2a8c5a16bcc8ea3419b24a2375a98265, type: 2}
-  test: 0
+  materialSwitch: {fileID: 0}
 --- !u!1 &4372239955486908970
 GameObject:
   m_ObjectHideFlags: 0

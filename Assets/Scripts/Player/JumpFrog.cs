@@ -67,7 +67,7 @@ public class JumpFrog : MonoBehaviour
         previousVelocity = rb.velocity;
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
         if(other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
@@ -81,11 +81,22 @@ public class JumpFrog : MonoBehaviour
         {
             jumpModifier = null;
         }
-
+        
     }
     private void OnCollisionEnter(Collision collision)
     {
+        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = affector.GetExpression();
+        }
         OnLanded?.Invoke();
+    }
+    private void OnCollisionExit(Collision collision)
+    {
+        if (collision.transform.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
+        {
+            jumpModifier = null;
+        }
     }
 
     //Private functions
@@ -115,7 +126,7 @@ public class JumpFrog : MonoBehaviour
         }
         if (gamepads.Length == 2)
         {
-            if (gamepads[0].buttonSouth.ReadValue() == 1 && rightLeg.GetGrounded())
+            if (gamepads[0].buttonSouth.wasPressedThisFrame && rightLeg.GetGrounded())
             {
                 if (!pressedRight)
                 {
@@ -125,7 +136,7 @@ public class JumpFrog : MonoBehaviour
                 }
             }
 
-            if (gamepads[1].buttonSouth.ReadValue() == 1 && leftLeg.GetGrounded())
+            if (gamepads[1].buttonSouth.wasPressedThisFrame && leftLeg.GetGrounded())
             {
                 if (!pressedLeft)
                 {
@@ -137,7 +148,7 @@ public class JumpFrog : MonoBehaviour
         }
         if (gamepads.Length == 1)
         {
-            if (gamepads[0].buttonEast.ReadValue() == 1 && rightLeg.GetGrounded())
+            if (gamepads[0].buttonEast.wasPressedThisFrame && rightLeg.GetGrounded())
             {
                 if (!pressedRight)
                 {
@@ -147,7 +158,7 @@ public class JumpFrog : MonoBehaviour
                 }
             }
 
-            if (gamepads[0].dpad.left.ReadValue() == 1 && leftLeg.GetGrounded())
+            if (gamepads[0].dpad.left.wasPressedThisFrame && leftLeg.GetGrounded())
             {
                 if (!pressedLeft)
                 {

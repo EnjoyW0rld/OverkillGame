@@ -20,11 +20,11 @@ public class PauseMenuHandler : MonoBehaviour
 
             if (!gamePauseCanvas.activeSelf)
             {
-                Time.timeScale = 0;
+                SetPauseTime(false);
                 optionCanvas.SetActive(false);
                 controllsCanvas.SetActive(false);
             }
-            else Time.timeScale = 1;
+            else SetPauseTime(false);
         }
     }
     private bool PressedPauseButton()
@@ -38,4 +38,9 @@ public class PauseMenuHandler : MonoBehaviour
         }
         return false;
     }
+    /// <summary>
+    /// Use this function to pause/unpause time
+    /// </summary>
+    /// <param name="pause">true = time stops, false = time goes</param>
+    public void SetPauseTime(bool pause) => Time.timeScale = pause ? 0 : 1;
 }
