@@ -67,7 +67,7 @@ public class JumpFrog : MonoBehaviour
         previousVelocity = rb.velocity;
     }
 
-    private void OnTriggerStay(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if(other.TryGetComponent<BodyAffecter>(out BodyAffecter affector))
         {
