@@ -122,8 +122,6 @@ public class Sanity : MonoBehaviour
 
         sanity -= amount * Time.deltaTime;
 
-        Debug.Log("_______________");
-        Debug.Log("Sanity amount: " + sanity);
         if (sanity <= 0)
         {
 

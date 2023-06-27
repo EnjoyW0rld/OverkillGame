@@ -27,7 +27,6 @@ public class EventWhenStepOn : MonoBehaviour
         if (!able) return;
 
         onColliderEnter?.Invoke();
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         StartCoroutine(coroutine);
     }
     private void OnTriggerEnter(Collider other)
@@ -35,7 +34,6 @@ public class EventWhenStepOn : MonoBehaviour
         if (!isTrigger) return;
         if (!able) return;
         onColliderEnter?.Invoke();
-        Debug.Log("AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA");
         StartCoroutine(coroutine);
     }
 
