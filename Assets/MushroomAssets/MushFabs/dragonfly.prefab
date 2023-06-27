@@ -239,6 +239,8 @@ GameObject:
   - component: {fileID: 6746107528656683091}
   - component: {fileID: 1666389841272033968}
   - component: {fileID: 838377604924218887}
+  - component: {fileID: 1983133922657040097}
+  - component: {fileID: 7982772592537128712}
   m_Layer: 0
   m_Name: dragonfly
   m_TagString: Untagged
@@ -295,10 +297,34 @@ MonoBehaviour:
         m_CallState: 2
   onPlayerEnterFly:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 838377604924218887}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: OnEnterDamageArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlayerExitFly:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 838377604924218887}
+        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
+        m_MethodName: OnExitDamageArea
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   onPlayerEnterTargetRange:
     m_PersistentCalls:
       m_Calls:
@@ -327,6 +353,18 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: Switch
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 7982772592537128712}
+        m_TargetAssemblyTypeName: ResetRotation, Assembly-CSharp
+        m_MethodName: ResetRotationObject
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
 --- !u!114 &1666389841272033968
@@ -360,6 +398,31 @@ MonoBehaviour:
     _reductionSpeed: 0
   instantDecrease:
     _valueToDecrease: 10
+--- !u!135 &1983133922657040097
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478899460337124062}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0.8, z: 0.1}
+--- !u!114 &7982772592537128712
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3478899460337124062}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54d726a2bec9c04c9a94d3b1831864f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7532995358321930883
 PrefabInstance:
   m_ObjectHideFlags: 0
