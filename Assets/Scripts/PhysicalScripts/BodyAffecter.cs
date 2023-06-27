@@ -7,7 +7,6 @@ public abstract class BodyAffecter : MonoBehaviour
 {
     protected Func<float, float> expression;
 
-
     private void Awake()
     {
         SetExpression();

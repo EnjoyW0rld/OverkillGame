@@ -6,10 +6,9 @@ using UnityEngine;
 public class BuildNumber : MonoBehaviour
 {
 
-    [SerializeField] string versionName;
-    [SerializeField] float buildNumber;
-
-    [SerializeField] TextMeshProUGUI buildTest;
+    [SerializeField] private string versionName;
+    [SerializeField] private float buildNumber;
+    [SerializeField] private TextMeshProUGUI buildTest;
 
     // Start is called before the first frame update
     void Start()

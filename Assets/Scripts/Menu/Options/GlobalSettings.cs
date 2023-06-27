@@ -8,16 +8,11 @@ using UnityEngine.Rendering.HighDefinition;
 
 public class GlobalSettings : MonoBehaviour
 {
-
     public static GlobalSettings Instance;
 
-    [SerializeField] AudioMixer mixer;
-    [SerializeField] Volume volume;
-
-    [SerializeField] UnityEvent onLoadOptions;
-
-
-
+    [SerializeField] private AudioMixer mixer;
+    [SerializeField] private Volume volume;
+    [SerializeField] private UnityEvent onLoadOptions;
 
     public void Awake()
     {
@@ -30,11 +25,6 @@ public class GlobalSettings : MonoBehaviour
         }
 
         Instance = this;
-
-
-       // DontDestroyOnLoad(this.gameObject);
-
-
     }
 
     public void Start()
@@ -54,8 +44,6 @@ public class GlobalSettings : MonoBehaviour
         mixer.SetFloat("MusicVolume", soundDb);
 
         PlayerPrefs.SetFloat("SoundVolume", amount);
-
-
     }
 
     public float GetSoundVolume()
@@ -71,8 +59,6 @@ public class GlobalSettings : MonoBehaviour
         mixer.SetFloat("SFXVolume", soundDb);
 
         PlayerPrefs.SetFloat("SfxVolume", amount);
-
-
     }
 
     public float GetSfxVolume()
@@ -80,22 +66,16 @@ public class GlobalSettings : MonoBehaviour
         return PlayerPrefs.GetFloat("SfxVolume");
     }
 
-
-    private float brightness = 0.5f;
-
     private Exposure exposure;
-
     public void SetBrightness(float amount)
     {
         amount = Mathf.Clamp(amount, 0.0f, 1.0f);
         PlayerPrefs.SetFloat("Brightness", amount);
 
-
         amount *= 4;
         amount -= 2;
 
         exposure.compensation.value = amount;
-
     }
 
 
@@ -114,13 +94,9 @@ public class GlobalSettings : MonoBehaviour
     {
         onLoadOptions?.Invoke();
 
-
-        Debug.Log(GetSfxVolume());
         SetSoundVolume(GetSoundVolume());
         SetSfxVolume(GetSfxVolume());
         SetBrightness(GetBrightness());
-
-
     }
 
 

@@ -23,7 +23,6 @@ public class SliderControll : MonoBehaviour
         {
             targetSlider.value += stepValue * Time.deltaTime;
             text.text = (int)(targetSlider.value * 100f) + "%";
-
         }
     }
 }
