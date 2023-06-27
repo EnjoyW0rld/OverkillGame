@@ -8,9 +8,7 @@ public class SameZAxis : EditorWindow
     [MenuItem("Tools/AllignZAxis")]
     public static void OpenTheThing() => GetWindow<SameZAxis>("Allign Z Axis");
 
-
     private float zAxisAmount;
-
 
     private void OnEnable()
     {
@@ -24,23 +22,15 @@ public class SameZAxis : EditorWindow
 
     private void OnGUI()
     {
-
-
         GUILayout.Label("Sets all selected objects to the same global Z-axis");
 
         zAxisAmount = EditorGUILayout.FloatField("Global Z Axis", zAxisAmount);
-        
-
-
-       // GUILayout.Space(30);
 
         GUILayout.Height(100);
         using (new EditorGUI.DisabledGroupScope(Selection.gameObjects.Length == 0))
         {
             if (GUILayout.Button("Allign Selection ")) AllignSelection();
         }
-
-
     }
 
     void AllignSelection()

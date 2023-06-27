@@ -4,43 +4,34 @@ using UnityEngine;
 
 public class ChangeMaterial : MonoBehaviour
 {
-    [SerializeField] Renderer rend;
+    [SerializeField] private Renderer rend;
+    [SerializeField] private Material materialSwitch;
 
-    Material mat;
+    private Material materialDefault;
 
-    [SerializeField] Material test2;
-
-    public bool test;
     // Start is called before the first frame update
     void Start()
     {
         rend = GetComponent<SkinnedMeshRenderer>();
-        mat = rend.materials[1];
+        materialDefault = rend.materials[1];
 
         ShowMaterial();
-
-
     }
 
     public void HideMaterial()
     {
         List<Material> temp = new List<Material>(rend.materials);
 
-        temp[1] = test2;
+        temp[1] = materialSwitch;
         rend.materials = temp.ToArray();
-
     }
 
     public void ShowMaterial()
     {
         List<Material> temp = new List<Material>(rend.materials);
 
-        temp[1] = mat;
+        temp[1] = materialDefault;
         rend.materials = temp.ToArray();
     }
-
-
-
-
 
 }

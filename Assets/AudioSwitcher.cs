@@ -4,15 +4,14 @@ using UnityEngine;
 
 public class AudioSwitcher : MonoBehaviour
 {
+    [SerializeField] private AudioSource firstSource;
+    [SerializeField] private AudioSource secondSource;
 
-    [SerializeField] AudioSource firstSource;
-    [SerializeField] AudioSource secondSource;
+    private bool firstSourcePlaying = true;
 
-    bool firstSourcePlaying = true;
+    private bool isSwitchingTracks = false;
 
-    bool isSwitchingTracks = false;
-
-    IEnumerator switchTracks;
+    private IEnumerator switchTracks;
 
     public void StartSwitchingTracks()
     {
@@ -25,7 +24,6 @@ public class AudioSwitcher : MonoBehaviour
 
         firstSourcePlaying = !firstSourcePlaying;
     }
-
 
     public void SwithToDifferent()
     {

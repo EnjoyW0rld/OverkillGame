@@ -28,14 +28,10 @@ public class buttonsSelection : MonoBehaviour
         game = Gamepad.current;
         aButton = game.aButton;
         bButton = game.bButton;
-        print(Gamepad.current);
-        //aButton.
-        //ButtonControl a = 
     }
 
     void Update()
     {
-        //if (game.aButton.wasPressedThisFrame) print("aaaa");
         if (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetAxis("Vertical") > joystickThreshold)
         {
             SelectButton(buttonIndex - 1);
@@ -65,18 +61,13 @@ public class buttonsSelection : MonoBehaviour
             }
         }
         if (Gamepad.current.bButton.wasPressedThisFrame)
-        {
-
-            
-
+        {          
             if (backButton!=null)
             {
                 targetButton = backButton.GetComponent<Button>();
                 targetButton.onClick.Invoke();
-               // Debug.Log("go back");
-                
-            }
-           
+
+            }          
         }
     }
 

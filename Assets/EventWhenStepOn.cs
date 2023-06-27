@@ -7,17 +7,16 @@ public class EventWhenStepOn : MonoBehaviour
 {
     public UnityEvent onColliderEnter;
 
-    [SerializeField] float delay = 1.0f;
+    [SerializeField] private float delay = 1.0f;
+
     private bool isTrigger;
-
-    bool able = true;
-
-    private IEnumerator coroutine;
+    private bool able = true;
+    private IEnumerator timerCourotine;
 
 
     private void Start()
     {
-        coroutine = Timer();
+        timerCourotine = Timer();
         isTrigger = GetComponent<Collider>().isTrigger;
     }
 
@@ -27,14 +26,14 @@ public class EventWhenStepOn : MonoBehaviour
         if (!able) return;
 
         onColliderEnter?.Invoke();
-        StartCoroutine(coroutine);
+        StartCoroutine(timerCourotine);
     }
     private void OnTriggerEnter(Collider other)
     {
         if (!isTrigger) return;
         if (!able) return;
         onColliderEnter?.Invoke();
-        StartCoroutine(coroutine);
+        StartCoroutine(timerCourotine);
     }
 
     public IEnumerator Timer()

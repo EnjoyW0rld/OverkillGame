@@ -15,7 +15,6 @@ public class Portal : MonoBehaviour
 
     private void Awake()
     {
-        
         Collider collider = GetComponent<Collider>();
         collider.isTrigger = true;
 
@@ -35,7 +34,6 @@ public class Portal : MonoBehaviour
     }
 
     //OnTriggers set the bool, as you can't detect buttonpresses in ontriggers (doesn't run every frame)
-
     private void OnTriggerEnter(Collider other)
     {
         if(other.tag == bodyTag)
@@ -53,7 +51,6 @@ public class Portal : MonoBehaviour
 
         }
     }
-
 
     public Vector3 getEndPoint()
     {

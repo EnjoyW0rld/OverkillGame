@@ -42,7 +42,6 @@ public class SpiderString : MonoBehaviour
         {
             GameObject spiderGameObject = Instantiate(SpiderPrefab);
 
-            SpiderEnemy spiderScript = spiderGameObject.GetComponent<SpiderEnemy>();
 
           //  spiderScript.Setup(setup.speed, topPoint, bottomPoint, setup.startPoint, setup.spiderSize, setup.goUp);
 

@@ -5,18 +5,14 @@ using static FadeInOut;
 
 public class FadeInOut : MonoBehaviour
 {
-
     public static FadeInOut Instance;
-
-    [SerializeField] Animator animator;
-
     public delegate void FadedOut();
 
+    [SerializeField] private Animator animator;
 
-    FadedOut onFadedOut;
+    private FadedOut onFadedOut;
 
-
-    bool currentlyFading = false;
+    private bool currentlyFading = false;
 
     public void Awake()
     {
@@ -42,8 +38,6 @@ public class FadeInOut : MonoBehaviour
 
     }
 
-
-
     public void DoDelegates()
     {
         if (onFadedOut == null) return;
@@ -54,7 +48,6 @@ public class FadeInOut : MonoBehaviour
         currentlyFading = false;
     }  
     
-
     public void RemoveDelegates()
     {
         onFadedOut = null;

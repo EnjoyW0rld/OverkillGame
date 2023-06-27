@@ -5,8 +5,8 @@ using UnityEngine;
 public class LineForObjects : MonoBehaviour
 {
 
-    [SerializeField] Vector2 leftLocalPosition;
-    [SerializeField] Vector2 rightLocalPosition;
+    [SerializeField] private Vector2 leftLocalPosition;
+    [SerializeField] private Vector2 rightLocalPosition;
 
     public Vector3 GetLeftGlobalPosition()
     {

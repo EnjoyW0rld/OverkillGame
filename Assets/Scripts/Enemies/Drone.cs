@@ -11,12 +11,12 @@ public class Drone : MonoBehaviour
     private Transform player;
 
     [Range(0, 90)]
-    [SerializeField] int angle = 45;
+    [SerializeField] private int angle = 45;
 
     [Range(0, 50)]
-    [SerializeField] float range = 1.0f;
+    [SerializeField] private float range = 1.0f;
 
-    [SerializeField] float reduceSanitySpeed = 2.0f;
+    [SerializeField] private float reduceSanitySpeed = 2.0f;
 
     [Header("Events")]
     [SerializeField] private UnityEvent OnPlayerSpotted;
@@ -24,11 +24,11 @@ public class Drone : MonoBehaviour
 
     private Vector3[] endRayPoints;
     private float rayDist;
-    //private Sanity sanity;
-    private Damagable damagable;
-    bool playerInRange = false;
 
-    bool appliedModifier;
+    private Damagable damagable;
+    private bool playerInRange = false;
+
+    private bool appliedModifier;
 
     private void Start()
     {
@@ -36,44 +36,8 @@ public class Drone : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Body").transform;
         endRayPoints = GetRayPoints();
         rayDist = Mathf.Abs(endRayPoints[0].x - transform.position.x);
-        //sanity = GameObject.FindObjectOfType<Sanity>();
     }
 
-    public void OnDrawGizmos()
-    {
-
-        Vector3 left = transform.position + new Vector3(Mathf.Cos((angle - 90) * Mathf.Deg2Rad), Mathf.Sin((angle - 90) * Mathf.Deg2Rad)) * range;
-
-        Vector3 right = transform.position + new Vector3(Mathf.Cos((-angle - 90) * Mathf.Deg2Rad), Mathf.Sin((-angle - 90) * Mathf.Deg2Rad)) * range;
-
-        Gizmos.color = playerInRange ? Color.blue : Color.white;
-
-        //Gizmos.DrawWireSphere(transform.position, range);
-
-        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -range, 0));
-
-        Vector3 rightOne = transform.position + new Vector3(Mathf.Cos((angle - 90) * Mathf.Deg2Rad), -range, 0);
-        Vector3 leftOne = transform.position + new Vector3(Mathf.Cos((-angle - 90) * Mathf.Deg2Rad), -range, 0);
-        //Gizmos.DrawLine(transform.position, rightOne);
-        //Gizmos.DrawLine(transform.position, leftOne);
-        //Gizmos.DrawLine(left, right);
-        //Gizmos.DrawLine(transform.position, left);
-        //Gizmos.DrawLine(transform.position, right);
-        //  Gizmos.DrawWireSphere(transform.position, range);
-        Vector3[] points = null;
-        if (endRayPoints != null)
-        {
-            points = endRayPoints;
-        }
-        else
-        {
-        }
-            points = GetRayPoints();
-        Gizmos.DrawLine(transform.position, points[0]);
-        Gizmos.DrawLine(transform.position, points[1]);
-
-
-    }
 
     // Update is called once per frame
     void Update()
@@ -140,7 +104,6 @@ public class Drone : MonoBehaviour
             return false;
         }
         return true;
-        //return IsInsideRadial();
     }
     private bool IsInsideRadial()
     {
@@ -157,15 +120,10 @@ public class Drone : MonoBehaviour
 
         if ((leftCor || rightCor) && vector.magnitude < range)
         {
-            if (!playerInRange)
-            {
-                //sanity.ChangeSanitySpeed(reduceSanitySpeed);
-            }
             return true;
         }
         else
         {
-            //sanity.ResetSanitySpeed();
             return false;
         }
     }
@@ -186,5 +144,16 @@ public class Drone : MonoBehaviour
             return points;
         }
         return null;
+    }
+    public void OnDrawGizmos()
+    {
+        Gizmos.color = playerInRange ? Color.blue : Color.white;
+
+        Gizmos.DrawLine(transform.position, transform.position + new Vector3(0, -range, 0));
+
+        Vector3[] points = GetRayPoints();
+
+        Gizmos.DrawLine(transform.position, points[0]);
+        Gizmos.DrawLine(transform.position, points[1]);
     }
 }

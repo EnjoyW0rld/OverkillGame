@@ -35,8 +35,8 @@ public class TriggerEvent : MonoBehaviour
     }
     private void OnDrawGizmosSelected()
     {
-        Bounds b = coll.bounds;
-        Gizmos.DrawWireCube(b.center, b.size);
+        Bounds bounds = coll.bounds;
+        Gizmos.DrawWireCube(bounds.center, bounds.size);
 
     }
 }

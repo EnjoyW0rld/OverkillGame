@@ -38,7 +38,6 @@ public class VignetteFader : MonoBehaviour
     /// <param name="value">Value has to be between 0 and 1</param>
     public void SetIntensity(float value)
     {
-        //_vignette.intensity.value = Mathf.Clamp(value,0,1);
         _targetIntensity = Mathf.Clamp(value, 0, 1);
     }
 }

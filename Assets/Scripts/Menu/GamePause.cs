@@ -7,15 +7,15 @@ using UnityEngine.InputSystem;
 
 public class GamePause : MonoBehaviour
 {
-
     public static GamePause Instance;
-
-    [SerializeField] KeyCode keyToPause;
-
-    [SerializeField] Gamepad pad;
 
     public EventHandler onGamePaused;
     public EventHandler onGameResumed;
+
+    [SerializeField] private KeyCode keyToPause;
+
+    [SerializeField] private Gamepad pad;
+
 
     private bool isPaused = false;
 
@@ -53,7 +53,6 @@ public class GamePause : MonoBehaviour
 
 
     //Double sets pause so the method can be called independently or on the update
-
     public void PauseGame()
     {
         isPaused = true; 

@@ -53,11 +53,6 @@ public class LegJump : MonoBehaviour
         float dist = Vector3.Distance(body.transform.position, transform.position);
         Vector3 backDir = (transform.position - body.transform.position).normalized; //Direction back to the body
 
-        //If on the ground and pushing down
-        if (isGrounded && currentVelocity.y < 0)
-        {
-          //  bodyController.ModifyVelocity((Vector3.up * .1f + -backDir * .9f) * verticalAcceleration);
-        }
 
         //If leg is too far from the body
         if (dist > maxDist)
@@ -65,7 +60,6 @@ public class LegJump : MonoBehaviour
             float diff = maxDist - dist; //how much leg is too far away
             legRb.position += backDir * diff;
         }
-       // currentVelocity *= .9f;
 
         if (!isGrounded) currentVelocity.y += gravity;
         else
@@ -93,9 +87,6 @@ public class LegJump : MonoBehaviour
         }
         else
         {
-            //float inputX = Input.GetAxis("Horizontal");
-            //float inputY = Input.GetAxis("Vertical");
-            //Vector3 dir = Vector3.up * inputY + Vector3.right * inputX;
             dir = DebugInput();
 
         }
@@ -179,20 +170,4 @@ public class LegJump : MonoBehaviour
         Gizmos.DrawLine(transform.position, transform.position + Vector3.down * rayCastDist);
     }
 
-    /*
-    private void OnValidate()
-    {
-        foreach (var obj in FindObjectsOfType<LegConnection>())
-        {
-            if (obj != this)
-            {
-                obj.speed = speed;
-                obj.maxDist = maxDist;
-                obj.verticalAcceleration = verticalAcceleration;
-                obj.rayCastDist = rayCastDist;
-                obj.gravity = gravity;
-            }
-        }
-    }
-    */
 }

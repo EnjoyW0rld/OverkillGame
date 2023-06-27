@@ -8,7 +8,6 @@ using System;
 [Serializable]
 public class FloatUnityEvent : UnityEvent<float>
 {
-
 }
 
 
@@ -19,7 +18,6 @@ public class Sanity : MonoBehaviour
     private float initialSanityAmount;
     private float initialReduceSpeed;
     private float maxSanity;
-    private bool coroutinePlaying;
 
     public UnityEvent OnZeroSanity;
 
@@ -55,16 +53,6 @@ public class Sanity : MonoBehaviour
             damagables[i].Initialize(this);
         }
     }
-    /*
-    private IEnumerator ChangeReductionSpeed(float reduceValue, float time)
-    {
-        coroutinePlaying = true;
-        reduceSpeed = reduceValue;
-        yield return new WaitForSeconds(time);
-        reduceSpeed = initialReduceSpeed;
-        coroutinePlaying = false;
-    }
-     */
 
     //Public functions
     /// <summary>
@@ -77,18 +65,6 @@ public class Sanity : MonoBehaviour
 
         OnNormalizedSanityChanged?.Invoke(GetNormalizedSanity());
     }
-
-    /*
-    /// <summary>
-    /// Change sanity decrease speed from outside the class
-    /// </summary>
-    /// <param name="reduceValue">New value by what sanity will be reduced</param>
-    /// <param name="time">Time for how long effect will last in seconds</param>
-    public void ChangeSanitySpeed(float reduceValue, float time)
-    {
-        if (!coroutinePlaying) StartCoroutine(ChangeReductionSpeed(reduceValue, time));
-    }
-     */
 
     public void ChangeSanitySpeed(float reduceValue)
     {
@@ -123,10 +99,7 @@ public class Sanity : MonoBehaviour
         sanity -= amount * Time.deltaTime;
 
         if (sanity <= 0)
-        {
-
-           // Debug.Log("Sanity zero invoked");
-            
+        {            
             ResetSanityAmountFader();
             return;
         }

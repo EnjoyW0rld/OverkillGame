@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class DeathCube : MonoBehaviour
 {
-
     //RespawnScript of the player (Only one player in game)
-    Respawning_Player playerRespawn;
+    private Respawning_Player playerRespawn;
 
     /// <summary>
     /// Respawns the player when it touches the cube
@@ -21,7 +20,6 @@ public class DeathCube : MonoBehaviour
                 playerRespawn = other.gameObject.GetComponent<Respawning_Player>();
             }
 
-            //  playerRespawn.RespawnAtLastPosition();
             playerRespawn.FaderRespawn();
         }
     }
@@ -35,7 +33,6 @@ public class DeathCube : MonoBehaviour
                 playerRespawn = collision.gameObject.GetComponent<Respawning_Player>();
             }
 
-            //  playerRespawn.RespawnAtLastPosition();
             playerRespawn.FaderRespawn();
         }
     }

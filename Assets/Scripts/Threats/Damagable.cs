@@ -5,7 +5,6 @@ using System;
 
 public class Damagable : MonoBehaviour
 {
-
     //Enums to choose damage type
     public enum DecreaseType { Instant = 0, Gradual = 1 };
     [SerializeField] private DecreaseType decreaseType;
@@ -42,7 +41,6 @@ public class Damagable : MonoBehaviour
             }
         }
     }
-
 
     private void DecreaseSanity()
     {

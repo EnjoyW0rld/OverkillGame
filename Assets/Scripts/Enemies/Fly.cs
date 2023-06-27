@@ -10,18 +10,15 @@ public class DirectionEvent : UnityEvent<Vector3> { }
 public class Fly : MonoBehaviour
 {
     [Range(0, 5)]
-    [SerializeField] float range = 1.0f;
+    [SerializeField] private float range = 1.0f;
 
     [Range(0, 10)]
-    [SerializeField] float speed = 1.0f;
+    [SerializeField] private float speed = 1.0f;
 
+    [SerializeField] private float reduceSanitySpeed = 2.0f;
 
-    [SerializeField] float reduceSanitySpeed = 2.0f;
-
-    Vector3 startPos;
-    Transform player;
-
-    Sanity sanity;
+    private Vector3 startPos;
+    private Transform player;
 
     public DirectionEvent onDirectionChanged;
 
@@ -35,10 +32,6 @@ public class Fly : MonoBehaviour
     private bool inRange = false;
 
 
-    public void OnDrawGizmos()
-    {
-        Gizmos.DrawWireSphere(transform.position, range);
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -46,16 +39,11 @@ public class Fly : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Body").transform;
 
         startPos = transform.position;
-
-        sanity = GameObject.FindObjectOfType<Sanity>();
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
-
         if (Vector3.Distance(player.position, this.transform.position) <= range)
         {
             Vector3 difNormal = (player.position - this.transform.position).normalized;
@@ -94,6 +82,10 @@ public class Fly : MonoBehaviour
     {
         frogInDamgaeArea = false;
         onPlayerExitFly?.Invoke();
+    }
+    public void OnDrawGizmos()
+    {
+        Gizmos.DrawWireSphere(transform.position, range);
     }
 
 }

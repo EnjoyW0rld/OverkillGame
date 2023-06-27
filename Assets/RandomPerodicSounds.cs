@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Plays (background) sounds randomly  having a small time period between them
+/// </summary>
 [RequireComponent(typeof(AudioSource))]
 public class RandomPerodicSounds : MonoBehaviour
 {
-
-
     [SerializeField] float soundMinBetween;
     [SerializeField] float soundMaxBetween;
 
@@ -24,9 +24,7 @@ public class RandomPerodicSounds : MonoBehaviour
         StartCoroutine(PlaySoundPeriodicly());
     }
 
-
-
-    public void PlayRandomSound()
+    private void PlayRandomSound()
     {
         int randomIndex = Random.Range(0, clips.Count);
 
@@ -34,7 +32,7 @@ public class RandomPerodicSounds : MonoBehaviour
         source.Play();
     }
 
-    public IEnumerator PlaySoundPeriodicly()
+    private IEnumerator PlaySoundPeriodicly()
     {
         float waitTime = Random.Range(soundMinBetween, soundMaxBetween);
 

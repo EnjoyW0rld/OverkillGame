@@ -124,7 +124,7 @@ public class TutorialHandler : MonoBehaviour
         frogJumped = true;
     }
 
-    private IEnumerator Fade(CanvasGroup targ, float targetValue, Action a = null)
+    private IEnumerator Fade(CanvasGroup targ, float targetValue, Action action = null)
     {
         float initialValue = targ.alpha;
         float timePassed = 0;
@@ -136,9 +136,9 @@ public class TutorialHandler : MonoBehaviour
             yield return null;
         }
         targ.alpha = targetValue;
-        if (a != null)
+        if (action != null)
         {
-            a();
+            action();
         }
     }
 }
