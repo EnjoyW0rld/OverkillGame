@@ -8,10 +8,8 @@ using UnityEngine.UI;
 [RequireComponent(typeof(Slider))]
 public class SetSliderValueStart : MonoBehaviour
 {
-
     private Slider slider;
     [SerializeField] private string playerPrefabName;
-
 
     public void SetupPercentage()
     {
@@ -21,7 +19,6 @@ public class SetSliderValueStart : MonoBehaviour
 
         float amount = PlayerPrefs.GetFloat(playerPrefabName, -1);
         slider.value = amount;
-
     }
 
 }

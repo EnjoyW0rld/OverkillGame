@@ -24,12 +24,10 @@ public class SafePoint : MonoBehaviour
 
     private void OnTriggerStay(Collider other)
     {
-        if(other.tag == "Body")
+        if (other.tag == "Body")
         {
             sanity.ResetSanityAmount();
-            //print(other.GetComponent<Respawning_Player>());
             other.GetComponent<Respawning_Player>().SetGrassPoint(transform.position);
         }
-        
     }
 }

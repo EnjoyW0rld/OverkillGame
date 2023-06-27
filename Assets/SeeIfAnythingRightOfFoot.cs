@@ -5,14 +5,13 @@ using UnityEngine;
 using UnityEngine.Events;
 public class SeeIfAnythingRightOfFoot : MonoBehaviour
 {
-
     [SerializeField] LayerMask layerCheck;
 
     public UnityEvent somethingBeforeLeg;
     public UnityEvent nothingBeforeLeg;
+
     private bool lastFrameBefore = false;
 
-    // Update is called once per frame
     void Update()
     {
         if (Physics.Raycast(this.transform.position, Vector3.back, 10, layerCheck))

@@ -17,8 +17,8 @@ public class DistortAudio : MonoBehaviour
         public float endValue;
     }
 
-    [SerializeField] List<AudioEffect> effects;
-    [SerializeField] AudioMixer mixer;
+    [SerializeField] private List<AudioEffect> effects;
+    [SerializeField] private AudioMixer mixer;
 
     public void SetPercentageDistortion(float amount)
     {

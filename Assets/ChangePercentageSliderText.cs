@@ -6,8 +6,9 @@ using TMPro;
 [RequireComponent(typeof(TextMeshProUGUI))]
 public class ChangePercentageSliderText : MonoBehaviour
 {
-    TextMeshProUGUI percentageText;
-    [SerializeField] string playerPrefabName;
+    [SerializeField] private string playerPrefabName;
+
+    private TextMeshProUGUI percentageText;
 
 
     public void SetupPercentage()
@@ -16,8 +17,7 @@ public class ChangePercentageSliderText : MonoBehaviour
 
         if (amount == -1) return;
         
-        ChangeTextPercentage(amount);
-        
+        ChangeTextPercentage(amount);  
     }
 
     public void ChangeTextPercentage(float amount)

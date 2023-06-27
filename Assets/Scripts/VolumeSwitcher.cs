@@ -6,10 +6,8 @@ using UnityEngine.Rendering;
 [RequireComponent(typeof(Volume))]
 public class VolumeSwitcher : MonoBehaviour
 {
-
-
-    [SerializeField] Volume volumeStart;
-    [SerializeField] Volume volumeEnd;
+    [SerializeField] private Volume volumeStart;
+    [SerializeField] private Volume volumeEnd;
 
     public void SetPercentageVolumes(float amount)
     {
