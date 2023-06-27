@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7716085880376173715}
   - component: {fileID: 838816981361044238}
   - component: {fileID: 7933276963728754225}
+  - component: {fileID: 7166358570998560911}
   m_Layer: 8
   m_Name: platform
   m_TagString: Untagged
@@ -97,6 +98,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7166358570998560911
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 53618779242998313}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0483c103b63b5684d8657dca6138cc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onColliderEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 340810590393026100}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delay: 1
 --- !u!1 &1496446911079511108
 GameObject:
   m_ObjectHideFlags: 0
@@ -109,6 +138,7 @@ GameObject:
   - component: {fileID: 2298091090926243783}
   - component: {fileID: 8963958450854131449}
   - component: {fileID: 8101988853465246225}
+  - component: {fileID: 4567354171624577628}
   m_Layer: 8
   m_Name: platform (1)
   m_TagString: Untagged
@@ -194,6 +224,34 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4567354171624577628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496446911079511108}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0483c103b63b5684d8657dca6138cc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onColliderEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 340810590393026100}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delay: 1
 --- !u!1 &2631617978623472447
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,31 +609,3 @@ SpringJoint:
   m_EnablePreprocessing: 1
   m_MassScale: 1
   m_ConnectedMassScale: 1
---- !u!114 &6678475876575535684
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 898543178570732113}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0483c103b63b5684d8657dca6138cc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onColliderEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 340810590393026100}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delay: 1

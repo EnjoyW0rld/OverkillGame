@@ -435,6 +435,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: BouncePlatform (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 7892920313900876013, guid: 437ff322705153a449cfe3ff562df09e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_RootOrder
@@ -458,52 +463,52 @@ PrefabInstance:
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.65
+      value: -1.707
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.94
+      value: 9.886
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.02
+      value: -0.199
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.9257619
+      value: 0.9275699
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0.05272443
+      value: 0.056942713
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.02842387
+      value: -0.04540811
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.37333256
+      value: -0.36648294
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: -4.382
+      value: 4.149
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 5.294
+      value: -7.256
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: -44.128
+      value: -43.381
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 7892920313900876014, guid: 437ff322705153a449cfe3ff562df09e, type: 3}
@@ -730,17 +735,17 @@ PrefabInstance:
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -2.47
+      value: -2.501
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 9.64
+      value: 9.602
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.02
+      value: -0.223
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}
@@ -797,6 +802,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: BouncePlatform (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 7892920313900876013, guid: 437ff322705153a449cfe3ff562df09e,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7892920313900876016, guid: 437ff322705153a449cfe3ff562df09e,
         type: 3}

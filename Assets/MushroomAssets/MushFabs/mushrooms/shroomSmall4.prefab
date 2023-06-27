@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 5696476249848692079}
   - component: {fileID: 5782707302066089744}
   - component: {fileID: 4545446255991078591}
+  - component: {fileID: 4817143340219921878}
   m_Layer: 0
   m_Name: collider (3)
   m_TagString: Untagged
@@ -67,6 +68,34 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a193adfc9ac447040aea6c99124b8e15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &4817143340219921878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4006023763480745228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0483c103b63b5684d8657dca6138cc71, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onColliderEnter:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6356407307768886075}
+        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  delay: 1
 --- !u!1 &4073173588967928072
 GameObject:
   m_ObjectHideFlags: 0
@@ -406,7 +435,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4043152588412893347}
-  - component: {fileID: 6433697154587578072}
   m_Layer: 0
   m_Name: shroomSmall4
   m_TagString: Untagged
@@ -436,34 +464,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6433697154587578072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8396398236558923309}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0483c103b63b5684d8657dca6138cc71, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  onColliderEnter:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 6356407307768886075}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-  delay: 1
 --- !u!1001 &642672868206156705
 PrefabInstance:
   m_ObjectHideFlags: 0

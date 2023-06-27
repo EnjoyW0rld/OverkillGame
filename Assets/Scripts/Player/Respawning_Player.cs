@@ -15,6 +15,7 @@ public class Respawning_Player : MonoBehaviour
 
 
     [SerializeField] UnityEvent onRespawnTest;
+    [SerializeField] UnityEvent onRespawn;
 
 
     private void Start()
@@ -82,10 +83,12 @@ public class Respawning_Player : MonoBehaviour
     public void RespawnAtGrassPoint()
     {
         transform.position = lastGrassPoint;
+        onRespawn?.Invoke();
     }
     public void RespawnAtLastPosition()
     {
         transform.position = lastPosition;
+        onRespawn?.Invoke();
     }
 
     public void FaderRespawn()

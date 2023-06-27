@@ -25,7 +25,7 @@ public class EventWhenStepOn : MonoBehaviour
     {
         if (isTrigger) return;
         if (!able) return;
-
+        print(name);
         onColliderEnter?.Invoke();
         StartCoroutine(coroutine);
     }
