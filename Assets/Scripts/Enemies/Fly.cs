@@ -9,7 +9,7 @@ public class DirectionEvent : UnityEvent<Vector3> { }
 
 public class Fly : MonoBehaviour
 {
-    [Range(0, 50)]
+    [Range(0, 5)]
     [SerializeField] float range = 1.0f;
 
     [Range(0, 10)]

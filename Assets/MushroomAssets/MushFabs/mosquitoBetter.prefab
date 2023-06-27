@@ -141,8 +141,6 @@ GameObject:
   - component: {fileID: 7931608523444861141}
   - component: {fileID: 1667016218579240564}
   - component: {fileID: 5355558882949870946}
-  - component: {fileID: 3363368693806407804}
-  - component: {fileID: 2151602874585033092}
   m_Layer: 0
   m_Name: mosquitoBetter
   m_TagString: Untagged
@@ -191,7 +189,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e60a819e813c77459fb37502047fd3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 8
+  range: 3.57
   speed: 1
   reduceSanitySpeed: 2
   onDirectionChanged:
@@ -211,76 +209,16 @@ MonoBehaviour:
         m_CallState: 2
   onPlayerEnterFly:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5355558882949870946}
-        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
-        m_MethodName: OnEnterDamageArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPlayerExitFly:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 5355558882949870946}
-        m_TargetAssemblyTypeName: Damagable, Assembly-CSharp
-        m_MethodName: OnExitDamageArea
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPlayerEnterTargetRange:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7057725407018415172}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: attackTrig
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
   onPlayerExitTargetRange:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7057725407018415172}
-        m_TargetAssemblyTypeName: UnityEngine.Animator, UnityEngine
-        m_MethodName: SetTrigger
-        m_Mode: 5
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: attackTrig
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 2151602874585033092}
-        m_TargetAssemblyTypeName: ResetRotation, Assembly-CSharp
-        m_MethodName: ResetRotationObject
-        m_Mode: 4
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 1
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &5355558882949870946
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -300,31 +238,6 @@ MonoBehaviour:
     _reductionSpeed: 0
   instantDecrease:
     _valueToDecrease: 0
---- !u!135 &3363368693806407804
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396327803752006214}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1.6328202
-  m_Center: {x: 3.1900997e-16, y: -0.39215112, z: -0.1474483}
---- !u!114 &2151602874585033092
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5396327803752006214}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d54d726a2bec9c04c9a94d3b1831864f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &3501696546348747221
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -422,12 +335,6 @@ PrefabInstance:
 --- !u!4 &3968303532689927742 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 489963f465f7181409ad5f8384c7855e,
-    type: 3}
-  m_PrefabInstance: {fileID: 3501696546348747221}
-  m_PrefabAsset: {fileID: 0}
---- !u!95 &7057725407018415172 stripped
-Animator:
-  m_CorrespondingSourceObject: {fileID: 5866666021909216657, guid: 489963f465f7181409ad5f8384c7855e,
     type: 3}
   m_PrefabInstance: {fileID: 3501696546348747221}
   m_PrefabAsset: {fileID: 0}
