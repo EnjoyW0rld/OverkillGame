@@ -277,6 +277,7 @@ GameObject:
   - component: {fileID: 4893249969839593062}
   - component: {fileID: 5654118947590600972}
   - component: {fileID: 2686037917238992150}
+  - component: {fileID: 8518795886684692409}
   m_Layer: 0
   m_Name: Fly (1)
   m_TagString: Untagged
@@ -454,6 +455,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8518795886684692409}
+        m_TargetAssemblyTypeName: ResetRotation, Assembly-CSharp
+        m_MethodName: ResetRotationObject
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5654118947590600972
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -483,6 +496,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 32432f806f0eab1429a07605d2684dce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8518795886684692409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4893249969839593063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d54d726a2bec9c04c9a94d3b1831864f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &8012670181902723035
