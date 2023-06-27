@@ -51,7 +51,6 @@ public class GlobalSettings : MonoBehaviour
         amount = Mathf.Clamp(amount, 0.0f, 1.0f);
 
         float soundDb = (amount * 100.0f) - 80.0f;
-        Debug.Log(soundDb);
         mixer.SetFloat("MusicVolume", soundDb);
 
         PlayerPrefs.SetFloat("SoundVolume", amount);
@@ -69,7 +68,6 @@ public class GlobalSettings : MonoBehaviour
         amount = Mathf.Clamp(amount, 0.0f, 1.0f);
 
         float soundDb = (amount * 100.0f) - 80.0f;
-        Debug.Log(soundDb);
         mixer.SetFloat("SFXVolume", soundDb);
 
         PlayerPrefs.SetFloat("SfxVolume", amount);

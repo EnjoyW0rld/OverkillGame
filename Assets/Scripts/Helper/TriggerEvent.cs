@@ -26,7 +26,6 @@ public class TriggerEvent : MonoBehaviour
         if (other.CompareTag("Body"))
         {
             assignedEvent?.Invoke();
-            print("invoked");
         }
     }
 

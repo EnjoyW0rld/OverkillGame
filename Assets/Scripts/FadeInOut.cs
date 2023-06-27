@@ -43,6 +43,7 @@ public class FadeInOut : MonoBehaviour
     }
 
 
+
     public void DoDelegates()
     {
         if (onFadedOut == null) return;
