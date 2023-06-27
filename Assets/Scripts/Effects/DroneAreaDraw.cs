@@ -54,14 +54,11 @@ public class DroneAreaDraw : MonoBehaviour
         mesh.vertices = vertices;
         mesh.triangles = triangles;
         mesh.uv = uvs;
-        //mesh.RecalculateNormals();
-        //mesh.RecalculateUVDistributionMetrics();
     }
     private void OnDrawGizmos()
     {
         if (drone == null) return;
         Vector3 pos = transform.position;
         pos.y -= drone.GetRange()/2f;
-        //Gizmos.DrawWireSphere(pos, 1);
     }
 }

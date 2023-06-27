@@ -6,9 +6,9 @@ using UnityEngine;
 public class SilverFishEnemy : MonoBehaviour
 {
     private ObjectMoveOnLine objectOnLine;
+
     private void Start()
     {
-
         objectOnLine = GetComponent<ObjectMoveOnLine>();
     }
 
