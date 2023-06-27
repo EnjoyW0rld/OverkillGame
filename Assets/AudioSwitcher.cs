@@ -97,4 +97,34 @@ public class AudioSwitcher : MonoBehaviour
 
         isSwitchingTracks = false;
     }
+
+    public void SwitchAudioHalf()
+    {
+        if (isSwitchingTracks) return;
+
+        //switchTracks = SwitchTracks(firstSource, secondSource, time);
+        StartCoroutine(switchTracks);
+
+        firstSourcePlaying = false;
+    }
+
+   /* public IEnumerator SwitchTracksHalf(AudioSource beginning, AudioSource ending, float percentge)
+    {
+        isSwitchingTracks = true;
+
+        float time = 0;
+
+        while (time < totalTime)
+        {
+
+            beginning.volume = 1 - (time / totalTime);
+            ending.volume = time / totalTime;
+
+            time += Time.deltaTime;
+
+            yield return 0;
+        }
+
+        isSwitchingTracks = false;
+    }*/
 }
