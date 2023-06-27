@@ -149,7 +149,7 @@ MonoBehaviour:
     m_Value: 0
   exposure:
     m_OverrideState: 1
-    m_Value: 11.1
+    m_Value: 11.67
   multiplier:
     m_OverrideState: 1
     m_Value: 1
@@ -207,7 +207,7 @@ MonoBehaviour:
     m_Value: 1
   fixedExposure:
     m_OverrideState: 1
-    m_Value: 10
+    m_Value: 14.084435
   compensation:
     m_OverrideState: 1
     m_Value: 0
