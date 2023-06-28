@@ -21,23 +21,15 @@ public class ResetRotation : MonoBehaviour
     private IEnumerator ResetRotationIEnumarator(float time)
 
     {
-        Debug.Log("dadad");
         Quaternion rotation = this.transform.localRotation;
         float timeSpend = 0;
 
         do
         {
-
-            //   Debug.Log(Quaternion.Slerp(rotation, startRotation, timeSpend / time));
-
-         //   Debug.Log(timeSpend / time);
             Quaternion newRotation = Quaternion.Slerp(rotation, startRotation, timeSpend / time);
 
             transform.localRotation = newRotation;
 
-            Debug.Log(transform.localRotation);
-            Debug.Log(newRotation);
-            Debug.Log(transform.localRotation == newRotation);
             timeSpend += Time.deltaTime;
             yield return 0;
 
