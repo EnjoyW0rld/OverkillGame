@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 438.4851, g: 557.13184, b: 722.00195, a: 1}
+  m_IndirectSpecularColor: {r: 262.3369, g: 325.0498, b: 430.21924, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -39662,6 +39662,36 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 628318255}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1438213824}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetPercentageVolumes
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: SetPercentageDistortion
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: VolumeSwitcher, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 3008333337127278977, guid: 4c2d01cfa3fc20448afe21f416e885bb,
+        type: 3}
+      propertyPath: OnNormalizedSanityChanged.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: DistortAudio, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 3008333337127278983, guid: 4c2d01cfa3fc20448afe21f416e885bb,
         type: 3}

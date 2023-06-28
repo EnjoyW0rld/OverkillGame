@@ -181,7 +181,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   standardButtons: []
   selectedButtons: []
-  backButton: {fileID: 0}
+  backButton: {fileID: 3854651869860160634}
   selectSound: {fileID: 0}
   joystickThreshold: 0.5
 --- !u!1 &2934792764078002234

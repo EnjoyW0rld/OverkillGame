@@ -201,6 +201,8 @@ public class JumpFrog : MonoBehaviour
     {
         rb.AddForce(force, ForceMode.Impulse);
     }
+
+    public void ResetVelocity() => rb.velocity = Vector3.zero;
     public Vector3 GetPredictedVelocity()
     {
         if (jumpModifier == null)
